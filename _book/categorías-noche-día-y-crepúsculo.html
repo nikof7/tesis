@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Parte 5 Categorías Noche, Día y Crepúsculo | Tesis</title>
+  <meta name="description" content="Donde se irá desarrollando la tésis." />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Parte 5 Categorías Noche, Día y Crepúsculo | Tesis" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Donde se irá desarrollando la tésis." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Parte 5 Categorías Noche, Día y Crepúsculo | Tesis" />
+  
+  <meta name="twitter:description" content="Donde se irá desarrollando la tésis." />
+  
+
+<meta name="author" content="Nicolás Fernández-Sauleda" />
+
+
+<meta name="date" content="2024-06-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="convertir-a-hora-solar.html"/>
+<link rel="next" href="exploración-de-hora-solar.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Tesis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Acerca de</a></li>
+<li class="chapter" data-level="2" data-path="carga-de-datos.html"><a href="carga-de-datos.html"><i class="fa fa-check"></i><b>2</b> Carga de Datos</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="carga-de-datos.html"><a href="carga-de-datos.html#observaciones-en-cámaras-trampa"><i class="fa fa-check"></i><b>2.1</b> Observaciones en Cámaras Trampa</a></li>
+<li class="chapter" data-level="2.2" data-path="carga-de-datos.html"><a href="carga-de-datos.html#preparación-de-datos"><i class="fa fa-check"></i><b>2.2</b> Preparación de Datos</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="exploración-inicial-de-los-datos.html"><a href="exploración-inicial-de-los-datos.html"><i class="fa fa-check"></i><b>3</b> Exploración inicial de los datos</a></li>
+<li class="chapter" data-level="4" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html"><i class="fa fa-check"></i><b>4</b> Convertir a hora solar</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html#paquete-circular"><i class="fa fa-check"></i><b>4.1</b> Paquete circular</a></li>
+<li class="chapter" data-level="4.2" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html#paquete-activity"><i class="fa fa-check"></i><b>4.2</b> Paquete activity</a></li>
+<li class="chapter" data-level="4.3" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html#comparando-ambos-paquetes"><i class="fa fa-check"></i><b>4.3</b> Comparando ambos paquetes</a></li>
+<li class="chapter" data-level="4.4" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html#conclusión"><i class="fa fa-check"></i><b>4.4</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="categorías-noche-día-y-crepúsculo.html"><a href="categorías-noche-día-y-crepúsculo.html"><i class="fa fa-check"></i><b>5</b> Categorías Noche, Día y Crepúsculo</a></li>
+<li class="chapter" data-level="6" data-path="exploración-de-hora-solar.html"><a href="exploración-de-hora-solar.html"><i class="fa fa-check"></i><b>6</b> Exploración de hora solar</a></li>
+<li class="chapter" data-level="7" data-path="fase-lunar.html"><a href="fase-lunar.html"><i class="fa fa-check"></i><b>7</b> Fase lunar</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="fase-lunar.html"><a href="fase-lunar.html#fase-lunar-de-cada-registro"><i class="fa fa-check"></i><b>7.1</b> Fase lunar de cada registro</a></li>
+<li class="chapter" data-level="7.2" data-path="fase-lunar.html"><a href="fase-lunar.html#exploración-de-datos"><i class="fa fa-check"></i><b>7.2</b> Exploración de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="kernels-de-actividad.html"><a href="kernels-de-actividad.html"><i class="fa fa-check"></i><b>8</b> Kernels de actividad</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Nicolás Fernández-Sauleda</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tesis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="categorías-noche-día-y-crepúsculo" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Parte 5</span> Categorías Noche, Día y Crepúsculo<a href="categorías-noche-día-y-crepúsculo.html#categorías-noche-día-y-crepúsculo" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Se clasificará como en la imagen:</p>
+<div style="text-align:center;">
+<p><img src="recursos/divison_horas.svg" style="width:30%;"></p>
+</div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="categorías-noche-día-y-crepúsculo.html#cb10-1" tabindex="-1"></a>datos <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="categorías-noche-día-y-crepúsculo.html#cb10-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">solartime_hms =</span> <span class="fu">hms</span>(<span class="fu">RadiansToHour</span>(solar)),</span>
+<span id="cb10-3"><a href="categorías-noche-día-y-crepúsculo.html#cb10-3" tabindex="-1"></a>         <span class="at">periodos =</span> <span class="fu">case_when</span>(</span>
+<span id="cb10-4"><a href="categorías-noche-día-y-crepúsculo.html#cb10-4" tabindex="-1"></a>           solartime_hms <span class="sc">&gt;=</span> <span class="fu">hours</span>(<span class="dv">20</span>) <span class="sc">|</span> solartime_hms <span class="sc">&lt;=</span> <span class="fu">hours</span>(<span class="dv">4</span>) <span class="sc">~</span> <span class="st">&quot;Noche&quot;</span>,</span>
+<span id="cb10-5"><a href="categorías-noche-día-y-crepúsculo.html#cb10-5" tabindex="-1"></a>           solartime_hms <span class="sc">&gt;</span> <span class="fu">hours</span>(<span class="dv">4</span>) <span class="sc">&amp;</span> solartime_hms <span class="sc">&lt;</span> <span class="fu">hours</span>(<span class="dv">8</span>) <span class="sc">|</span> solartime_hms <span class="sc">&gt;</span> <span class="fu">hours</span>(<span class="dv">16</span>) <span class="sc">&amp;</span> solartime_hms <span class="sc">&lt;</span> <span class="fu">hours</span>(<span class="dv">20</span>)  <span class="sc">~</span> <span class="st">&quot;Crepusculo&quot;</span>,</span>
+<span id="cb10-6"><a href="categorías-noche-día-y-crepúsculo.html#cb10-6" tabindex="-1"></a>           solartime_hms <span class="sc">&gt;=</span> <span class="fu">hours</span>(<span class="dv">8</span>) <span class="sc">&amp;</span> solartime_hms <span class="sc">&lt;=</span> <span class="fu">hours</span>(<span class="dv">16</span>) <span class="sc">~</span> <span class="st">&quot;Dia&quot;</span>,</span>
+<span id="cb10-7"><a href="categorías-noche-día-y-crepúsculo.html#cb10-7" tabindex="-1"></a>         ))</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["sitio"],"name":[1],"type":["chr"],"align":["left"]},{"label":["lat"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["lon"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["camara"],"name":[4],"type":["chr"],"align":["left"]},{"label":["datetime"],"name":[5],"type":["dttm"],"align":["right"]},{"label":["sp"],"name":[6],"type":["chr"],"align":["left"]},{"label":["solar"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["clock"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["solartime_hms"],"name":[9],"type":["Period"],"align":["right"]},{"label":["periodos"],"name":[10],"type":["chr"],"align":["left"]}],"data":[{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM06_3","5":"2023-02-07 07:56:22","6":"Btau","7":"2.1351007","8":"2.0785417","9":"8H 9M 20S","10":"Dia","_rn_":"1"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM06_2","5":"2023-02-06 15:05:08","6":"Btau","7":"3.8108100","8":"3.9493892","9":"14H 33M 22S","10":"Dia","_rn_":"2"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM01_1","5":"2023-02-06 12:13:33","6":"Btau","7":"3.1413344","8":"3.2007157","9":"11H 59M 56S","10":"Dia","_rn_":"3"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM01_1","5":"2023-02-06 08:07:45","6":"Btau","7":"2.1822839","8":"2.1282109","9":"8H 20M 9S","10":"Dia","_rn_":"4"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM01_1","5":"2023-02-05 21:59:46","6":"Btau","7":"5.5787948","8":"5.7585684","9":"21H 18M 34S","10":"Noche","_rn_":"5"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM01_1","5":"2023-02-05 18:00:13","6":"Btau","7":"4.4916738","8":"4.7133344","9":"17H 9M 25S","10":"Crepusculo","_rn_":"6"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM05_1","5":"2023-02-05 13:40:00","6":"Btau","7":"3.4785490","8":"3.5779250","9":"13H 17M 13S","10":"Dia","_rn_":"7"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM05_3","5":"2023-02-04 21:32:00","6":"Dnov","7":"5.4382648","8":"5.6374135","9":"20H 46M 22S","10":"Noche","_rn_":"8"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM04_2","5":"2023-02-04 19:51:00","6":"Mgou","7":"4.9338467","8":"5.1967178","9":"18H 50M 45S","10":"Crepusculo","_rn_":"9"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM04_2","5":"2023-02-02 00:13:00","6":"Mgou","7":"6.2425434","8":"0.0567232","9":"23H 50M 41S","10":"Noche","_rn_":"10"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM05_1","5":"2023-02-01 20:02:00","6":"Mgou","7":"4.9788715","8":"5.2447144","9":"19H 1M 4S","10":"Crepusculo","_rn_":"11"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM06_2","5":"2023-02-01 12:10:44","6":"Btau","7":"3.1340625","8":"3.1884257","9":"11H 58M 16S","10":"Dia","_rn_":"12"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM06_2","5":"2023-02-01 09:57:08","6":"Btau","7":"2.6182013","8":"2.6054857","9":"10H 0M 3S","10":"Dia","_rn_":"13"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM01_1","5":"2023-01-31 20:54:47","6":"Lgym","7":"5.2422639","8":"5.4750251","9":"20H 1M 26S","10":"Noche","_rn_":"14"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM01_1","5":"2023-01-31 17:41:43","6":"Btau","7":"4.4103921","8":"4.6326129","9":"16H 50M 47S","10":"Crepusculo","_rn_":"15"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM04_1","5":"2023-01-31 15:17:00","6":"Mgou","7":"3.8527217","8":"4.0011673","9":"14H 42M 59S","10":"Dia","_rn_":"16"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM06_2","5":"2023-01-31 11:35:17","6":"Btau","7":"2.9983294","8":"3.0337459","9":"11H 27M 10S","10":"Dia","_rn_":"17"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM06_2","5":"2023-01-30 13:23:33","6":"Btau","7":"3.4159045","8":"3.5061483","9":"13H 2M 52S","10":"Dia","_rn_":"18"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM06_2","5":"2023-01-30 10:47:41","6":"Btau","7":"2.8164466","8":"2.8260517","9":"10H 45M 29S","10":"Dia","_rn_":"19"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM06_3","5":"2023-01-29 23:16:02","6":"Btau","7":"5.9546964","8":"6.0913445","9":"22H 44M 43S","10":"Noche","_rn_":"20"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM06_2","5":"2023-01-29 09:50:10","6":"Btau","7":"2.5972420","8":"2.5750879","9":"9H 55M 15S","10":"Dia","_rn_":"21"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM01_2","5":"2023-01-29 00:49:32","6":"Dnov","7":"0.1460765","8":"0.2161299","9":"33M 29S","10":"Noche","_rn_":"22"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM01_2","5":"2023-01-28 23:35:38","6":"Btau","7":"6.0541950","8":"6.1768657","9":"23H 7M 31S","10":"Noche","_rn_":"23"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM06_2","5":"2023-01-28 17:48:57","6":"Btau","7":"4.4336070","8":"4.6641743","9":"16H 56M 6S","10":"Crepusculo","_rn_":"24"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM06_2","5":"2023-01-28 16:36:44","6":"Btau","7":"4.1569265","8":"4.3490696","9":"15H 52M 42S","10":"Dia","_rn_":"25"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM01_2","5":"2023-01-28 06:53:32","6":"Btau","7":"1.9225380","8":"1.8043796","9":"7H 20M 37S","10":"Crepusculo","_rn_":"26"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM01_3","5":"2023-01-27 22:06:01","6":"Btau","7":"5.5970967","8":"5.7858392","9":"21H 22M 46S","10":"Noche","_rn_":"27"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM01_3","5":"2023-01-27 18:14:52","6":"Btau","7":"4.5313406","8":"4.7772571","9":"17H 18M 30S","10":"Crepusculo","_rn_":"28"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM06_2","5":"2023-01-27 11:23:35","6":"Btau","7":"2.9585453","8":"2.9826950","9":"11H 18M 3S","10":"Dia","_rn_":"29"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM06_2","5":"2023-01-27 07:14:02","6":"Btau","7":"2.0042370","8":"1.8938277","9":"7H 39M 20S","10":"Crepusculo","_rn_":"30"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM01_3","5":"2023-01-27 00:46:19","6":"Lgym","7":"0.1317110","8":"0.2020946","9":"30M 11S","10":"Noche","_rn_":"31"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM01_1","5":"2023-01-26 14:47:56","6":"Btau","7":"3.7399837","8":"3.8743401","9":"14H 17M 8S","10":"Dia","_rn_":"32"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM04_2","5":"2023-01-26 11:09:00","6":"Mgou","7":"2.9042881","8":"2.9190632","9":"11H 5M 37S","10":"Dia","_rn_":"33"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM06_2","5":"2023-01-26 07:10:45","6":"Btau","7":"1.9948584","8":"1.8795014","9":"7H 37M 11S","10":"Crepusculo","_rn_":"34"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM01_1","5":"2023-01-25 21:22:53","6":"Ctho","7":"5.3740961","8":"5.5976345","9":"20H 31M 39S","10":"Noche","_rn_":"35"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM05_1","5":"2023-01-25 15:19:00","6":"Mgou","7":"3.8583987","8":"4.0098940","9":"14H 44M 17S","10":"Dia","_rn_":"36"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM01_1","5":"2023-01-25 14:45:10","6":"Btau","7":"3.7294842","8":"3.8622682","9":"14H 14M 44S","10":"Dia","_rn_":"37"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM06_2","5":"2023-01-25 12:17:54","6":"Btau","7":"3.1683570","8":"3.2196961","9":"12H 6M 8S","10":"Dia","_rn_":"38"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM05_1","5":"2023-01-25 10:36:00","6":"Mgou","7":"2.7800896","8":"2.7750735","9":"10H 37M 9S","10":"Dia","_rn_":"39"},{"1":"SM","2":"-33.72585","3":"-53.58035","4":"SM01_1","5":"2023-01-25 08:14:47","6":"Ctho","7":"2.2420146","8":"2.1588996","9":"8H 33M 50S","10":"Dia","_rn_":"40"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="convertir-a-hora-solar.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exploración-de-hora-solar.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-hora-solar.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

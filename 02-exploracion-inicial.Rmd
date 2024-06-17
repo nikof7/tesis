@@ -1,0 +1,38 @@
+# Exploración inicial de los datos
+
+Existe una totalidad de `r nrow(data)` registros independientes, en la siguiente grafica se puede observar la cantidad de registros por especie y se añade una linea vertical en n=50.
+
+```{r echo=FALSE}
+temp_var <- data %>% 
+  select(sp) %>% 
+  group_by(sp) %>% 
+  summarise("total" = n()) %>% 
+  arrange(-total) %>% 
+  select(sp, total)
+ 
+ggplot() + geom_col(data = temp_var, aes(x = reorder(sp, total), y = total), position = "dodge", fill = "#2B7C85") + 
+  coord_flip() +
+  labs(y = "Total de registros",
+       x = "Especies") +
+  geom_hline(yintercept = 50, color = "#0C1446") + theme_gray()
+
+rm(temp_var)
+``` 
+
+Por área de estudio:
+
+```{r echo=FALSE}
+temp_var <- data %>% 
+  group_by(site) %>% 
+  summarise(total = n()) %>% 
+  arrange(desc(total))
+
+ggplot(temp_var, aes(x = reorder(site, total), y = total)) + 
+  geom_col(position = "dodge", fill = "#2B7C85") + 
+  labs(y = "Total de registros",
+       x = "Sitios") +
+  scale_y_continuous(breaks = round(seq(0, max(temp_var$total), by = 250))) +
+  coord_flip()
+
+rm(temp_var)
+```

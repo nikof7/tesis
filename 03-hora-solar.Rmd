@@ -1,0 +1,197 @@
+# Convertir a hora solar
+
+Primero, cargamos las funciones necesarias:
+
+```{r}
+# Herramientas
+source("functions/convert_hours.R")
+source("functions/load_data.R")
+```
+
+## Paquete circular
+
+Vamos a calcular la hora solar de todos los registros utilizando la metodología de @Nouvellet2011, donde se utiliza el paquete `circular`.
+
+```{r}
+library(suntools)
+library(overlap)
+```
+
+Preparamos los datos y agregamos una columna `sunTime_result` para almacenar los valores de la hora solar. También se seleccionan solo 500 registros con el fin de que el proceso sea más rápido.
+
+```{r}
+# Load data
+data <- load_data()
+
+# Process data
+overlap_data <- data %>%
+  sample_n(300) %>% 
+  mutate(
+    clock_time = hour_to_radians(datetime),
+    dates = as.POSIXct(datetime, tz = "America/Montevideo"),
+    sun_time_result = NA
+  ) %>%
+  select(site, datetime, sp, clock_time, dates, lat, lon, sun_time_result)
+```
+
+Luego, calculamos la hora solar para cada registro y almacenamos el resultado.
+
+```{r eval=FALSE}
+start_time1 <- Sys.time()
+for (i in 1:nrow(overlap_data)) {
+  ClockTime <- overlap_data$clock_time[i]
+  Dates <- overlap_data$dates[i]
+  Coords <- sp::SpatialPoints(matrix(c(overlap_data$lat[i], overlap_data$lon[i]), nrow=1), proj4string=sp::CRS("+proj=longlat +datum=WGS84"))
+  overlap_data[i, "sun_time_result"] <- sunTime(ClockTime, Dates, Coords)
+}
+end_time1 <- Sys.time()
+```
+
+Ahora se puede observar el resultado en la columna "sun_time_result", estos valores de "tiempos solares" están en radianes, donde \(\frac{\pi}{2}\) corresponde al amanecer y \(\frac{3\pi}{2}\) al atardecer.
+
+```{r}
+kable(head(overlap_data))
+```
+
+Si se utiliza esta metodología se tiene una velocidad de cómputo de `(end_time1 - start_time1)/300` por registro. Para solo unos 300 datos se tiene un promedio de 6 segundos.
+
+## Paquete activity
+
+El paquete activity ofrece una alternativa mucho más rápida para calcular la hora solar.
+
+```{r eval=FALSE}
+library(activity)
+```
+
+Solamente aplicando la función `solartime` ya se obtiene la hora solar de cada punto en radianes.
+
+```{r}
+start_time2 <- Sys.time()
+tmp <- solartime(data$datetime,
+          data$lat,
+          data$lon,
+          tz=-3,
+          format = "%Y-%m-%d %H:%M:%S")
+
+data$solar <- tmp$solar
+data$clock <- tmp$clock
+end_time2 <- Sys.time()
+```
+
+```{r echo=FALSE}
+rm(tmp, end_time2, start_time1, end_time1, start_time2, end_time2)
+```
+
+```{r eval=FALSE}
+save(data, file = "data/datos_procesados.RData")
+```
+
+Con esta función se tiene una velocidad de cómputo de `(end_time2 - start_time2)/4917` por registro. Para 4917 datos se tiene un promedio de `end_time2 - start_time2`, muchísimo más rápido.
+
+```{r}
+kable(head(data))
+```
+
+
+
+Se puede visualizar de la siguiente forma:
+
+```{r}
+tmp <- circular(data %>% filter(sp == "Mgou") %>% select(solar),
+                rotation = "clock", # Orden clock wise
+                zero = pi/2) # El cero cae en pi/2
+
+plot(tmp,
+     stack = TRUE,
+     col = "#698B22",
+     start.sep=0.05,
+     sep = 0.05,
+     bins = 128,
+     ticks = TRUE,
+     tol = 0.2,
+     main = "Registros de M. gouazoubira en radianes")
+```
+
+En este gráfico podemos ver que:
+
+- $0$: Medianoche
+- $\frac{pi}{2}$: Amanecer
+- $\pi$: Mediodía
+- $\frac{3 \pi}{2}$: Atardecer
+
+Hay otra manera más visual de representar estos valores y es utilizando el `template="clock24"`:
+
+```{r, out.width="100%"}
+tmp <- circular(data %>% filter(sp == "Mgou") %>% select(solar),
+                rotation = "counter",
+                template = "clock24")
+# 00, 12, 18, 6
+plot(tmp,
+     stack = TRUE,
+     col = "#698B22",
+     start.sep=0.05,
+     sep = 0.05,
+     bins = 128,
+     ticks = TRUE,
+     tol = 0.2,
+     main = "Registros de M. gouazoubira en horario solar")
+```
+
+## Comparando ambos paquetes
+
+```{r eval=FALSE}
+tmp <- overlap_data[1:300,] %>%
+  left_join(data) %>%
+  select(sp, sun_time_result, clock_time, clock, solar)
+plot(tmp$sun_time_result, tmp$solar)
+```
+
+A _priori_ se puede notar que ambos valores son muy similares, pero ocurre que en valores cercanos a las 00 dan resultados distintos.
+Por otro lado la gran diferencia de estas metodologías radica en la velocidad, el paquete activity lo calcula casi que instantáneamente. Sin embargo, circular hace uso del paquete `sp` y su función de `SpatialPoints`, lo que produce un proceso extremadamente lento.
+
+## Conclusión
+
+Se utilizará el paquete `activity`.
+
+# Exploración de hora solar
+
+Por ejemplo se puede ver la hora reloj en decimales vs la solar.
+
+```{r}
+ggplot(data, aes(solar, clock)) +
+  geom_point(alpha = 0.1)
+```
+
+Comparando la hora solar con la hora reloj.
+
+```{r}
+a <- circular(data %>% filter(sp == "Cfam") %>% select(clock))
+b <- circular(data %>% filter(sp == "Cfam") %>% select(solar))
+
+plot(a, col = rgb(red = 1, green = 0, blue = 0), pch=16)
+par(new=TRUE)
+plot(b, col = rgb(red = 0, green = 0, blue = 1, alpha = 0.5), pch=16)
+```
+
+# Probado categorías Noche, Día y Crepúsculo
+
+Se clasificará como en la imagen:
+
+<div style="text-align:center;">
+  <img src="recursos/divison_horas.svg" style="width:30%;">
+</div>
+
+
+```{r}
+data <- data %>% 
+  mutate(solartime_hms = hms(radians_to_hour(solar)),
+         periodos = case_when(
+           solartime_hms >= hours(20) | solartime_hms <= hours(4) ~ "Noche",
+           solartime_hms > hours(4) & solartime_hms < hours(8) | solartime_hms > hours(16) & solartime_hms < hours(20)  ~ "Crepusculo",
+           solartime_hms >= hours(8) & solartime_hms <= hours(16) ~ "Dia",
+         ))
+```
+
+```{r echo=FALSE}
+kable(data[1:40,])
+```
