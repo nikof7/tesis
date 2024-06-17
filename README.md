@@ -1,7 +1,3 @@
-#### README.md
-
-```markdown
-
 # Tesis
 
 Este proyecto contiene el código y datos de la tesis.
@@ -21,3 +17,4 @@ Puedes instalar todas las dependencias ejecutando el siguiente código en R:
 
 ```r
 source("functions/setup.R")
+```
