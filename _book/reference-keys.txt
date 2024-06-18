@@ -13,8 +13,11 @@ probado-categorías-noche-día-y-crepúsculo
 fase-lunar
 preparación-de-datos-1
 fase-lunar-de-cada-registro
-densidad-de-kernel
-densidad-de-kernel-utilizando-fase-lunar
+kernels-utilizando-fase-lunar
 kernels-de-superposición-para-pares-de-especies
 kernels-de-actividad
-kernels-utilizando-fase-lunar
+variables
+preparación
+tasa-de-ganado-vacuno
+tasa-de-ganado-vacuno-y-perros
+nivel-sistema

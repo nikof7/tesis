@@ -1,7 +1,7 @@
 # Kernels de actividad
 
 ```{r}
-load("data/datos_procesados.RData")
+load("data_processed/datos_procesados.RData")
 ```
 
 ```{r eval=FALSE}

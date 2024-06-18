@@ -1,5 +1,5 @@
 # Lista de paquetes necesarios
-packages_ <- c("tidyverse", "bookdown", "knitr", "rmarkdown", "suncalc", "circular", "sp", "activity", "NPCirc")
+packages_ <- c("tidyverse", "bookdown", "knitr", "rmarkdown", "suncalc", "circular", "sp", "activity", "NPCirc", "janitor")
 
 # Función para instalar y cargar paquetes
 install_and_load <- function(packages_) {

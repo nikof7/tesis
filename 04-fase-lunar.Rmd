@@ -1,6 +1,6 @@
 # Fase lunar
 ```{r echo=FALSE}
-load("data/datos_procesados.RData")
+load("data_processed/datos_procesados.RData")
 ```
 
 Se necesita tener la fase lunar de cada registro, quizás lo óptimo sería analizar solo los registros nocturnos, pero en esta oportunidad agregaré este dato a todos los registros. Para obtener este dato se utilizará el paquete suncalc.
@@ -78,10 +78,9 @@ data_nocturnal <- data_nocturnal %>%
 ```
 
 
-```{r eval=FALSE}
+```{r eval=FALSE, echo=FALSE}
 data <- data_nocturnal
-save(data, file = "data/datos_procesados.RData")
-rm(data_nocturnal, circular_data)
+save(data, file = "data_processed/datos_procesados.RData")
 ```
 
 ## Kernels utilizando fase lunar
@@ -182,3 +181,7 @@ for (pair in species_pairs) {
 }
 ```
 
+```{r show=FALSE}
+# Para eliminar todas las variables del entorno.
+rm(list = ls())
+```

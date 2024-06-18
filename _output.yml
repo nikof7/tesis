@@ -5,7 +5,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Tesis</a></li>
       after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Nicolás Fernández-Sauleda</a></li>
+        <li><a href="https://github.com/nikof7/tesis" target="blank">Nicolás Fernández-Sauleda</a></li>
     edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
     download: ["pdf"]
 bookdown::pdf_book:

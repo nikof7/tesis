@@ -36,7 +36,7 @@ overlap_data <- data %>%
 
 Luego, calculamos la hora solar para cada registro y almacenamos el resultado.
 
-```{r eval=FALSE}
+```{r}
 start_time1 <- Sys.time()
 for (i in 1:nrow(overlap_data)) {
   ClockTime <- overlap_data$clock_time[i]
@@ -78,12 +78,8 @@ data$clock <- tmp$clock
 end_time2 <- Sys.time()
 ```
 
-```{r echo=FALSE}
-rm(tmp, end_time2, start_time1, end_time1, start_time2, end_time2)
-```
-
 ```{r eval=FALSE}
-save(data, file = "data/datos_procesados.RData")
+save(data, file = "data_processed/datos_procesados.RData")
 ```
 
 Con esta función se tiene una velocidad de cómputo de `(end_time2 - start_time2)/4917` por registro. Para 4917 datos se tiene un promedio de `end_time2 - start_time2`, muchísimo más rápido.
@@ -92,7 +88,9 @@ Con esta función se tiene una velocidad de cómputo de `(end_time2 - start_time
 kable(head(data))
 ```
 
-
+```{r echo=FALSE}
+rm(tmp, end_time1, start_time1, start_time2, end_time2)
+```
 
 Se puede visualizar de la siguiente forma:
 
@@ -139,28 +137,35 @@ plot(tmp,
 
 ## Comparando ambos paquetes
 
-```{r eval=FALSE}
-tmp <- overlap_data[1:300,] %>%
-  left_join(data) %>%
-  select(sp, sun_time_result, clock_time, clock, solar)
-plot(tmp$sun_time_result, tmp$solar)
-```
+```{r}
+tmp <- data
+tmp$clock <- tmp$clock * 12/pi
+tmp$solar <- tmp$solar * 12/pi
 
-A _priori_ se puede notar que ambos valores son muy similares, pero ocurre que en valores cercanos a las 00 dan resultados distintos.
-Por otro lado la gran diferencia de estas metodologías radica en la velocidad, el paquete activity lo calcula casi que instantáneamente. Sin embargo, circular hace uso del paquete `sp` y su función de `SpatialPoints`, lo que produce un proceso extremadamente lento.
+ggplot(tmp, aes(solar, clock)) +
+  geom_point(alpha = 0.1) +
+  geom_vline(xintercept = c(6, 18), color = "#0C14474D") +
+  geom_hline(yintercept = c(6, 18), color = "#0C14474D") +
+  scale_x_continuous(
+    name = "solar",
+    breaks = c(0, 6, 12, 18, 24),
+    labels = c("0", "6", "12", "18", "24")
+  ) +
+  scale_y_continuous(
+    name = "clock",
+    breaks = c(0, 6, 12, 18, 24),
+    labels = c("0", "6", "12", "18", "24")
+  )
+```
+Se observa una diagonal marcada que representa la relación directa entre la hora solar y la hora del reloj civil. Además, se nota una forma de "rombo" en el gráfico, la cual puede surgir debido a la variación en la duración del día y la noche a lo largo del año. También hay algunos puntos aislados al inicio y al final de los ejes. Estos puntos representan registros tomados cerca de las 12 o cerca de las 24 horas (convertido a radianes).
+
+Por otro lado la gran diferencia de estas metodologías radica en la velocidad, el paquete activity lo calcula casi que instantáneamente. Sin embargo, `circular` hace uso del paquete `sp` y su función de `SpatialPoints`, lo que produce un proceso extremadamente lento.
 
 ## Conclusión
 
 Se utilizará el paquete `activity`.
 
 # Exploración de hora solar
-
-Por ejemplo se puede ver la hora reloj en decimales vs la solar.
-
-```{r}
-ggplot(data, aes(solar, clock)) +
-  geom_point(alpha = 0.1)
-```
 
 Comparando la hora solar con la hora reloj.
 
@@ -173,7 +178,7 @@ par(new=TRUE)
 plot(b, col = rgb(red = 0, green = 0, blue = 1, alpha = 0.5), pch=16)
 ```
 
-# Probado categorías Noche, Día y Crepúsculo
+## Probado categorías Noche, Día y Crepúsculo
 
 Se clasificará como en la imagen:
 
@@ -195,3 +200,11 @@ data <- data %>%
 ```{r echo=FALSE}
 kable(data[1:40,])
 ```
+
+Acá se podría hacer una gráfica circular y pintar los datos que sean de día, noche y crepúsculo. ...
+
+```{r show=FALSE}
+# Para eliminar todas las variables del entorno.
+rm(list = ls())
+```
+

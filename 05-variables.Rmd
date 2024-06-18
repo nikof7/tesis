@@ -1,0 +1,32 @@
+# Variables
+
+## Preparación
+
+### Tasa de ganado vacuno y perros
+
+Se quiere obtener la tasa de registro (TR) del ganado vacuno y de los perros domésticos para dos tipos de resolución; a nivel de cámara y a nivel de sistema.
+
+La TR para cualquier especie se calcula con la siguiente expresión.
+
+$$\textrm{TR} = \frac{\textrm{Total registros independientes}}{\textrm{Esfuerzo de muestreo}}$$
+
+En el caso del cálculo a nivel de sistema tanto el esfuerzo como el total de registros es la sumatorio de las tres cámaras. Cuando se calcula a nivel de cámara se utilizan el total de registros y esfuerzo para la misma.
+
+### Nivel sistema
+
+En primer lugar se cargan los registros de las camaras trampa.
+
+```{r}
+source("functions/load_data.R")
+data <- load_data()
+```
+
+
+
+```{r}
+camera_data <- read_rds(file = "data_processed/camera_data.RData") %>% 
+  filter(camera %in% pull(distinct(select(data, camera))))
+
+camera_data
+```
+
