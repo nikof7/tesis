@@ -18,6 +18,5 @@ kernels-de-superposición-para-pares-de-especies
 kernels-de-actividad
 variables
 preparación
-tasa-de-ganado-vacuno
 tasa-de-ganado-vacuno-y-perros
 nivel-sistema
