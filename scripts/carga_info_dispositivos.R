@@ -15,8 +15,11 @@ data$datetime_start <- as.POSIXct(data$datetime_start, format = "%d/%m/%Y %H:%M:
 data$datetime_end <- as.POSIXct(data$datetime_end, format = "%d/%m/%Y %H:%M:%S")
 
 camera_data <- data %>% 
-  select(site = sitio, camera = id_dispositivo, lon, lat, datetime_start, datetime_end, effort = esfuerzo)
+  select(site = sitio, camera = id_dispositivo, lon, lat, datetime_start, datetime_end, effort = esfuerzo) %>% 
+  mutate(effort = as.double(effort),
+         lon = as.double(lon),
+         lat = as.double(lat))
 
 saveRDS(camera_data, "data_processed/camera_data.RData")
 
-rm(list = ls())
+rm(data, camera_data)

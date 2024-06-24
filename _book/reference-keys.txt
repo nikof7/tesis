@@ -20,3 +20,5 @@ variables
 preparación
 tasa-de-ganado-vacuno-y-perros
 nivel-sistema
+nivel-camara
+tabla-única
