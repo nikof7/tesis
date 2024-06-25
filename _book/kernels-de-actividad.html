@@ -209,6 +209,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.2.1" data-path="variables.html"><a href="variables.html#clases-de-cobertura-simples"><i class="fa fa-check"></i><b>7.2.1</b> Clases de Cobertura Simples</a></li>
 <li class="chapter" data-level="7.2.2" data-path="variables.html"><a href="variables.html#clases-de-cobertura-agregadas"><i class="fa fa-check"></i><b>7.2.2</b> Clases de Cobertura Agregadas</a></li>
 <li class="chapter" data-level="7.2.3" data-path="variables.html"><a href="variables.html#procesamiento-de-datos"><i class="fa fa-check"></i><b>7.2.3</b> Procesamiento de datos</a></li>
+<li class="chapter" data-level="7.2.4" data-path="variables.html"><a href="variables.html#exploración-de-datos"><i class="fa fa-check"></i><b>7.2.4</b> Exploración de datos</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="kernels-de-actividad.html"><a href="kernels-de-actividad.html"><i class="fa fa-check"></i><b>8</b> Kernels de actividad</a></li>
@@ -235,25 +236,25 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="kernels-de-actividad" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">8</span> Kernels de actividad<a href="kernels-de-actividad.html#kernels-de-actividad" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="kernels-de-actividad.html#cb44-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/datos_procesados.RData&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="kernels-de-actividad.html#cb45-1" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb45-2"><a href="kernels-de-actividad.html#cb45-2" tabindex="-1"></a>  <span class="fu">filter</span>(sp <span class="sc">==</span> <span class="st">&quot;Aaxi&quot;</span>)</span>
-<span id="cb45-3"><a href="kernels-de-actividad.html#cb45-3" tabindex="-1"></a></span>
-<span id="cb45-4"><a href="kernels-de-actividad.html#cb45-4" tabindex="-1"></a>m_aaxi <span class="ot">&lt;-</span> <span class="fu">fitact</span>(tmp<span class="sc">$</span>solar, <span class="at">sample=</span><span class="st">&quot;model&quot;</span>, <span class="at">reps=</span><span class="dv">100</span>)</span>
-<span id="cb45-5"><a href="kernels-de-actividad.html#cb45-5" tabindex="-1"></a><span class="fu">plot</span>(m_aaxi)</span></code></pre></div>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="kernels-de-actividad.html#cb46-1" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb46-2"><a href="kernels-de-actividad.html#cb46-2" tabindex="-1"></a>  <span class="fu">filter</span>(sp <span class="sc">==</span> <span class="st">&quot;Mgou&quot;</span>)</span>
-<span id="cb46-3"><a href="kernels-de-actividad.html#cb46-3" tabindex="-1"></a></span>
-<span id="cb46-4"><a href="kernels-de-actividad.html#cb46-4" tabindex="-1"></a>m_mgou <span class="ot">&lt;-</span> <span class="fu">fitact</span>(tmp<span class="sc">$</span>solar, <span class="at">sample=</span><span class="st">&quot;model&quot;</span>, <span class="at">reps=</span><span class="dv">100</span>)</span>
-<span id="cb46-5"><a href="kernels-de-actividad.html#cb46-5" tabindex="-1"></a><span class="fu">plot</span>(m_mgou)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="kernels-de-actividad.html#cb52-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/datos_procesados.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="kernels-de-actividad.html#cb53-1" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb53-2"><a href="kernels-de-actividad.html#cb53-2" tabindex="-1"></a>  <span class="fu">filter</span>(sp <span class="sc">==</span> <span class="st">&quot;Aaxi&quot;</span>)</span>
+<span id="cb53-3"><a href="kernels-de-actividad.html#cb53-3" tabindex="-1"></a></span>
+<span id="cb53-4"><a href="kernels-de-actividad.html#cb53-4" tabindex="-1"></a>m_aaxi <span class="ot">&lt;-</span> <span class="fu">fitact</span>(tmp<span class="sc">$</span>solar, <span class="at">sample=</span><span class="st">&quot;model&quot;</span>, <span class="at">reps=</span><span class="dv">100</span>)</span>
+<span id="cb53-5"><a href="kernels-de-actividad.html#cb53-5" tabindex="-1"></a><span class="fu">plot</span>(m_aaxi)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="kernels-de-actividad.html#cb54-1" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb54-2"><a href="kernels-de-actividad.html#cb54-2" tabindex="-1"></a>  <span class="fu">filter</span>(sp <span class="sc">==</span> <span class="st">&quot;Mgou&quot;</span>)</span>
+<span id="cb54-3"><a href="kernels-de-actividad.html#cb54-3" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="kernels-de-actividad.html#cb54-4" tabindex="-1"></a>m_mgou <span class="ot">&lt;-</span> <span class="fu">fitact</span>(tmp<span class="sc">$</span>solar, <span class="at">sample=</span><span class="st">&quot;model&quot;</span>, <span class="at">reps=</span><span class="dv">100</span>)</span>
+<span id="cb54-5"><a href="kernels-de-actividad.html#cb54-5" tabindex="-1"></a><span class="fu">plot</span>(m_mgou)</span></code></pre></div>
 <p>También se pueden ver ambos en un mismo gráfico.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="kernels-de-actividad.html#cb47-1" tabindex="-1"></a><span class="fu">plot</span>(m_aaxi, <span class="at">yunit=</span><span class="st">&quot;density&quot;</span>, <span class="at">data=</span><span class="st">&quot;none&quot;</span>, <span class="at">las=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">2</span>,</span>
-<span id="cb47-2"><a href="kernels-de-actividad.html#cb47-2" tabindex="-1"></a>     <span class="at">tline=</span><span class="fu">list</span>(<span class="at">lwd=</span><span class="dv">2</span>), <span class="co"># Linea gruesa</span></span>
-<span id="cb47-3"><a href="kernels-de-actividad.html#cb47-3" tabindex="-1"></a>     <span class="at">cline=</span><span class="fu">list</span>(<span class="at">lty=</span><span class="dv">0</span>)) <span class="co"># Elimina intervalos de confianza</span></span>
-<span id="cb47-4"><a href="kernels-de-actividad.html#cb47-4" tabindex="-1"></a></span>
-<span id="cb47-5"><a href="kernels-de-actividad.html#cb47-5" tabindex="-1"></a><span class="fu">plot</span>(m_mgou, <span class="at">yunit=</span><span class="st">&quot;density&quot;</span>, <span class="at">data=</span><span class="st">&quot;none&quot;</span>, <span class="at">add=</span><span class="cn">TRUE</span>, </span>
-<span id="cb47-6"><a href="kernels-de-actividad.html#cb47-6" tabindex="-1"></a>     <span class="at">tline=</span><span class="fu">list</span>(<span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>),</span>
-<span id="cb47-7"><a href="kernels-de-actividad.html#cb47-7" tabindex="-1"></a>     <span class="at">cline=</span><span class="fu">list</span>(<span class="at">lty=</span><span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="kernels-de-actividad.html#cb55-1" tabindex="-1"></a><span class="fu">plot</span>(m_aaxi, <span class="at">yunit=</span><span class="st">&quot;density&quot;</span>, <span class="at">data=</span><span class="st">&quot;none&quot;</span>, <span class="at">las=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">2</span>,</span>
+<span id="cb55-2"><a href="kernels-de-actividad.html#cb55-2" tabindex="-1"></a>     <span class="at">tline=</span><span class="fu">list</span>(<span class="at">lwd=</span><span class="dv">2</span>), <span class="co"># Linea gruesa</span></span>
+<span id="cb55-3"><a href="kernels-de-actividad.html#cb55-3" tabindex="-1"></a>     <span class="at">cline=</span><span class="fu">list</span>(<span class="at">lty=</span><span class="dv">0</span>)) <span class="co"># Elimina intervalos de confianza</span></span>
+<span id="cb55-4"><a href="kernels-de-actividad.html#cb55-4" tabindex="-1"></a></span>
+<span id="cb55-5"><a href="kernels-de-actividad.html#cb55-5" tabindex="-1"></a><span class="fu">plot</span>(m_mgou, <span class="at">yunit=</span><span class="st">&quot;density&quot;</span>, <span class="at">data=</span><span class="st">&quot;none&quot;</span>, <span class="at">add=</span><span class="cn">TRUE</span>, </span>
+<span id="cb55-6"><a href="kernels-de-actividad.html#cb55-6" tabindex="-1"></a>     <span class="at">tline=</span><span class="fu">list</span>(<span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>),</span>
+<span id="cb55-7"><a href="kernels-de-actividad.html#cb55-7" tabindex="-1"></a>     <span class="at">cline=</span><span class="fu">list</span>(<span class="at">lty=</span><span class="dv">0</span>))</span></code></pre></div>
 
 </div>
             </section>

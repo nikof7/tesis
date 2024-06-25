@@ -54,6 +54,13 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -125,6 +132,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -155,31 +184,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html#paquete-activity"><i class="fa fa-check"></i><b>4.2</b> Paquete activity</a></li>
 <li class="chapter" data-level="4.3" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html#comparando-ambos-paquetes"><i class="fa fa-check"></i><b>4.3</b> Comparando ambos paquetes</a></li>
 <li class="chapter" data-level="4.4" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html#conclusión"><i class="fa fa-check"></i><b>4.4</b> Conclusión</a></li>
-<li class="chapter" data-level="4.5" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html#probado-categorías-noche-día-y-crepúsculo"><i class="fa fa-check"></i><b>4.5</b> Probado categorías Noche, Día y Crepúsculo</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="fase-lunar.html"><a href="fase-lunar.html"><i class="fa fa-check"></i><b>5</b> Fase lunar</a>
+<li class="chapter" data-level="5" data-path="exploración-de-hora-solar.html"><a href="exploración-de-hora-solar.html"><i class="fa fa-check"></i><b>5</b> Exploración de hora solar</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="fase-lunar.html"><a href="fase-lunar.html#preparación-de-datos-1"><i class="fa fa-check"></i><b>5.1</b> Preparación de datos</a></li>
-<li class="chapter" data-level="5.2" data-path="fase-lunar.html"><a href="fase-lunar.html#fase-lunar-de-cada-registro"><i class="fa fa-check"></i><b>5.2</b> Fase lunar de cada registro</a></li>
-<li class="chapter" data-level="5.3" data-path="fase-lunar.html"><a href="fase-lunar.html#kernels-utilizando-fase-lunar"><i class="fa fa-check"></i><b>5.3</b> Kernels utilizando fase lunar</a></li>
-<li class="chapter" data-level="5.4" data-path="fase-lunar.html"><a href="fase-lunar.html#kernels-de-superposición-para-pares-de-especies"><i class="fa fa-check"></i><b>5.4</b> Kernels de Superposición para Pares de Especies</a></li>
+<li class="chapter" data-level="5.1" data-path="exploración-de-hora-solar.html"><a href="exploración-de-hora-solar.html#probado-categorías-noche-día-y-crepúsculo"><i class="fa fa-check"></i><b>5.1</b> Probado categorías Noche, Día y Crepúsculo</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="variables.html"><a href="variables.html"><i class="fa fa-check"></i><b>6</b> Variables</a>
+<li class="chapter" data-level="6" data-path="fase-lunar.html"><a href="fase-lunar.html"><i class="fa fa-check"></i><b>6</b> Fase lunar</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="variables.html"><a href="variables.html#tasa-de-registro"><i class="fa fa-check"></i><b>6.1</b> Tasa de registro</a>
+<li class="chapter" data-level="6.1" data-path="fase-lunar.html"><a href="fase-lunar.html#preparación-de-datos-1"><i class="fa fa-check"></i><b>6.1</b> Preparación de datos</a></li>
+<li class="chapter" data-level="6.2" data-path="fase-lunar.html"><a href="fase-lunar.html#fase-lunar-de-cada-registro"><i class="fa fa-check"></i><b>6.2</b> Fase lunar de cada registro</a></li>
+<li class="chapter" data-level="6.3" data-path="fase-lunar.html"><a href="fase-lunar.html#kernels-utilizando-fase-lunar"><i class="fa fa-check"></i><b>6.3</b> Kernels utilizando fase lunar</a></li>
+<li class="chapter" data-level="6.4" data-path="fase-lunar.html"><a href="fase-lunar.html#kernels-de-superposición-para-pares-de-especies"><i class="fa fa-check"></i><b>6.4</b> Kernels de Superposición para Pares de Especies</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="variables.html"><a href="variables.html"><i class="fa fa-check"></i><b>7</b> Variables</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="variables.html"><a href="variables.html#nivel-sistema"><i class="fa fa-check"></i><b>6.1.1</b> Nivel sistema</a></li>
-<li class="chapter" data-level="6.1.2" data-path="variables.html"><a href="variables.html#nivel-camara"><i class="fa fa-check"></i><b>6.1.2</b> Nivel camara</a></li>
-<li class="chapter" data-level="6.1.3" data-path="variables.html"><a href="variables.html#tabla-única"><i class="fa fa-check"></i><b>6.1.3</b> Tabla única</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="variables.html"><a href="variables.html#coberturas"><i class="fa fa-check"></i><b>6.2</b> Coberturas</a>
+<li class="chapter" data-level="7.1" data-path="variables.html"><a href="variables.html#tasa-de-registro"><i class="fa fa-check"></i><b>7.1</b> Tasa de registro</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="variables.html"><a href="variables.html#clases-de-cobertura-simples"><i class="fa fa-check"></i><b>6.2.1</b> Clases de Cobertura Simples</a></li>
-<li class="chapter" data-level="6.2.2" data-path="variables.html"><a href="variables.html#clases-de-cobertura-agregadas"><i class="fa fa-check"></i><b>6.2.2</b> Clases de Cobertura Agregadas</a></li>
-<li class="chapter" data-level="6.2.3" data-path="variables.html"><a href="variables.html#procesamiento-de-datos"><i class="fa fa-check"></i><b>6.2.3</b> Procesamiento de datos</a></li>
+<li class="chapter" data-level="7.1.1" data-path="variables.html"><a href="variables.html#nivel-sistema"><i class="fa fa-check"></i><b>7.1.1</b> Nivel sistema</a></li>
+<li class="chapter" data-level="7.1.2" data-path="variables.html"><a href="variables.html#nivel-camara"><i class="fa fa-check"></i><b>7.1.2</b> Nivel camara</a></li>
+<li class="chapter" data-level="7.1.3" data-path="variables.html"><a href="variables.html#tabla-única"><i class="fa fa-check"></i><b>7.1.3</b> Tabla única</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="variables.html"><a href="variables.html#coberturas"><i class="fa fa-check"></i><b>7.2</b> Coberturas</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="variables.html"><a href="variables.html#clases-de-cobertura-simples"><i class="fa fa-check"></i><b>7.2.1</b> Clases de Cobertura Simples</a></li>
+<li class="chapter" data-level="7.2.2" data-path="variables.html"><a href="variables.html#clases-de-cobertura-agregadas"><i class="fa fa-check"></i><b>7.2.2</b> Clases de Cobertura Agregadas</a></li>
+<li class="chapter" data-level="7.2.3" data-path="variables.html"><a href="variables.html#procesamiento-de-datos"><i class="fa fa-check"></i><b>7.2.3</b> Procesamiento de datos</a></li>
+<li class="chapter" data-level="7.2.4" data-path="variables.html"><a href="variables.html#exploración-de-datos"><i class="fa fa-check"></i><b>7.2.4</b> Exploración de datos</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="kernels-de-actividad.html"><a href="kernels-de-actividad.html"><i class="fa fa-check"></i><b>7</b> Kernels de actividad</a></li>
+<li class="chapter" data-level="8" data-path="kernels-de-actividad.html"><a href="kernels-de-actividad.html"><i class="fa fa-check"></i><b>8</b> Kernels de actividad</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/nikof7/tesis" target="blank">Nicolás Fernández-Sauleda</a></li>
@@ -267,6 +300,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

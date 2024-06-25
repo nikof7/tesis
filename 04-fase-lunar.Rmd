@@ -84,15 +84,20 @@ data <- data_nocturnal
 save(data, file = "data_processed/datos_procesados_v2.RData")
 ```
 
+
+```{r echo=FALSE}
+data <- data_nocturnal
+```
+
 ## Kernels utilizando fase lunar
 
 También se puede ajustar funciones de densidad kernel no paramétricas utilizando el paquete de R overlap.
 
 ```{r}
-tmp1 <- data %>% 
+tmp1 <- data_nocturnal %>% 
   filter(sp == "Aaxi")
 
-tmp2 <- data %>% 
+tmp2 <- data_nocturnal %>% 
   filter(sp == "Mgou")
 ```
 

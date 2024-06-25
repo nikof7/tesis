@@ -24,4 +24,5 @@ coberturas
 clases-de-cobertura-simples
 clases-de-cobertura-agregadas
 procesamiento-de-datos
+exploración-de-datos
 kernels-de-actividad

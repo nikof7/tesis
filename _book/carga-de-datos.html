@@ -209,6 +209,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.2.1" data-path="variables.html"><a href="variables.html#clases-de-cobertura-simples"><i class="fa fa-check"></i><b>7.2.1</b> Clases de Cobertura Simples</a></li>
 <li class="chapter" data-level="7.2.2" data-path="variables.html"><a href="variables.html#clases-de-cobertura-agregadas"><i class="fa fa-check"></i><b>7.2.2</b> Clases de Cobertura Agregadas</a></li>
 <li class="chapter" data-level="7.2.3" data-path="variables.html"><a href="variables.html#procesamiento-de-datos"><i class="fa fa-check"></i><b>7.2.3</b> Procesamiento de datos</a></li>
+<li class="chapter" data-level="7.2.4" data-path="variables.html"><a href="variables.html#exploración-de-datos"><i class="fa fa-check"></i><b>7.2.4</b> Exploración de datos</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="kernels-de-actividad.html"><a href="kernels-de-actividad.html"><i class="fa fa-check"></i><b>8</b> Kernels de actividad</a></li>
@@ -269,11 +270,8 @@ div.csl-indent {
 </ul></li>
 <li>Del set de datos se incluyen todas las áreas protegidas (AP), excepto Quebrada de los Cuervos.</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="carga-de-datos.html#cb1-1" tabindex="-1"></a><span class="co"># Cargar la función desde el archivo</span></span>
-<span id="cb1-2"><a href="carga-de-datos.html#cb1-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;functions/load_data.R&quot;</span>)</span></code></pre></div>
-<p>Ejecutamos la función y obtenemos la siguiente tabla:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="carga-de-datos.html#cb2-1" tabindex="-1"></a><span class="co"># Cargar y filtrar los datos</span></span>
-<span id="cb2-2"><a href="carga-de-datos.html#cb2-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">load_data</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="carga-de-datos.html#cb1-1" tabindex="-1"></a><span class="co"># Carga de datos procesados</span></span>
+<span id="cb1-2"><a href="carga-de-datos.html#cb1-2" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/datos_procesados_v0.RData&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
