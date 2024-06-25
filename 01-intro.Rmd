@@ -26,15 +26,8 @@ Los criterios de filtrado son los siguientes:
 - Del set de datos se incluyen todas las áreas protegidas (AP), excepto Quebrada de los Cuervos.
 
 ```{r}
-# Cargar la función desde el archivo
-source("functions/load_data.R")
-```
-
-Ejecutamos la función y obtenemos la siguiente tabla:
-
-```{r}
-# Cargar y filtrar los datos
-data <- load_data()
+# Carga de datos procesados
+load("data_processed/datos_procesados_v0.RData")
 ```
 
 ```{r echo=FALSE}
@@ -42,4 +35,7 @@ data <- load_data()
 kable(head(data))
 ```
 
+```{r echo=FALSE}
+rm(list = ls())
+```
 

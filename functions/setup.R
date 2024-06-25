@@ -13,3 +13,5 @@ install_and_load <- function(packages_) {
 
 # Instalar y cargar paquetes
 install_and_load(packages_)
+
+rm(packages_, install_and_load)

@@ -15,10 +15,13 @@ preparación-de-datos-1
 fase-lunar-de-cada-registro
 kernels-utilizando-fase-lunar
 kernels-de-superposición-para-pares-de-especies
-kernels-de-actividad
 variables
-preparación
-tasa-de-ganado-vacuno-y-perros
+tasa-de-registro
 nivel-sistema
 nivel-camara
 tabla-única
+coberturas
+clases-de-cobertura-simples
+clases-de-cobertura-agregadas
+procesamiento-de-datos
+kernels-de-actividad

@@ -1,8 +1,6 @@
 # Variables
 
-## Preparación
-
-### Tasa de ganado vacuno y perros
+## Tasa de registro
 
 Se quiere obtener la tasa de registro (TR) del ganado vacuno y de los perros domésticos para dos tipos de resolución; a nivel de cámara y a nivel de sistema.
 
@@ -15,8 +13,7 @@ En el caso del cálculo a nivel de sistema tanto el esfuerzo como el total de re
 Pasemos al calculo de este parámetro, primero se cargan los registros de las camaras trampa.
 
 ```{r}
-source("functions/load_data.R")
-data <- load_data()
+load("data_processed/datos_procesados_v2.RData")
 ```
 
 Luego se filtran solo los registros de _B. taurus_ y de _C. familiaris_, se crea una columna llamada sistema (system) y se seleccionan las columnas de interés.
@@ -39,9 +36,8 @@ En primer lugar se busca el esfuerzo para cada sistema.
 ```{r}
 system_effort <- read_rds(file = "data_processed/camera_data.RData") %>% 
   mutate(system = str_sub(camera, 1, 4)) %>%
-  select(system, camera, effort) %>% 
+  select(system, camera, effort) %>%
   group_by(system) %>%
-  drop_na() %>% 
   summarise(effort = sum(effort))
 ```
 
@@ -84,8 +80,7 @@ En primer lugar se carga el esfuerzo para cada camara.
 
 ```{r}
 camera_effort <- read_rds(file = "data_processed/camera_data.RData") %>%
-  select(camera, effort) %>% 
-  drop_na()
+  select(camera, effort)
 ```
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
@@ -138,7 +133,56 @@ tr_results <- tr_camera %>%
 paged_table(head(tr_results))
 ```
 
+Y por último se añaden estos datos a la planilla general. Para esto hay que modificar la tabla un poco, me refiero:
 
+```{r}
+load("data_processed/datos_procesados_v2.RData")
+# Obtener todas las cámaras con registro de cualquier especie.
+all_cameras <- data %>% 
+  select(camera) %>% 
+  pull()
 
+# Modificar resultados de TR y hacerlos "anchos"
+tr <- tr_results %>% 
+  pivot_wider(names_from = sp, values_from = c(tr_system, tr_camera), names_sep = "_")
 
+# Verificar qué camaras son las que faltan en el cálculo de la tr, ya que no poseen registros ni de Btau ni de Cfam
+missing_cameras <- setdiff(all_cameras, tr$camera)
 
+# Creamos un tibble con estos datos faltantes
+missing_tibble <- tibble::tibble(
+  system = substr(missing_cameras, 1, 4), 
+  camera = missing_cameras,
+  tr_system_Btau = 0,
+  tr_system_Cfam = 0,
+  tr_camera_Btau = 0,
+  tr_camera_Cfam = 0
+)
+
+# Y los unimos en un mismo set de datos
+tr <- bind_rows(tr, missing_tibble)
+
+# Reemplzamos todos los NA por 0.
+tr[is.na(tr)] <- 0
+```
+
+Ahora sí, se pueden cargar los datos de tasa de registro a la planilla general.
+
+```{r echo=FALSE, eval=FALSE}
+load("data_processed/datos_procesados_v2.RData") # Se carga planilla general
+
+data <- data %>%
+  mutate(system = substr(camera, 1, 4)) %>% 
+  left_join(tr, join_by(system, camera)) %>% 
+  select(site, system, camera, sp, datetime, everything())
+
+save(data, file="data_processed/datos_procesados_v3.RData")
+```
+
+Y se obtiene:
+
+```{r echo=FALSE}
+load("data_processed/datos_procesados_v3.RData")
+paged_table(head(data))
+rm(list = ls())
+```

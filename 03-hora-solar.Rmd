@@ -5,7 +5,6 @@ Primero, cargamos las funciones necesarias:
 ```{r}
 # Herramientas
 source("functions/convert_hours.R")
-source("functions/load_data.R")
 ```
 
 ## Paquete circular
@@ -21,7 +20,7 @@ Preparamos los datos y agregamos una columna `sunTime_result` para almacenar los
 
 ```{r}
 # Load data
-data <- load_data()
+load("data_processed/datos_procesados_v0.RData")
 
 # Process data
 overlap_data <- data %>%
@@ -79,7 +78,7 @@ end_time2 <- Sys.time()
 ```
 
 ```{r eval=FALSE}
-save(data, file = "data_processed/datos_procesados.RData")
+save(data, file = "data_processed/datos_procesados_v1.RData")
 ```
 
 Con esta función se tiene una velocidad de cómputo de `(end_time2 - start_time2)/4917` por registro. Para 4917 datos se tiene un promedio de `end_time2 - start_time2`, muchísimo más rápido.

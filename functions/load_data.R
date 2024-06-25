@@ -11,6 +11,10 @@ load_data <- function() {
     filter(type == "Mammal" & site != "QC" & species %in% sp_pairs) %>%
     select(site, station, camera, datetime, sp = species) %>% 
     left_join(site_coords, by = join_by(site)) %>% 
-    select(site, camera, lat, lon, datetime, sp)
+    select(site, camera, lat, lon, datetime, sp) 
   return(data)
 }
+
+data <- load_data()
+
+save(data, file="data_processed/datos_procesados_v0.RData")

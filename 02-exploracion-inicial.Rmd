@@ -2,6 +2,11 @@
 
 Existe una totalidad de `r nrow(data)` registros independientes, en la siguiente grafica se puede observar la cantidad de registros por especie y se añade una linea vertical en n=50.
 
+```{r}
+load("data_processed/datos_procesados_v0.RData")
+```
+
+
 ```{r echo=FALSE}
 temp_var <- data %>% 
   select(sp) %>% 
@@ -35,4 +40,8 @@ ggplot(temp_var, aes(x = reorder(site, total), y = total)) +
   coord_flip()
 
 rm(temp_var)
+```
+
+```{r echo=FALSE}
+rm(list = ls())
 ```
