@@ -1,0 +1,52 @@
+
+
+```{r}
+load("data_processed/datos_procesados_v4.RData")
+```
+
+```{r}
+data <- data %>% 
+  select(camera, sp, solar, open_cam)
+
+#data$solar <- circular(data$solar, units = "radians", template = "none")
+```
+
+```{r}
+data_filtered <- data %>%
+  filter(sp == "Lgym")
+
+percs <- quantile(data_filtered$open_cam , probs = c(0.33, 0.66))
+
+data_filtered$open_cam_lvls <- cut(data_filtered$open_cam, breaks = c(-Inf, percs[1], percs[2], Inf), labels = c("Bajo", "Medio", "Alto"))
+```
+
+```{r}
+tmp <- data_filtered %>%
+  filter(open_cam_lvls == "Bajo")
+
+low <- fitact(tmp$solar, sample="model", reps=100)
+
+tmp <- data_filtered %>%
+  filter(open_cam_lvls == "Medio")
+
+mid <- fitact(tmp$solar, sample="model", reps=100)
+
+tmp <- data_filtered %>%
+  filter(open_cam_lvls == "Alto")
+
+high <- fitact(tmp$solar, sample="model", reps=100) 
+```
+
+```{r}
+plot(low, yunit="density", data="none", las=1, lwd=2,
+     cline=list(lty=0)) # Elimina intervalos de confianza
+
+plot(mid, yunit="density", data="none", add=TRUE, 
+     tline=list(col="red", lwd=2),
+     cline=list(lty=0))
+plot(high, yunit="density", data="none", add=TRUE, 
+     tline=list(col="red", lwd=2),
+     cline=list(lty=0))
+```
+
+

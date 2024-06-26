@@ -174,7 +174,11 @@ load("data_processed/datos_procesados_v2.RData") # Se carga planilla general
 data <- data %>%
   mutate(system = substr(camera, 1, 4)) %>% 
   left_join(tr, join_by(system, camera)) %>% 
-  select(site, system, camera, sp, datetime, everything())
+  select(site, system, camera, sp, datetime, everything()) %>% 
+  rename(tr_btau_sys = tr_system_Btau,
+         tr_btau_cam = tr_camera_Btau,
+         tr_cfam_sys = tr_system_Cfam,
+         tr_cfam_cam = tr_camera_Cfam)
 
 save(data, file="data_processed/datos_procesados_v3.RData")
 ```
