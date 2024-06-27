@@ -23,7 +23,7 @@
 <meta name="author" content="Nicolás Fernández-Sauleda" />
 
 
-<meta name="date" content="2024-06-25" />
+<meta name="date" content="2024-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -236,25 +236,86 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="kernels-de-actividad" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">8</span> Kernels de actividad<a href="kernels-de-actividad.html#kernels-de-actividad" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="kernels-de-actividad.html#cb52-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/datos_procesados.RData&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="kernels-de-actividad.html#cb53-1" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb53-2"><a href="kernels-de-actividad.html#cb53-2" tabindex="-1"></a>  <span class="fu">filter</span>(sp <span class="sc">==</span> <span class="st">&quot;Aaxi&quot;</span>)</span>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="kernels-de-actividad.html#cb52-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/datos_procesados_v4.RData&quot;</span>)</span>
+<span id="cb52-2"><a href="kernels-de-actividad.html#cb52-2" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="kernels-de-actividad.html#cb52-3" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb52-4"><a href="kernels-de-actividad.html#cb52-4" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>sp <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Btau&quot;</span>, <span class="st">&quot;Cfam&quot;</span>)) <span class="sc">%&gt;%</span>  <span class="co"># Sacamos los datos de ganado vacuno y perros domésticos</span></span>
+<span id="cb52-5"><a href="kernels-de-actividad.html#cb52-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">everything</span>(), <span class="sc">-</span><span class="fu">c</span>(lat, lon, clock, nocturnal, moon_phase, n_tech_cam, n_tech_sys, datetime))</span></code></pre></div>
+<p>Este script tiene que iterar todas las especies y variables, para crear un grafico que integra los tres niveles de la variable bajo, medio y alto.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="kernels-de-actividad.html#cb53-1" tabindex="-1"></a>bajo_umbral <span class="ot">&lt;-</span> <span class="fl">0.33</span></span>
+<span id="cb53-2"><a href="kernels-de-actividad.html#cb53-2" tabindex="-1"></a>medio_umbral <span class="ot">&lt;-</span> <span class="fl">0.66</span></span>
 <span id="cb53-3"><a href="kernels-de-actividad.html#cb53-3" tabindex="-1"></a></span>
-<span id="cb53-4"><a href="kernels-de-actividad.html#cb53-4" tabindex="-1"></a>m_aaxi <span class="ot">&lt;-</span> <span class="fu">fitact</span>(tmp<span class="sc">$</span>solar, <span class="at">sample=</span><span class="st">&quot;model&quot;</span>, <span class="at">reps=</span><span class="dv">100</span>)</span>
-<span id="cb53-5"><a href="kernels-de-actividad.html#cb53-5" tabindex="-1"></a><span class="fu">plot</span>(m_aaxi)</span></code></pre></div>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="kernels-de-actividad.html#cb54-1" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb54-2"><a href="kernels-de-actividad.html#cb54-2" tabindex="-1"></a>  <span class="fu">filter</span>(sp <span class="sc">==</span> <span class="st">&quot;Mgou&quot;</span>)</span>
-<span id="cb54-3"><a href="kernels-de-actividad.html#cb54-3" tabindex="-1"></a></span>
-<span id="cb54-4"><a href="kernels-de-actividad.html#cb54-4" tabindex="-1"></a>m_mgou <span class="ot">&lt;-</span> <span class="fu">fitact</span>(tmp<span class="sc">$</span>solar, <span class="at">sample=</span><span class="st">&quot;model&quot;</span>, <span class="at">reps=</span><span class="dv">100</span>)</span>
-<span id="cb54-5"><a href="kernels-de-actividad.html#cb54-5" tabindex="-1"></a><span class="fu">plot</span>(m_mgou)</span></code></pre></div>
-<p>También se pueden ver ambos en un mismo gráfico.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="kernels-de-actividad.html#cb55-1" tabindex="-1"></a><span class="fu">plot</span>(m_aaxi, <span class="at">yunit=</span><span class="st">&quot;density&quot;</span>, <span class="at">data=</span><span class="st">&quot;none&quot;</span>, <span class="at">las=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">2</span>,</span>
-<span id="cb55-2"><a href="kernels-de-actividad.html#cb55-2" tabindex="-1"></a>     <span class="at">tline=</span><span class="fu">list</span>(<span class="at">lwd=</span><span class="dv">2</span>), <span class="co"># Linea gruesa</span></span>
-<span id="cb55-3"><a href="kernels-de-actividad.html#cb55-3" tabindex="-1"></a>     <span class="at">cline=</span><span class="fu">list</span>(<span class="at">lty=</span><span class="dv">0</span>)) <span class="co"># Elimina intervalos de confianza</span></span>
-<span id="cb55-4"><a href="kernels-de-actividad.html#cb55-4" tabindex="-1"></a></span>
-<span id="cb55-5"><a href="kernels-de-actividad.html#cb55-5" tabindex="-1"></a><span class="fu">plot</span>(m_mgou, <span class="at">yunit=</span><span class="st">&quot;density&quot;</span>, <span class="at">data=</span><span class="st">&quot;none&quot;</span>, <span class="at">add=</span><span class="cn">TRUE</span>, </span>
-<span id="cb55-6"><a href="kernels-de-actividad.html#cb55-6" tabindex="-1"></a>     <span class="at">tline=</span><span class="fu">list</span>(<span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>),</span>
-<span id="cb55-7"><a href="kernels-de-actividad.html#cb55-7" tabindex="-1"></a>     <span class="at">cline=</span><span class="fu">list</span>(<span class="at">lty=</span><span class="dv">0</span>))</span></code></pre></div>
+<span id="cb53-4"><a href="kernels-de-actividad.html#cb53-4" tabindex="-1"></a>results_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb53-5"><a href="kernels-de-actividad.html#cb53-5" tabindex="-1"></a></span>
+<span id="cb53-6"><a href="kernels-de-actividad.html#cb53-6" tabindex="-1"></a><span class="cf">for</span> (sp_ <span class="cf">in</span> <span class="fu">unique</span>(data<span class="sc">$</span>sp)) {</span>
+<span id="cb53-7"><a href="kernels-de-actividad.html#cb53-7" tabindex="-1"></a>  data_filtered <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb53-8"><a href="kernels-de-actividad.html#cb53-8" tabindex="-1"></a>    <span class="fu">filter</span>(sp <span class="sc">==</span> sp_)</span>
+<span id="cb53-9"><a href="kernels-de-actividad.html#cb53-9" tabindex="-1"></a>  </span>
+<span id="cb53-10"><a href="kernels-de-actividad.html#cb53-10" tabindex="-1"></a>  data_result <span class="ot">&lt;-</span> data_filtered <span class="sc">%&gt;%</span> </span>
+<span id="cb53-11"><a href="kernels-de-actividad.html#cb53-11" tabindex="-1"></a>    <span class="fu">select</span>(site, system, camera, sp, solar)</span>
+<span id="cb53-12"><a href="kernels-de-actividad.html#cb53-12" tabindex="-1"></a>  </span>
+<span id="cb53-13"><a href="kernels-de-actividad.html#cb53-13" tabindex="-1"></a>  <span class="cf">for</span> (var <span class="cf">in</span> <span class="dv">6</span><span class="sc">:</span><span class="fu">ncol</span>(data_filtered)) {</span>
+<span id="cb53-14"><a href="kernels-de-actividad.html#cb53-14" tabindex="-1"></a>    tmp <span class="ot">&lt;-</span> data_filtered <span class="sc">%&gt;%</span> <span class="fu">pull</span>(var)</span>
+<span id="cb53-15"><a href="kernels-de-actividad.html#cb53-15" tabindex="-1"></a>    data_result[[<span class="fu">names</span>(data_filtered)[var]]] <span class="ot">&lt;-</span> <span class="fu">cut</span>(tmp, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, bajo_umbral, medio_umbral, <span class="cn">Inf</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Bajo&quot;</span>, <span class="st">&quot;Medio&quot;</span>, <span class="st">&quot;Alto&quot;</span>))</span>
+<span id="cb53-16"><a href="kernels-de-actividad.html#cb53-16" tabindex="-1"></a>  }</span>
+<span id="cb53-17"><a href="kernels-de-actividad.html#cb53-17" tabindex="-1"></a>  </span>
+<span id="cb53-18"><a href="kernels-de-actividad.html#cb53-18" tabindex="-1"></a>  <span class="co"># Añadir el resultado de la especie actual a la lista</span></span>
+<span id="cb53-19"><a href="kernels-de-actividad.html#cb53-19" tabindex="-1"></a>  results_list[[sp_]] <span class="ot">&lt;-</span> data_result</span>
+<span id="cb53-20"><a href="kernels-de-actividad.html#cb53-20" tabindex="-1"></a>}</span>
+<span id="cb53-21"><a href="kernels-de-actividad.html#cb53-21" tabindex="-1"></a></span>
+<span id="cb53-22"><a href="kernels-de-actividad.html#cb53-22" tabindex="-1"></a><span class="co"># Combinar todos los resultados en un solo dataframe</span></span>
+<span id="cb53-23"><a href="kernels-de-actividad.html#cb53-23" tabindex="-1"></a>final_result <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(results_list)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="kernels-de-actividad.html#cb54-1" tabindex="-1"></a>low_color <span class="ot">&lt;-</span> <span class="st">&quot;#36BA98&quot;</span></span>
+<span id="cb54-2"><a href="kernels-de-actividad.html#cb54-2" tabindex="-1"></a>mid_color <span class="ot">&lt;-</span> <span class="st">&quot;#E9C46A&quot;</span></span>
+<span id="cb54-3"><a href="kernels-de-actividad.html#cb54-3" tabindex="-1"></a>high_color <span class="ot">&lt;-</span> <span class="st">&quot;#E76F51&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="kernels-de-actividad.html#cb55-1" tabindex="-1"></a><span class="cf">for</span> (sp_ <span class="cf">in</span> <span class="fu">unique</span>(final_result<span class="sc">$</span>sp)) {</span>
+<span id="cb55-2"><a href="kernels-de-actividad.html#cb55-2" tabindex="-1"></a>  data_filtered <span class="ot">&lt;-</span> final_result <span class="sc">%&gt;%</span> </span>
+<span id="cb55-3"><a href="kernels-de-actividad.html#cb55-3" tabindex="-1"></a>    <span class="fu">filter</span>(sp <span class="sc">==</span> sp_)</span>
+<span id="cb55-4"><a href="kernels-de-actividad.html#cb55-4" tabindex="-1"></a>  </span>
+<span id="cb55-5"><a href="kernels-de-actividad.html#cb55-5" tabindex="-1"></a>  <span class="cf">for</span> (var <span class="cf">in</span> <span class="dv">6</span><span class="sc">:</span><span class="fu">ncol</span>(data_filtered)) {</span>
+<span id="cb55-6"><a href="kernels-de-actividad.html#cb55-6" tabindex="-1"></a>    </span>
+<span id="cb55-7"><a href="kernels-de-actividad.html#cb55-7" tabindex="-1"></a>    var_name <span class="ot">&lt;-</span> <span class="fu">colnames</span>(data_filtered)[var]  <span class="co"># Obtener el nombre de la columna</span></span>
+<span id="cb55-8"><a href="kernels-de-actividad.html#cb55-8" tabindex="-1"></a>    </span>
+<span id="cb55-9"><a href="kernels-de-actividad.html#cb55-9" tabindex="-1"></a>    tmp_low <span class="ot">&lt;-</span> data_filtered <span class="sc">%&gt;%</span> <span class="fu">filter</span>(.[[var]] <span class="sc">==</span> <span class="st">&quot;Bajo&quot;</span>)</span>
+<span id="cb55-10"><a href="kernels-de-actividad.html#cb55-10" tabindex="-1"></a>    tmp_mid <span class="ot">&lt;-</span> data_filtered <span class="sc">%&gt;%</span> <span class="fu">filter</span>(.[[var]] <span class="sc">==</span> <span class="st">&quot;Medio&quot;</span>)</span>
+<span id="cb55-11"><a href="kernels-de-actividad.html#cb55-11" tabindex="-1"></a>    tmp_high <span class="ot">&lt;-</span> data_filtered <span class="sc">%&gt;%</span> <span class="fu">filter</span>(.[[var]] <span class="sc">==</span> <span class="st">&quot;Alto&quot;</span>)</span>
+<span id="cb55-12"><a href="kernels-de-actividad.html#cb55-12" tabindex="-1"></a>    </span>
+<span id="cb55-13"><a href="kernels-de-actividad.html#cb55-13" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">nrow</span>(tmp_low) <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;&amp;</span> <span class="fu">nrow</span>(tmp_mid) <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;&amp;</span> <span class="fu">nrow</span>(tmp_high) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb55-14"><a href="kernels-de-actividad.html#cb55-14" tabindex="-1"></a>      low <span class="ot">&lt;-</span> <span class="fu">fitact</span>(tmp_low<span class="sc">$</span>solar, <span class="at">sample=</span><span class="st">&quot;model&quot;</span>, <span class="at">reps=</span><span class="dv">100</span>)</span>
+<span id="cb55-15"><a href="kernels-de-actividad.html#cb55-15" tabindex="-1"></a>      mid <span class="ot">&lt;-</span> <span class="fu">fitact</span>(tmp_mid<span class="sc">$</span>solar, <span class="at">sample=</span><span class="st">&quot;model&quot;</span>, <span class="at">reps=</span><span class="dv">100</span>)</span>
+<span id="cb55-16"><a href="kernels-de-actividad.html#cb55-16" tabindex="-1"></a>      high <span class="ot">&lt;-</span> <span class="fu">fitact</span>(tmp_high<span class="sc">$</span>solar, <span class="at">sample=</span><span class="st">&quot;model&quot;</span>, <span class="at">reps=</span><span class="dv">100</span>)</span>
+<span id="cb55-17"><a href="kernels-de-actividad.html#cb55-17" tabindex="-1"></a>      </span>
+<span id="cb55-18"><a href="kernels-de-actividad.html#cb55-18" tabindex="-1"></a>      <span class="co"># Crear el gráfico con diferentes colores y añadir el título</span></span>
+<span id="cb55-19"><a href="kernels-de-actividad.html#cb55-19" tabindex="-1"></a>      ylim_max <span class="ot">&lt;-</span> <span class="fu">max</span>(low<span class="sc">@</span>pdf[,<span class="dv">4</span>], mid<span class="sc">@</span>pdf[,<span class="dv">4</span>], high<span class="sc">@</span>pdf[,<span class="dv">4</span>]) <span class="sc">*</span> <span class="fl">1.1</span></span>
+<span id="cb55-20"><a href="kernels-de-actividad.html#cb55-20" tabindex="-1"></a></span>
+<span id="cb55-21"><a href="kernels-de-actividad.html#cb55-21" tabindex="-1"></a>      <span class="fu">png</span>(<span class="at">filename =</span> <span class="fu">paste0</span>(<span class="st">&quot;exports/plots/fitacts/&quot;</span>, sp_, <span class="st">&quot;-&quot;</span>, var_name, <span class="st">&quot;.png&quot;</span>))</span>
+<span id="cb55-22"><a href="kernels-de-actividad.html#cb55-22" tabindex="-1"></a>      <span class="fu">plot</span>(low, <span class="at">yunit=</span><span class="st">&quot;density&quot;</span>, <span class="at">data=</span><span class="st">&quot;rug&quot;</span>, <span class="at">las=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">2</span>,</span>
+<span id="cb55-23"><a href="kernels-de-actividad.html#cb55-23" tabindex="-1"></a>           <span class="at">cline=</span><span class="fu">list</span>(<span class="at">lty=</span><span class="dv">0</span>), <span class="at">tline=</span><span class="fu">list</span>(<span class="at">col=</span>low_color, <span class="at">lwd=</span><span class="dv">2</span>),</span>
+<span id="cb55-24"><a href="kernels-de-actividad.html#cb55-24" tabindex="-1"></a>           <span class="at">main=</span><span class="fu">paste</span>(var_name, <span class="st">&quot;-&quot;</span>, sp_),</span>
+<span id="cb55-25"><a href="kernels-de-actividad.html#cb55-25" tabindex="-1"></a>           <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, ylim_max)) <span class="co"># Añadir título</span></span>
+<span id="cb55-26"><a href="kernels-de-actividad.html#cb55-26" tabindex="-1"></a></span>
+<span id="cb55-27"><a href="kernels-de-actividad.html#cb55-27" tabindex="-1"></a>      <span class="fu">plot</span>(mid, <span class="at">yunit=</span><span class="st">&quot;density&quot;</span>, <span class="at">data=</span><span class="st">&quot;rug&quot;</span>, <span class="at">add=</span><span class="cn">TRUE</span>, </span>
+<span id="cb55-28"><a href="kernels-de-actividad.html#cb55-28" tabindex="-1"></a>           <span class="at">tline=</span><span class="fu">list</span>(<span class="at">col=</span>mid_color, <span class="at">lwd=</span><span class="dv">2</span>),</span>
+<span id="cb55-29"><a href="kernels-de-actividad.html#cb55-29" tabindex="-1"></a>           <span class="at">cline=</span><span class="fu">list</span>(<span class="at">lty=</span><span class="dv">0</span>),</span>
+<span id="cb55-30"><a href="kernels-de-actividad.html#cb55-30" tabindex="-1"></a>           <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, ylim_max))</span>
+<span id="cb55-31"><a href="kernels-de-actividad.html#cb55-31" tabindex="-1"></a>      <span class="fu">plot</span>(high, <span class="at">yunit=</span><span class="st">&quot;density&quot;</span>, <span class="at">data=</span><span class="st">&quot;rug&quot;</span>, <span class="at">add=</span><span class="cn">TRUE</span>, </span>
+<span id="cb55-32"><a href="kernels-de-actividad.html#cb55-32" tabindex="-1"></a>           <span class="at">tline=</span><span class="fu">list</span>(<span class="at">col=</span>high_color, <span class="at">lwd=</span><span class="dv">2</span>),</span>
+<span id="cb55-33"><a href="kernels-de-actividad.html#cb55-33" tabindex="-1"></a>           <span class="at">cline=</span><span class="fu">list</span>(<span class="at">lty=</span><span class="dv">0</span>),</span>
+<span id="cb55-34"><a href="kernels-de-actividad.html#cb55-34" tabindex="-1"></a>           <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, ylim_max))</span>
+<span id="cb55-35"><a href="kernels-de-actividad.html#cb55-35" tabindex="-1"></a>      </span>
+<span id="cb55-36"><a href="kernels-de-actividad.html#cb55-36" tabindex="-1"></a>      <span class="co"># Añadir la leyenda</span></span>
+<span id="cb55-37"><a href="kernels-de-actividad.html#cb55-37" tabindex="-1"></a>      <span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;Bajo (n=&quot;</span>, <span class="fu">nrow</span>(tmp_low), <span class="st">&quot;)&quot;</span>, <span class="at">sep=</span><span class="st">&quot;&quot;</span>), </span>
+<span id="cb55-38"><a href="kernels-de-actividad.html#cb55-38" tabindex="-1"></a>                                  <span class="fu">paste</span>(<span class="st">&quot;Medio (n=&quot;</span>, <span class="fu">nrow</span>(tmp_mid), <span class="st">&quot;)&quot;</span>, <span class="at">sep=</span><span class="st">&quot;&quot;</span>), </span>
+<span id="cb55-39"><a href="kernels-de-actividad.html#cb55-39" tabindex="-1"></a>                                  <span class="fu">paste</span>(<span class="st">&quot;Alto (n=&quot;</span>, <span class="fu">nrow</span>(tmp_high), <span class="st">&quot;)&quot;</span>, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)),</span>
+<span id="cb55-40"><a href="kernels-de-actividad.html#cb55-40" tabindex="-1"></a>             <span class="at">col=</span><span class="fu">c</span>(low_color, mid_color, high_color), <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">bty=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb55-41"><a href="kernels-de-actividad.html#cb55-41" tabindex="-1"></a>      </span>
+<span id="cb55-42"><a href="kernels-de-actividad.html#cb55-42" tabindex="-1"></a>      <span class="fu">dev.off</span>()</span>
+<span id="cb55-43"><a href="kernels-de-actividad.html#cb55-43" tabindex="-1"></a>      <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Plot de la especie &quot;</span>, sp_, <span class="st">&quot; y variable &quot;</span>, var_name, <span class="st">&quot; creado.&quot;</span>))</span>
+<span id="cb55-44"><a href="kernels-de-actividad.html#cb55-44" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb55-45"><a href="kernels-de-actividad.html#cb55-45" tabindex="-1"></a>      <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;No hay suficientes datos en alguna categoría para:&quot;</span>, sp_, <span class="st">&quot;-&quot;</span>, var_name))</span>
+<span id="cb55-46"><a href="kernels-de-actividad.html#cb55-46" tabindex="-1"></a>    }</span>
+<span id="cb55-47"><a href="kernels-de-actividad.html#cb55-47" tabindex="-1"></a>  }</span>
+<span id="cb55-48"><a href="kernels-de-actividad.html#cb55-48" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
             </section>

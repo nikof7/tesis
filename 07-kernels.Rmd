@@ -12,7 +12,6 @@ data <- data %>%
 Este script tiene que iterar todas las especies y variables, para crear un grafico que integra los tres niveles de la variable bajo, medio y alto. 
 
 
-
 ```{r}
 bajo_umbral <- 0.33
 medio_umbral <- 0.66
@@ -40,79 +39,59 @@ final_result <- bind_rows(results_list)
 ```
 
 ```{r}
-for (sp_ in unique(data$sp)) {
-  data_filtered <- data %>% 
+low_color <- "#36BA98"
+mid_color <- "#E9C46A"
+high_color <- "#E76F51"
+```
+
+```{r eval=FALSE}
+for (sp_ in unique(final_result$sp)) {
+  data_filtered <- final_result %>% 
     filter(sp == sp_)
   
   for (var in 6:ncol(data_filtered)) {
-    tmp <- data_filtered %>%
-      filter(open_cam_lvls == "Bajo")
+    
+    var_name <- colnames(data_filtered)[var]  # Obtener el nombre de la columna
+    
+    tmp_low <- data_filtered %>% filter(.[[var]] == "Bajo")
+    tmp_mid <- data_filtered %>% filter(.[[var]] == "Medio")
+    tmp_high <- data_filtered %>% filter(.[[var]] == "Alto")
+    
+    if(nrow(tmp_low) > 0 && nrow(tmp_mid) > 0 && nrow(tmp_high) > 0) {
+      low <- fitact(tmp_low$solar, sample="model", reps=100)
+      mid <- fitact(tmp_mid$solar, sample="model", reps=100)
+      high <- fitact(tmp_high$solar, sample="model", reps=100)
+      
+      # Crear el gráfico con diferentes colores y añadir el título
+      ylim_max <- max(low@pdf[,4], mid@pdf[,4], high@pdf[,4]) * 1.1
 
-    low <- fitact(tmp$solar, sample="model", reps=100)
-    
-    tmp <- data_filtered %>%
-      filter(open_cam_lvls == "Medio")
-    
-    mid <- fitact(tmp$solar, sample="model", reps=100)
-    
-    tmp <- data_filtered %>%
-      filter(open_cam_lvls == "Alto")
-    
-    high <- fitact(tmp$solar, sample="model", reps=100) 
+      png(filename = paste0("exports/plots/fitacts/", sp_, "-", var_name, ".png"))
+      plot(low, yunit="density", data="rug", las=1, lwd=2,
+           cline=list(lty=0), tline=list(col=low_color, lwd=2),
+           main=paste(var_name, "-", sp_),
+           ylim=c(0, ylim_max)) # Añadir título
+
+      plot(mid, yunit="density", data="rug", add=TRUE, 
+           tline=list(col=mid_color, lwd=2),
+           cline=list(lty=0),
+           ylim=c(0, ylim_max))
+      plot(high, yunit="density", data="rug", add=TRUE, 
+           tline=list(col=high_color, lwd=2),
+           cline=list(lty=0),
+           ylim=c(0, ylim_max))
+      
+      # Añadir la leyenda
+      legend("topright", legend=c(paste("Bajo (n=", nrow(tmp_low), ")", sep=""), 
+                                  paste("Medio (n=", nrow(tmp_mid), ")", sep=""), 
+                                  paste("Alto (n=", nrow(tmp_high), ")", sep="")),
+             col=c(low_color, mid_color, high_color), lwd=2, bty="n")
+      
+      dev.off()
+      print(paste("Plot de la especie ", sp_, " y variable ", var_name, " creado."))
+    } else {
+      print(paste("No hay suficientes datos en alguna categoría para:", sp_, "-", var_name))
+    }
   }
 }
-
 ```
 
-```{r}
-plot(low, yunit="density", data="none", las=1, lwd=2,
-     cline=list(lty=0)) # Elimina intervalos de confianza
-
-plot(mid, yunit="density", data="none", add=TRUE, 
-     tline=list(col="red", lwd=2),
-     cline=list(lty=0))
-plot(high, yunit="density", data="none", add=TRUE, 
-     tline=list(col="red", lwd=2),
-     cline=list(lty=0))
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```{r}
-tmp <- data %>% 
-  filter(sp == "Aaxi") 
-
-m_aaxi <- fitact(tmp$solar, sample="model", reps=100)
-plot(m_aaxi)
-```
-
-```{r}
-tmp <- data %>% 
-  filter(sp == "Mgou")
-
-m_mgou <- fitact(tmp$solar, sample="model", reps=100)
-plot(m_mgou)
-```
-
-También se pueden ver ambos en un mismo gráfico.
-
-```{r}
-plot(m_aaxi, yunit="density", data="none", las=1, lwd=2,
-     tline=list(lwd=2), # Linea gruesa
-     cline=list(lty=0)) # Elimina intervalos de confianza
-
-plot(m_mgou, yunit="density", data="none", add=TRUE, 
-     tline=list(col="red", lwd=2),
-     cline=list(lty=0))
-```

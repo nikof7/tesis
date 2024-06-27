@@ -23,7 +23,7 @@
 <meta name="author" content="Nicolás Fernández-Sauleda" />
 
 
-<meta name="date" content="2024-06-25" />
+<meta name="date" content="2024-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -236,6 +236,42 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="references" class="section level1 unnumbered hasAnchor">
 <h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="references.html#cb56-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/datos_procesados_v4.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="references.html#cb57-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb57-2"><a href="references.html#cb57-2" tabindex="-1"></a>  <span class="fu">select</span>(camera, sp, solar, open_cam)</span>
+<span id="cb57-3"><a href="references.html#cb57-3" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="references.html#cb57-4" tabindex="-1"></a><span class="co">#data$solar &lt;- circular(data$solar, units = &quot;radians&quot;, template = &quot;none&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="references.html#cb58-1" tabindex="-1"></a>data_filtered <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb58-2"><a href="references.html#cb58-2" tabindex="-1"></a>  <span class="fu">filter</span>(sp <span class="sc">==</span> <span class="st">&quot;Lgym&quot;</span>)</span>
+<span id="cb58-3"><a href="references.html#cb58-3" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="references.html#cb58-4" tabindex="-1"></a>percs <span class="ot">&lt;-</span> <span class="fu">quantile</span>(data_filtered<span class="sc">$</span>open_cam , <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.33</span>, <span class="fl">0.66</span>))</span>
+<span id="cb58-5"><a href="references.html#cb58-5" tabindex="-1"></a></span>
+<span id="cb58-6"><a href="references.html#cb58-6" tabindex="-1"></a>data_filtered<span class="sc">$</span>open_cam_lvls <span class="ot">&lt;-</span> <span class="fu">cut</span>(data_filtered<span class="sc">$</span>open_cam, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, percs[<span class="dv">1</span>], percs[<span class="dv">2</span>], <span class="cn">Inf</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Bajo&quot;</span>, <span class="st">&quot;Medio&quot;</span>, <span class="st">&quot;Alto&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="references.html#cb59-1" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data_filtered <span class="sc">%&gt;%</span></span>
+<span id="cb59-2"><a href="references.html#cb59-2" tabindex="-1"></a>  <span class="fu">filter</span>(open_cam_lvls <span class="sc">==</span> <span class="st">&quot;Bajo&quot;</span>)</span>
+<span id="cb59-3"><a href="references.html#cb59-3" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="references.html#cb59-4" tabindex="-1"></a>low <span class="ot">&lt;-</span> <span class="fu">fitact</span>(tmp<span class="sc">$</span>solar, <span class="at">sample=</span><span class="st">&quot;model&quot;</span>, <span class="at">reps=</span><span class="dv">100</span>)</span>
+<span id="cb59-5"><a href="references.html#cb59-5" tabindex="-1"></a></span>
+<span id="cb59-6"><a href="references.html#cb59-6" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data_filtered <span class="sc">%&gt;%</span></span>
+<span id="cb59-7"><a href="references.html#cb59-7" tabindex="-1"></a>  <span class="fu">filter</span>(open_cam_lvls <span class="sc">==</span> <span class="st">&quot;Medio&quot;</span>)</span>
+<span id="cb59-8"><a href="references.html#cb59-8" tabindex="-1"></a></span>
+<span id="cb59-9"><a href="references.html#cb59-9" tabindex="-1"></a>mid <span class="ot">&lt;-</span> <span class="fu">fitact</span>(tmp<span class="sc">$</span>solar, <span class="at">sample=</span><span class="st">&quot;model&quot;</span>, <span class="at">reps=</span><span class="dv">100</span>)</span>
+<span id="cb59-10"><a href="references.html#cb59-10" tabindex="-1"></a></span>
+<span id="cb59-11"><a href="references.html#cb59-11" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data_filtered <span class="sc">%&gt;%</span></span>
+<span id="cb59-12"><a href="references.html#cb59-12" tabindex="-1"></a>  <span class="fu">filter</span>(open_cam_lvls <span class="sc">==</span> <span class="st">&quot;Alto&quot;</span>)</span>
+<span id="cb59-13"><a href="references.html#cb59-13" tabindex="-1"></a></span>
+<span id="cb59-14"><a href="references.html#cb59-14" tabindex="-1"></a>high <span class="ot">&lt;-</span> <span class="fu">fitact</span>(tmp<span class="sc">$</span>solar, <span class="at">sample=</span><span class="st">&quot;model&quot;</span>, <span class="at">reps=</span><span class="dv">100</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="references.html#cb60-1" tabindex="-1"></a><span class="fu">plot</span>(low, <span class="at">yunit=</span><span class="st">&quot;density&quot;</span>, <span class="at">data=</span><span class="st">&quot;none&quot;</span>, <span class="at">las=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">2</span>,</span>
+<span id="cb60-2"><a href="references.html#cb60-2" tabindex="-1"></a>     <span class="at">cline=</span><span class="fu">list</span>(<span class="at">lty=</span><span class="dv">0</span>)) <span class="co"># Elimina intervalos de confianza</span></span>
+<span id="cb60-3"><a href="references.html#cb60-3" tabindex="-1"></a></span>
+<span id="cb60-4"><a href="references.html#cb60-4" tabindex="-1"></a><span class="fu">plot</span>(mid, <span class="at">yunit=</span><span class="st">&quot;density&quot;</span>, <span class="at">data=</span><span class="st">&quot;none&quot;</span>, <span class="at">add=</span><span class="cn">TRUE</span>, </span>
+<span id="cb60-5"><a href="references.html#cb60-5" tabindex="-1"></a>     <span class="at">tline=</span><span class="fu">list</span>(<span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>),</span>
+<span id="cb60-6"><a href="references.html#cb60-6" tabindex="-1"></a>     <span class="at">cline=</span><span class="fu">list</span>(<span class="at">lty=</span><span class="dv">0</span>))</span>
+<span id="cb60-7"><a href="references.html#cb60-7" tabindex="-1"></a><span class="fu">plot</span>(high, <span class="at">yunit=</span><span class="st">&quot;density&quot;</span>, <span class="at">data=</span><span class="st">&quot;none&quot;</span>, <span class="at">add=</span><span class="cn">TRUE</span>, </span>
+<span id="cb60-8"><a href="references.html#cb60-8" tabindex="-1"></a>     <span class="at">tline=</span><span class="fu">list</span>(<span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>),</span>
+<span id="cb60-9"><a href="references.html#cb60-9" tabindex="-1"></a>     <span class="at">cline=</span><span class="fu">list</span>(<span class="at">lty=</span><span class="dv">0</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
 
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div class="csl-entry">
