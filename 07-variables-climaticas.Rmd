@@ -1,0 +1,25 @@
+# Variables climáticas
+
+## Procesamiento de datos
+
+Jennifer Gonzalez-Buve solicitó a INUMET datos de precipitaciones y temperatura para el área de estudio. Nos compartieron precipitaciones de varias localidades y las temperaturas mínimas y máximas de la estación Rocha.
+
+## Temperatura
+
+```{r}
+temperature <- read.csv(file = "data/temperatura.csv") %>% 
+  drop_na() %>% 
+  mutate(fecha = dmy(fecha))
+```
+
+## Precipitaciones
+
+```{r}
+prec <- read_csv(file = "data/precipitaciones.csv", col_types = "cdcd") %>%
+  drop_na(mm) %>% 
+  mutate(fecha = mdy(fecha))
+```
+
+```{r}
+unique(prec$estacion)
+```
