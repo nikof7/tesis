@@ -16,7 +16,7 @@ Pasemos al calculo de este parámetro, primero se cargan los registros de las ca
 load("data_processed/datos_procesados_v2.RData")
 ```
 
-Luego se filtran solo los registros de _B. taurus_ y de _C. familiaris_, se crea una columna llamada sistema (system) y se seleccionan las columnas de interés.
+Luego se filtran solo los registros de _B. taurus_, _C. familiaris_ se crea una columna llamada sistema (system) y se seleccionan las columnas de interés.
 
 ```{r}
 tr_data <- data %>%

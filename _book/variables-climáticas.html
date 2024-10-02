@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | Tesis</title>
+  <title>8 Variables climáticas | Tesis</title>
   <meta name="description" content="Donde se irá desarrollando la tésis." />
   <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | Tesis" />
+  <meta property="og:title" content="8 Variables climáticas | Tesis" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Donde se irá desarrollando la tésis." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | Tesis" />
+  <meta name="twitter:title" content="8 Variables climáticas | Tesis" />
   
   <meta name="twitter:description" content="Donde se irá desarrollando la tésis." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="modelos-para-jenni.html"/>
-
+<link rel="prev" href="variables.html"/>
+<link rel="next" href="kernels-de-actividad.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -252,74 +252,26 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered hasAnchor">
-<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-
-<div id="paquete-brms" class="section level2 hasAnchor" number="10.3">
-<h2><span class="header-section-number">10.3</span> Paquete <code>brms</code><a href="references.html#paquete-brms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>El paquete <strong>brms</strong> ajusta modelos bayesianos generalizados multivariados y multinivel usando <strong>Stan</strong>.</li>
-<li>La sintaxis de fórmulas es similar a <strong>lme4</strong>, facilitando su uso.</li>
-<li>Soporta diversos tipos de modelos:
-<ul>
-<li><strong>Lineales</strong>, robustos y de conteo.</li>
-<li><strong>Supervivencia</strong>, tiempos de respuesta y ordinales.</li>
-<li>Modelos con <strong>inflación de ceros</strong>, de obstáculo y mezclas definidas por el usuario.</li>
-</ul></li>
-<li>Ofrece características adicionales:
-<ul>
-<li>Términos <strong>no lineales</strong> y suaves.</li>
-<li>Estructuras de <strong>autocorrelación</strong> y datos censurados.</li>
-</ul></li>
-<li>Permite predecir todos los parámetros de la distribución de respuesta.</li>
-<li>El ajuste del modelo se evalúa mediante:
-<ul>
-<li><strong>Verificaciones predictivas</strong> posteriores.</li>
-<li><strong>Validación cruzada</strong> de dejar uno fuera (LOO).</li>
-</ul></li>
-</ul>
-
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="references.html#cb69-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/datos_procesados_v4.RData&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="references.html#cb70-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb70-2"><a href="references.html#cb70-2" tabindex="-1"></a>  <span class="fu">select</span>(camera, sp, solar, open_cam)</span>
-<span id="cb70-3"><a href="references.html#cb70-3" tabindex="-1"></a></span>
-<span id="cb70-4"><a href="references.html#cb70-4" tabindex="-1"></a><span class="co">#data$solar &lt;- circular(data$solar, units = &quot;radians&quot;, template = &quot;none&quot;)</span></span></code></pre></div>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="references.html#cb71-1" tabindex="-1"></a>data_filtered <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb71-2"><a href="references.html#cb71-2" tabindex="-1"></a>  <span class="fu">filter</span>(sp <span class="sc">==</span> <span class="st">&quot;Lgym&quot;</span>)</span>
-<span id="cb71-3"><a href="references.html#cb71-3" tabindex="-1"></a></span>
-<span id="cb71-4"><a href="references.html#cb71-4" tabindex="-1"></a>percs <span class="ot">&lt;-</span> <span class="fu">quantile</span>(data_filtered<span class="sc">$</span>open_cam , <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.33</span>, <span class="fl">0.66</span>))</span>
-<span id="cb71-5"><a href="references.html#cb71-5" tabindex="-1"></a></span>
-<span id="cb71-6"><a href="references.html#cb71-6" tabindex="-1"></a>data_filtered<span class="sc">$</span>open_cam_lvls <span class="ot">&lt;-</span> <span class="fu">cut</span>(data_filtered<span class="sc">$</span>open_cam, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="cn">Inf</span>, percs[<span class="dv">1</span>], percs[<span class="dv">2</span>], <span class="cn">Inf</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Bajo&quot;</span>, <span class="st">&quot;Medio&quot;</span>, <span class="st">&quot;Alto&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="references.html#cb72-1" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb72-2"><a href="references.html#cb72-2" tabindex="-1"></a>  <span class="fu">filter</span>(open_cam_lvls <span class="sc">==</span> <span class="st">&quot;Bajo&quot;</span>)</span>
-<span id="cb72-3"><a href="references.html#cb72-3" tabindex="-1"></a></span>
-<span id="cb72-4"><a href="references.html#cb72-4" tabindex="-1"></a>low <span class="ot">&lt;-</span> <span class="fu">fitact</span>(tmp<span class="sc">$</span>solar, <span class="at">sample=</span><span class="st">&quot;model&quot;</span>, <span class="at">reps=</span><span class="dv">100</span>)</span>
-<span id="cb72-5"><a href="references.html#cb72-5" tabindex="-1"></a></span>
-<span id="cb72-6"><a href="references.html#cb72-6" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb72-7"><a href="references.html#cb72-7" tabindex="-1"></a>  <span class="fu">filter</span>(open_cam_lvls <span class="sc">==</span> <span class="st">&quot;Medio&quot;</span>)</span>
-<span id="cb72-8"><a href="references.html#cb72-8" tabindex="-1"></a></span>
-<span id="cb72-9"><a href="references.html#cb72-9" tabindex="-1"></a>mid <span class="ot">&lt;-</span> <span class="fu">fitact</span>(tmp<span class="sc">$</span>solar, <span class="at">sample=</span><span class="st">&quot;model&quot;</span>, <span class="at">reps=</span><span class="dv">100</span>)</span>
-<span id="cb72-10"><a href="references.html#cb72-10" tabindex="-1"></a></span>
-<span id="cb72-11"><a href="references.html#cb72-11" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb72-12"><a href="references.html#cb72-12" tabindex="-1"></a>  <span class="fu">filter</span>(open_cam_lvls <span class="sc">==</span> <span class="st">&quot;Alto&quot;</span>)</span>
-<span id="cb72-13"><a href="references.html#cb72-13" tabindex="-1"></a></span>
-<span id="cb72-14"><a href="references.html#cb72-14" tabindex="-1"></a>high <span class="ot">&lt;-</span> <span class="fu">fitact</span>(tmp<span class="sc">$</span>solar, <span class="at">sample=</span><span class="st">&quot;model&quot;</span>, <span class="at">reps=</span><span class="dv">100</span>) </span></code></pre></div>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="references.html#cb73-1" tabindex="-1"></a><span class="fu">plot</span>(low, <span class="at">yunit=</span><span class="st">&quot;density&quot;</span>, <span class="at">data=</span><span class="st">&quot;none&quot;</span>, <span class="at">las=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">2</span>,</span>
-<span id="cb73-2"><a href="references.html#cb73-2" tabindex="-1"></a>     <span class="at">cline=</span><span class="fu">list</span>(<span class="at">lty=</span><span class="dv">0</span>)) <span class="co"># Elimina intervalos de confianza</span></span>
-<span id="cb73-3"><a href="references.html#cb73-3" tabindex="-1"></a></span>
-<span id="cb73-4"><a href="references.html#cb73-4" tabindex="-1"></a><span class="fu">plot</span>(mid, <span class="at">yunit=</span><span class="st">&quot;density&quot;</span>, <span class="at">data=</span><span class="st">&quot;none&quot;</span>, <span class="at">add=</span><span class="cn">TRUE</span>, </span>
-<span id="cb73-5"><a href="references.html#cb73-5" tabindex="-1"></a>     <span class="at">tline=</span><span class="fu">list</span>(<span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>),</span>
-<span id="cb73-6"><a href="references.html#cb73-6" tabindex="-1"></a>     <span class="at">cline=</span><span class="fu">list</span>(<span class="at">lty=</span><span class="dv">0</span>))</span>
-<span id="cb73-7"><a href="references.html#cb73-7" tabindex="-1"></a><span class="fu">plot</span>(high, <span class="at">yunit=</span><span class="st">&quot;density&quot;</span>, <span class="at">data=</span><span class="st">&quot;none&quot;</span>, <span class="at">add=</span><span class="cn">TRUE</span>, </span>
-<span id="cb73-8"><a href="references.html#cb73-8" tabindex="-1"></a>     <span class="at">tline=</span><span class="fu">list</span>(<span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>),</span>
-<span id="cb73-9"><a href="references.html#cb73-9" tabindex="-1"></a>     <span class="at">cline=</span><span class="fu">list</span>(<span class="at">lty=</span><span class="dv">0</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
-
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div class="csl-entry">
-Nouvellet, P., G. S. A. Rasmussen, D. W. Macdonald, and F. Courchamp. 2011. <span>“Noisy Clocks and Silent Sunrises: Measurement Methods of Daily Activity Pattern.”</span> Edited by Anne Braae. <em>Journal of Zoology</em> 286 (3): 179–84. <a href="https://doi.org/10.1111/j.1469-7998.2011.00864.x">https://doi.org/10.1111/j.1469-7998.2011.00864.x</a>.
+<div id="variables-climáticas" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Variables climáticas<a href="variables-climáticas.html#variables-climáticas" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="procesamiento-de-datos-1" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Procesamiento de datos<a href="variables-climáticas.html#procesamiento-de-datos-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Jennifer Gonzalez-Buve solicitó a INUMET datos de precipitaciones y temperatura para el área de estudio. Nos compartieron precipitaciones de varias localidades y las temperaturas mínimas y máximas de la estación Rocha.</p>
 </div>
+<div id="temperatura" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Temperatura<a href="variables-climáticas.html#temperatura" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="variables-climáticas.html#cb51-1" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">&quot;data/temperatura.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-2"><a href="variables-climáticas.html#cb51-2" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb51-3"><a href="variables-climáticas.html#cb51-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fecha =</span> <span class="fu">dmy</span>(fecha))</span></code></pre></div>
 </div>
+<div id="precipitaciones" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Precipitaciones<a href="variables-climáticas.html#precipitaciones" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="variables-climáticas.html#cb52-1" tabindex="-1"></a>prec <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">&quot;data/precipitaciones.csv&quot;</span>, <span class="at">col_types =</span> <span class="st">&quot;cdcd&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="variables-climáticas.html#cb52-2" tabindex="-1"></a>  <span class="fu">drop_na</span>(mm) <span class="sc">%&gt;%</span> </span>
+<span id="cb52-3"><a href="variables-climáticas.html#cb52-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fecha =</span> <span class="fu">mdy</span>(fecha))</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="variables-climáticas.html#cb53-1" tabindex="-1"></a><span class="fu">unique</span>(prec<span class="sc">$</span>estacion)</span></code></pre></div>
+<pre><code>## [1] &quot;chuy&quot;         &quot;solis&quot;        &quot;garzon&quot;       &quot;la_coronilla&quot; &quot;la_paloma&quot;    &quot;rocha&quot;        &quot;santa_teresa&quot; &quot;valizas&quot;</code></pre>
+
 </div>
 </div>
             </section>
@@ -327,8 +279,8 @@ Nouvellet, P., G. S. A. Rasmussen, D. W. Macdonald, and F. Courchamp. 2011. <spa
           </div>
         </div>
       </div>
-<a href="modelos-para-jenni.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="kernels-de-actividad.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -359,7 +311,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-references.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-variables-climaticas.Rmd",
 "text": "Edit"
 },
 "history": {

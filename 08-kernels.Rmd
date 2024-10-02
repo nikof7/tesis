@@ -5,7 +5,7 @@ load("data_processed/datos_procesados_v4.RData")
 
 data <- data %>% 
   filter(!sp %in% c("Btau", "Cfam")) %>%  # Sacamos los datos de ganado vacuno y perros domésticos
-  select(everything(), -c(lat, lon, clock, nocturnal, moon_phase, n_tech_cam, n_tech_sys, datetime))
+  select(everything(), -c(lat, lon, clock, nocturnal, moon_ilumination, n_tech_cam, n_tech_sys, datetime))
 ```
 
 
