@@ -1,0 +1,62 @@
+# Exploración general de modelos
+
+Se utilizará el dataset llamado `mtcars`. Incluye datos sobre autos:
+
+
+| Atributo | Descripción                      | Tipo       |
+|----------|----------------------------------|------------|
+| mpg      | Millas por Galón                | Continuo   |
+| cyl      | Número de cilindros              | Nominal    |
+| disp     | Desplazamiento                   | Continuo   |
+| hp       | Caballo de Fuerza                | Continuo   |
+| drat     | Relación del Eje de Rueda Real   | Continuo   |
+| Wt       | Peso                             | Continuo   |
+| qsec     | Tiempo para 0.25 millas         | Continuo   |
+| vs       | V/S                             | Nominal    |
+| am       | Tipo de transmisión               | Nominal    |
+| gear     | Número de marchas                | Ordinal    |
+| carb     | Número de carburadores           | Ordinal    |
+
+```{r}
+data(mtcars)
+paged_table(head(mtcars))
+```
+## Modelo lineal simple
+
+```{r}
+modelo_simple <- lm(mpg ~ wt, data = mtcars)
+summary(modelo_simple)
+# Graficar los datos
+plot(mtcars$mpg, mtcars$wt,
+     pch = 19, col = "blue")
+```
+
+En el summary se puede observar que la mediana de los residuos cae cercana a cero. A pesar de que varían bastante el $Q_3$ cae en 1.4 que no es tan alto.
+
+Si vemos los coeficientes, especificamente el intercepto. Podemos ver que cuando $x=0$, el valor esperado de $y$ será 37.3. Pero no es rasonzable que $x$ sea igual a 0 en algún momento, por lo que no tiene tanto interés en este caso.
+
+Observando los coeficiente de pendiente, en este caso solo `wt`, vemos que da -5. Lo que significa que por cada incremento de `wt`, el valor esperado de $y$, es decir `mpg`, disminuye 5 veces. Y tiene sentido porque a medida que aumenta el peso del vehículo, aumenta el consumo (un valor más grande de `mpg` significa menor consumo).
+
+## Incluir interacciones
+
+Se pueden incluir interacciones, por ejemplo, nos podemos preguntar si el peso del vehículo *y la cantidad de cilindros* estpa relacionada con la variable de respuesta (`mpg`).
+
+```{r}
+# Modelo con interacción
+modelo_interaccion <- lm(mpg ~ wt * cyl, data = mtcars)
+summary(modelo_interaccion)
+```
+
+- Residuos: Mediana cercana a 0 y el $Q_3$ es bajo, por lo que los valores predichos y observados son basatante similares.
+- Coeficientes:
+  - Intercepto: El valor de intercepto no es muy interesante, porque las variables independientes no pueden ser cero.
+  - wt: Por cada aumento de 1 unidad en wt, se espera que mpg disminuya aproximadamente 8.7 unidades, cuando se mantiene el número constante de cilindros.
+  - cyl: Por cada aumento de un cilindro, se espera que mpg disminuya 3.8 unidades, manteniendo el peso constante.
+  - wt:cyl (interacción): Indica que el efecto del peso en mpg varía según el número de cilindros. Específicamente, por cada incremento de 1 cilindro, el efecto negativo de wt sobre mpg se incrementa en 0.8 unidades.
+  
+```{r}
+#library(interactions)
+#interact_plot(modelo_interaccion)
+```
+  
+  
