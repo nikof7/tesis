@@ -23,7 +23,7 @@
 <meta name="author" content="Nicolás Fernández-Sauleda" />
 
 
-<meta name="date" content="2024-10-03" />
+<meta name="date" content="2024-10-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -233,10 +233,11 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#modelo-generalidades"><i class="fa fa-check"></i><b>11.2</b> Modelo generalidades</a></li>
 <li class="chapter" data-level="11.3" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#modelo-utilizando-brms"><i class="fa fa-check"></i><b>11.3</b> Modelo utilizando brms</a></li>
+<li class="chapter" data-level="11.4" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#modelo-con-interacciones"><i class="fa fa-check"></i><b>11.4</b> Modelo con interacciones</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a>
 <ul>
-<li class="chapter" data-level="11.4" data-path="references.html"><a href="references.html#paquete-brms"><i class="fa fa-check"></i><b>11.4</b> Paquete <code>brms</code></a></li>
+<li class="chapter" data-level="11.5" data-path="references.html"><a href="references.html#paquete-brms"><i class="fa fa-check"></i><b>11.5</b> Paquete <code>brms</code></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/nikof7/tesis" target="blank">Nicolás Fernández-Sauleda</a></li>
@@ -359,7 +360,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="exploración-general-de-modelos.html#cb62-1" tabindex="-1"></a><span class="co"># Graficar los datos</span></span>
 <span id="cb62-2"><a href="exploración-general-de-modelos.html#cb62-2" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>wt,</span>
 <span id="cb62-3"><a href="exploración-general-de-modelos.html#cb62-3" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
 <p>En el summary se puede observar que la mediana de los residuos cae cercana a cero. A pesar de que varían bastante el <span class="math inline">\(Q_3\)</span> cae en 1.4 que no es tan alto.</p>
 <p>Si vemos los coeficientes, especificamente el intercepto. Podemos ver que cuando <span class="math inline">\(x=0\)</span>, el valor esperado de <span class="math inline">\(y\)</span> será 37.3. Pero no es rasonzable que <span class="math inline">\(x\)</span> sea igual a 0 en algún momento, por lo que no tiene tanto interés en este caso.</p>
 <p>Observando los coeficiente de pendiente, en este caso solo <code>wt</code>, vemos que da -5. Lo que significa que por cada incremento de <code>wt</code>, el valor esperado de <span class="math inline">\(y\)</span>, es decir <code>mpg</code>, disminuye 5 veces. Y tiene sentido porque a medida que aumenta el peso del vehículo, aumenta el consumo (un valor más grande de <code>mpg</code> significa menor consumo).</p>

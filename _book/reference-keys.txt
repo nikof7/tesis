@@ -41,4 +41,5 @@ a-nivel-de-camara
 estado-de-los-datos
 modelo-generalidades
 modelo-utilizando-brms
+modelo-con-interacciones
 paquete-brms

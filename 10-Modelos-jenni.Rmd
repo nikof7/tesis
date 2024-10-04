@@ -1,8 +1,8 @@
 # Modelos para Jenni
 
-Su trabajo se titula "Respuestas espaciales y temporales de Subulo gouazoubira ante la presencia de tres mamíferos introducidos en Uruguay."
+Su trabajo se titula "Respuestas espaciales y temporales de _Subulo gouazoubira_ ante la presencia de tres mamíferos introducidos en Uruguay."
 
-> El objetivo del presente estudio fue evaluar el impacto de tres mamíferos introducidos (el jabalí Sus scrofa, el ciervo axis Axis axis y los perros de movimiento libre Canis familiaris) sobre la selección de hábitat y los patrones diarios de actividad del guazubirá (Subulo gouazoubira), en áreas protegidas del este de Uruguay
+> El objetivo del presente estudio fue evaluar el impacto de tres mamíferos introducidos (el jabalí Sus scrofa, el ciervo axis Axis axis y los perros de movimiento libre Canis familiaris) sobre la selección de hábitat y los patrones diarios de actividad del guazubirá (_Subulo gouazoubira_), en áreas protegidas del este de Uruguay
 
 A tener en cuenta:
 
@@ -227,7 +227,8 @@ data %>%
   select(periodos) %>% 
   group_by(periodos) %>% 
   summarise(n = n()) %>% 
-  arrange(-n)
+  arrange(-n) %>% 
+  paged_table(.)
 ```
 
 Por último hay que formatear las columnas.
@@ -308,3 +309,74 @@ save(modelo_aditivo, file = "./buckup/modelo_aditivo.RData")
 load("./buckup/modelo_aditivo.RData")
 summary(modelo_aditivo)
 ```
+
+En general, la iluminación lunar parece tener un impacto positivo en los periodos de actividad diurna, ya que su estimación para el periodo diurno es positiva y significativamente distinta de cero (1.07 [0.04, 2.11]). Esto sugiere que, a mayor iluminación lunar, _Subulo gouazoubira_ tiene más probabilidad de estar activo durante el día.
+
+Para las variables relacionadas con la presencia de vacas (tr_btau), los efectos no son tan claros. Las estimaciones para la actividad crepuscular diurna y nocturna muestran amplios intervalos de confianza que incluyen tanto efectos positivos como negativos, lo que indica que no podemos asegurar una relación directa entre la actividad de los ciervos y la presencia de vacas.
+
+Algo similar ocurre con las otras animales domésticos y silvestres (tr_cfam, tr_aaxi, tr_sscr). Las estimaciones presentan incertidumbre considerable y no permiten conclusiones sólidas sobre su efecto en la actividad del guazubirá. Sin embargo, el hecho de que la actividad diurna parece estar más influenciada por tr_cfam_sys (650.85 [-872.21, 2433.99]) y tr_cfam_cam (-335.43 [-1072.19, 241.09]) sugiere que la presencia de perros podría estar afectando los patrones de actividad del _Subulo gouazoubira_, aunque no se puede confirmar esto con certeza debido a la alta variabilidad en los resultados.
+
+Respecto a la cobertura boscosa (wood_sys, wood_cam), la actividad crepuscular diurna parece verse influenciada de manera positiva por la cobertura de bosques a nivel del sistema (6.05 [-0.26, 14.84]), lo cual indicaría una mayor probabilidad de actividad en zonas más arboladas. Sin embargo, a nivel de cámara (wood_cam), el efecto es negativo, aunque no es estadísticamente significativo (-2.70 [-8.28, 1.44]).
+
+El número de techos (n_tech) también parece tener un efecto, aunque pequeño. A nivel del sistema, se observa una tendencia positiva para la actividad crepuscular diurna (0.32 [0.07, 0.66]), lo que podría sugerir que la presencia de mayor cantidad de techos en el área está correlacionada con un ligero aumento en la actividad del guazubirá durante el crepúsculo diurno.
+
+Los resultados para el ciervo *Axis* a nivel de cámara y sistema no muestran un efecto claro y significativo en los distintos períodos de actividad. Los intervalos de credibilidad son amplios y todos contienen el valor cero, lo que indica que no hay evidencia suficiente para afirmar que la tasa de registro de ciervos Axis esté influyendo de manera significativa en los patrones de actividad en los diferentes períodos.
+
+
+```{r eval=FALSE}
+marginal_plots <- plot(conditional_effects(modelo_aditivo, categorical=TRUE))
+#save(marginal_plots, file="buckup/marginal_plots_aditivo.RData")
+```
+
+```{r echo=FALSE}
+load("buckup/marginal_plots_aditivo.RData")
+marginal_plots
+```
+
+
+## Modelo con interacciones
+
+Una interacción que podría ser interesante es el complemento de `wood` y la iluminación de la luna.
+
+```{r}
+data <- data %>% 
+  mutate("wood_sys_complemento" = 1 - wood_sys,
+         "wood_cam_complemento" = 1 - wood_cam)
+```
+
+
+```{r eval=FALSE}
+modelo_interacciones <- brm(
+  formula = bf(periodos ~
+                 moon_ilumination*wood_sys_complemento + # luz de luna - no wood
+                 moon_ilumination*wood_cam_complemento +
+                 moon_ilumination*tr_aaxi_sys + # luz de luna - axis
+                 moon_ilumination*tr_sscr_sys + # luz de luna - jabali
+                 moon_ilumination*tr_btau_sys + # luz de luna - btau
+                 moon_ilumination*tr_cfam_sys + # luz de luna - perros
+                 wood_cam_complemento*tr_aaxi_sys + # no wood - axis
+                 wood_cam_complemento*tr_sscr_sys + # no wood - jabali
+                 wood_cam_complemento*tr_btau_sys + # no wood - btau
+                 wood_cam_complemento*tr_cfam_sys + # no wood - perros
+                 tr_btau_sys*tr_axis_sys + # aaxi - btau
+                 tr_btau_cam*tr_axis_cam + 
+                 tr_sscr_sys*tr_axis_sys + # jabalí - axis
+                 tr_sscr_cam*tr_axis_cam +
+                 (1 | system/camera)),  # Efectos mixtos anidados
+  data = data,
+  family = categorical(refcat = "nocturno"),  # familia multinomial con el nivel de referencia 'nocturno'
+  chains = 4,              # número de cadenas
+  iter = 12000,             # número de iteraciones
+  warmup = 2000,           # número de iteraciones de calentamiento
+  control = list(adapt_delta = 0.95), # control para mejorar la convergencia
+  cores = 6, # nucleos de pc
+  threads = 12 # hilos de pc
+)
+
+save(modelo_interacciones, file = "./buckup/modelo_interacciones.RData")
+```
+
+
+
+
+
