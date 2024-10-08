@@ -310,18 +310,23 @@ load("./buckup/modelo_aditivo.RData")
 summary(modelo_aditivo)
 ```
 
-En general, la iluminación lunar parece tener un impacto positivo en los periodos de actividad diurna, ya que su estimación para el periodo diurno es positiva y significativamente distinta de cero (1.07 [0.04, 2.11]). Esto sugiere que, a mayor iluminación lunar, _Subulo gouazoubira_ tiene más probabilidad de estar activo durante el día.
+```{r}
+resultados1 <- summary(modelo_aditivo)[["fixed"]]
+resultados1[!(resultados1$`l-95% CI` < 0 & resultados1$`u-95% CI` > 0), ]
+```
 
-Para las variables relacionadas con la presencia de vacas (tr_btau), los efectos no son tan claros. Las estimaciones para la actividad crepuscular diurna y nocturna muestran amplios intervalos de confianza que incluyen tanto efectos positivos como negativos, lo que indica que no podemos asegurar una relación directa entre la actividad de los ciervos y la presencia de vacas.
 
-Algo similar ocurre con las otras animales domésticos y silvestres (tr_cfam, tr_aaxi, tr_sscr). Las estimaciones presentan incertidumbre considerable y no permiten conclusiones sólidas sobre su efecto en la actividad del guazubirá. Sin embargo, el hecho de que la actividad diurna parece estar más influenciada por tr_cfam_sys (650.85 [-872.21, 2433.99]) y tr_cfam_cam (-335.43 [-1072.19, 241.09]) sugiere que la presencia de perros podría estar afectando los patrones de actividad del _Subulo gouazoubira_, aunque no se puede confirmar esto con certeza debido a la alta variabilidad en los resultados.
+1. **Intercepto Crepuscular Diurno**: La actividad de **Subulo guazubira** durante el crepúsculo diurno es significativamente menor en comparación con la nocturnidad. El estimado es -3.05, lo que indica que la probabilidad de actividad en este periodo es menor que durante la noche.
 
-Respecto a la cobertura boscosa (wood_sys, wood_cam), la actividad crepuscular diurna parece verse influenciada de manera positiva por la cobertura de bosques a nivel del sistema (6.05 [-0.26, 14.84]), lo cual indicaría una mayor probabilidad de actividad en zonas más arboladas. Sin embargo, a nivel de cámara (wood_cam), el efecto es negativo, aunque no es estadísticamente significativo (-2.70 [-8.28, 1.44]).
+2. **Intercepto Crepuscular Nocturno**: El estimado -2.89 sugiere que hay menos actividad en comparación con la noche, pero la diferencia es menos marcada que en el caso del crepúsculo diurno.
 
-El número de techos (n_tech) también parece tener un efecto, aunque pequeño. A nivel del sistema, se observa una tendencia positiva para la actividad crepuscular diurna (0.32 [0.07, 0.66]), lo que podría sugerir que la presencia de mayor cantidad de techos en el área está correlacionada con un ligero aumento en la actividad del guazubirá durante el crepúsculo diurno.
+3. **Intercepto Diurno**: Con un estimado -3.33 indica que **Subulo guazubira** tiene significativamente menos actividad diurna en relación con la noche.
 
-Los resultados para el ciervo *Axis* a nivel de cámara y sistema no muestran un efecto claro y significativo en los distintos períodos de actividad. Los intervalos de credibilidad son amplios y todos contienen el valor cero, lo que indica que no hay evidencia suficiente para afirmar que la tasa de registro de ciervos Axis esté influyendo de manera significativa en los patrones de actividad en los diferentes períodos.
+4. **Número de Techos para el Crepúsculo Diurno**: El estimado positivo (0.32) indica que la presencia de más techos en el sistema está asociada con un aumento de la actividad durante el crepúsculo diurno en relación con la noche.
 
+5. **Iluminación de la Luna para el Periodo Diurno**: El estimado positivo (1.06) sugiere que, en días con mayor iluminación lunar, **Subulo guazubira** tiende a mostrar más actividad diurna que nocturna.
+
+6. **Número de Techos para el Periodo Diurno**: Un mayor número de techos parece reducir significativamente la actividad diurna en comparación con la nocturnidad, con un estimado muy negativo (-13.71).
 
 ```{r eval=FALSE}
 marginal_plots <- plot(conditional_effects(modelo_aditivo, categorical=TRUE))
@@ -346,6 +351,8 @@ data <- data %>%
 
 
 ```{r eval=FALSE}
+start_time <- Sys.time()
+
 modelo_interacciones <- brm(
   formula = bf(periodos ~
                  moon_ilumination*wood_sys_complemento + # luz de luna - no wood
@@ -358,10 +365,10 @@ modelo_interacciones <- brm(
                  wood_cam_complemento*tr_sscr_sys + # no wood - jabali
                  wood_cam_complemento*tr_btau_sys + # no wood - btau
                  wood_cam_complemento*tr_cfam_sys + # no wood - perros
-                 tr_btau_sys*tr_axis_sys + # aaxi - btau
-                 tr_btau_cam*tr_axis_cam + 
-                 tr_sscr_sys*tr_axis_sys + # jabalí - axis
-                 tr_sscr_cam*tr_axis_cam +
+                 tr_btau_sys*tr_aaxi_sys + # aaxi - btau
+                 tr_btau_cam*tr_aaxi_cam + 
+                 tr_sscr_sys*tr_aaxi_sys + # jabalí - axis
+                 tr_sscr_cam*tr_aaxi_cam +
                  (1 | system/camera)),  # Efectos mixtos anidados
   data = data,
   family = categorical(refcat = "nocturno"),  # familia multinomial con el nivel de referencia 'nocturno'
@@ -374,9 +381,24 @@ modelo_interacciones <- brm(
 )
 
 save(modelo_interacciones, file = "./buckup/modelo_interacciones.RData")
+
+end_time <- Sys.time()
+execution_time <- end_time - start_time
+cat(sprintf("Total execution time: %s\n", execution_time))
 ```
 
+```{r}
+load("buckup/modelo_interacciones.RData")
+summary(modelo_interacciones)
+```
 
+Los siguientes son las variables e interacciones que su intervalo de confianza no incluye al cero.
 
+```{r}
+resultados <- summary(modelo_interacciones)[["fixed"]]
+resultados[!(resultados$`l-95% CI` < 0 & resultados$`u-95% CI` > 0), ]
+```
 
-
+```{r}
+ plot(modelo_interacciones, variable=c("mudiurno_Intercept", "mucrepusculodiurno_tr_btau_sys","mucrepusculodiurno_wood_cam_complemento:tr_btau_sys", "mudiurno_tr_aaxi_sys:tr_btau_sys"), regex = TRUE, ask=FALSE, nvariables = 1)
+```

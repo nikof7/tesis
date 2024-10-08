@@ -23,7 +23,7 @@
 <meta name="author" content="Nicolás Fernández-Sauleda" />
 
 
-<meta name="date" content="2024-10-04" />
+<meta name="date" content="2024-10-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -265,8 +265,8 @@ div.csl-indent {
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="fase-lunar.html#cb18-1" tabindex="-1"></a><span class="fu">library</span>(suncalc)</span></code></pre></div>
 <p>Cuando se aplica la función <code>getMoonIllumination</code> se obtienen los siguientes datos.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="fase-lunar.html#cb19-1" tabindex="-1"></a><span class="fu">getMoonIllumination</span>(<span class="at">date =</span> <span class="fu">Sys.Date</span>())</span></code></pre></div>
-<pre><code>##         date   fraction      phase    angle
-## 1 2024-10-04 0.01388552 0.03759599 -1.06643</code></pre>
+<pre><code>##         date  fraction     phase     angle
+## 1 2024-10-08 0.2368753 0.1617989 -1.384721</code></pre>
 <p>Donde:</p>
 <ul>
 <li>0: Luna Nueva</li>
@@ -302,7 +302,7 @@ div.csl-indent {
 <span id="cb22-12"><a href="fase-lunar.html#cb22-12" tabindex="-1"></a>     <span class="at">tol =</span> <span class="fl">0.2</span>,</span>
 <span id="cb22-13"><a href="fase-lunar.html#cb22-13" tabindex="-1"></a>     <span class="at">cex =</span> .<span class="dv">7</span>,</span>
 <span id="cb22-14"><a href="fase-lunar.html#cb22-14" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Registros nocturnos de L. gymnocercus en horario solar&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="100%" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-60-1.png" width="100%" /></p>
 </div>
 <div id="iluminación-de-la-luna" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> Iluminación de la Luna<a href="fase-lunar.html#iluminación-de-la-luna" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -351,7 +351,7 @@ div.csl-indent {
 <span id="cb27-18"><a href="fase-lunar.html#cb27-18" tabindex="-1"></a><span class="fu">mtext</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span> <span class="sc">*</span> pi, pi <span class="sc">/</span><span class="dv">2</span>), <span class="at">text =</span> <span class="fu">c</span>(<span class="st">&quot;🌑</span><span class="sc">\n</span><span class="st">New Moon&quot;</span>, <span class="st">&quot;🌓</span><span class="sc">\n</span><span class="st">First Quarter&quot;</span>, <span class="st">&quot;🌕</span><span class="sc">\n</span><span class="st">Full Moon&quot;</span>, <span class="st">&quot;🌗</span><span class="sc">\n</span><span class="st">Last Quarter&quot;</span>, <span class="st">&quot;🌑</span><span class="sc">\n</span><span class="st">New Moon&quot;</span>), <span class="at">padj =</span> <span class="dv">1</span>)</span>
 <span id="cb27-19"><a href="fase-lunar.html#cb27-19" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span><span class="sc">*</span>pi), <span class="at">lty=</span><span class="dv">3</span>)</span>
 <span id="cb27-20"><a href="fase-lunar.html#cb27-20" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&#39;bottomright&#39;</span>, <span class="fu">c</span>(<span class="st">&quot;Aaxi&quot;</span>, <span class="st">&quot;Sgou&quot;</span>), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;#8ac926&quot;</span>, <span class="st">&quot;#1982c4&quot;</span>), <span class="at">bg=</span><span class="st">&#39;white&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
 <p>Y se obtienen los valores de estimación de overlap, demostrando una alta superposición en las curvas de densidad y por lo tanto, una mayor similitud en su actividad.</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="fase-lunar.html#cb28-1" tabindex="-1"></a><span class="fu">overlapEst</span>(tmp1<span class="sc">$</span>moon_phase,tmp2<span class="sc">$</span>moon_phase)</span></code></pre></div>
 <pre><code>##     Dhat1     Dhat4     Dhat5 
@@ -387,7 +387,7 @@ div.csl-indent {
 <span id="cb30-25"><a href="fase-lunar.html#cb30-25" tabindex="-1"></a>  <span class="fu">mtext</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span> <span class="sc">*</span> pi, pi <span class="sc">/</span> <span class="dv">2</span>), <span class="at">text =</span> <span class="fu">c</span>(<span class="st">&quot;🌑</span><span class="sc">\n</span><span class="st">New Moon&quot;</span>, <span class="st">&quot;🌓</span><span class="sc">\n</span><span class="st">First Quarter&quot;</span>, <span class="st">&quot;🌕</span><span class="sc">\n</span><span class="st">Full Moon&quot;</span>, <span class="st">&quot;🌗</span><span class="sc">\n</span><span class="st">Last Quarter&quot;</span>, <span class="st">&quot;🌑</span><span class="sc">\n</span><span class="st">New Moon&quot;</span>), <span class="at">padj =</span> <span class="dv">1</span>)</span>
 <span id="cb30-26"><a href="fase-lunar.html#cb30-26" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span> <span class="sc">*</span> pi), <span class="at">lty =</span> <span class="dv">3</span>)</span>
 <span id="cb30-27"><a href="fase-lunar.html#cb30-27" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-40-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-40-3.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-40-4.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-70-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-70-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-70-3.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-70-4.png" width="672" /></p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="fase-lunar.html#cb31-1" tabindex="-1"></a><span class="co"># Para eliminar todas las variables del entorno.</span></span>
 <span id="cb31-2"><a href="fase-lunar.html#cb31-2" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
 
