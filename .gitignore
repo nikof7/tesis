@@ -3,4 +3,5 @@
 .RData
 .Ruserdata
 data
-buckup
+buckup/modelo_interacciones.RData
+buckup/modelo_aditivo.RData
