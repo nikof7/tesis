@@ -1,0 +1,83 @@
+# Coberturas
+
+En este capítulo se detallará el procesamiento de los datos de coberturas de hábitat.
+
+Las clases de coberturas se pueden dividir en dos tipos:
+
+### Clases de Cobertura Simples
+
+Se refieren a categorías específicas de uso del suelo y vegetación.
+
+| Clase | Descripción |
+|-------|-------------|
+| PLNT  | Plantaciones forestales (incluye mayormente plantaciones _sensu stricto_, en menor medida cortinas forestales, raramente sombra ornamental y frutales) |
+| FRST  | Monte Nativo (en muchos casos incluye montes nativos con presencia de exóticas, así como parches de monte de _Acacia_) |
+| SHRB  | Matorrales y Pajonales (incluye arbustales, áreas arboladas abiertas de nativas o exóticas con dosel discontinuo, pajonales, caraguatales y juncales altos) |
+| OPEN  | Áreas Abiertas (praderas, pasturas sembradas, cultivos, dunas, playas, arenales, suelo o roca desnudo, caminos) |
+| VWTR  | Vegetación inundada o en cuerpos de agua |
+| OWTR  | Cuerpos de agua abiertos |
+| URBN  | Áreas urbanas construidas (no se utiliza esta información, en cambio, se prefiere el uso del conteo de techos) |
+
+### Clases de Cobertura Agregadas
+
+Estas combinan categorías simples para representar de manera más generalizada los diferentes tipos de cobertura de hábitat.
+
+| Clase | Descripción |
+|-------|-------------|
+| WTLD  | Humedales (VWTR + OWTR) |
+| CLSD  | Vegetación cerrada (PLNT + FRST + SHRB) |
+| WOOD  | Áreas Arboladas, de dosel continuo/denso (FRST + PLNT) |
+| HSIST  | Índice de Shannon para diversidad de paisaje |
+
+
+### Procesamiento de datos
+
+Primero, se cargan las planillas proporcionadas por Ariel Farías, tanto a nivel de sistema como de cámara.
+
+```{r}
+variables_system_df <- read_rds("data_processed/variables_system_df.RData") %>% 
+  rename_with(~ paste0(.,"_sys"), -system) # Le agergo la terminación sys al nombre de todas las colummas.
+
+variables_camera_df <- read_rds("data_processed/variables_camera_df.RData") %>% 
+  rename_with(~ paste0(.,"_cam"), -site) %>% # Le agergo la terminación sys al nombre de todas las colummas.
+  rename(camera = site) %>% 
+  mutate(system = substr(camera, 1, 4)) %>% 
+  select(system, everything())
+```
+
+Lo siguiente es unir ambas planillas en una sola, de esta forma la generación de kernels de actividad será más fácil.
+
+```{r}
+variables_df <- variables_camera_df %>% 
+  left_join(variables_system_df, by = join_by(system))
+```
+
+```{r echo=FALSE}
+paged_table(head(variables_df))
+```
+
+```{r echo=FALSE, eval=FALSE}
+save(variables_df, file = "data_processed/variables_df.RData")
+```
+
+Por último queda añadir estos datos a la planilla con todos los datos. Para recordar, la planilla general luce así:
+
+```{r}
+load("data_processed/datos_procesados_v3.RData")
+paged_table(head(data))
+```
+
+Y pasemos a unirlos.
+
+```{r eval=FALSE}
+data <- data %>% 
+  left_join(variables_df, by = join_by(system, camera))
+```
+
+```{r eval=FALSE}
+save(data, file="data_processed/datos_procesados_v4.RData")
+```
+
+```{r echo=FALSE}
+rm(list = ls())
+```

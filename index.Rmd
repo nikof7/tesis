@@ -12,9 +12,8 @@ link-citations: yes
 
 # Acerca de
 
-Este documento ha sido creado utilizando `bookdown` para proporcionar una explicación detallada y técnica del código utilizado en la tesis. La cual se centra en el análisis de factores bióticos y abióticos que influyen en los patrones de actividad de mamíferos medianos a grandes en áreas protegidas del sur-este de Uruguay. Además, incluye una exploración de datos, paquetes de R y métodos de cálculo relevantes.
+Este documento ha sido creado utilizando `bookdown` para dar una explicación detallada del código utilizado en la tesis. La cual se centra en el análisis de factores bióticos y abióticos que influyen en los patrones de actividad de mamíferos medianos a grandes en áreas protegidas del sur-este de Uruguay. Además, incluye una exploración de datos, paquetes de R y métodos de cálculo relevantes.
 
-El objetivo es ofrecer una explicación lo más completa para comprender el análisis y los procedimientos utilizados, abarcando la preparación de datos, exploración e interpretación de resultados.
 
 ```{r, setup, include=FALSE}
 source("functions/setup.R")

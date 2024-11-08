@@ -1,0 +1,41 @@
+# Carga de Datos
+
+## Observaciones en Cámaras Trampa
+
+Los datos utilizados en este análisis provienen del proyecto “De rasgos a paisajes de miedo: una aproximación funcional a los impactos no letales de los perros sobre los mamíferos silvestres en áreas protegidas de Uruguay”. Este proyecto llevó a cabo un relevamiento en 7 áreas protegidas de la región sureste de Uruguay de forma intermitente entre los años 20XX y 20XX.
+
+## Preparación de Datos
+
+Para la preparación de los datos, se crea una función que carga los datos y los filtra para retener únicamente la información relevante. Además, se agregan las coordenadas de latitud y longitud correspondientes a cada área protegida.
+
+Los criterios de filtrado son los siguientes:
+
+- Solo se incluyen mamíferos y pares de especies de interés.
+  - Cervidae
+    - _Axis axis_
+    - _Subulo [=Mazama] gouazoubira_
+  - Canidae
+    - _Cerdocyon thous_
+    - _Lycalopex gymnocercus_
+  - Felidae
+    - _Leopardus geoffroyi_
+    - _Leopardus wiedii_
+  - Dasypodidae
+    - _Dasypus novemcinctus_
+    - _Dasypus septecinctus_
+- Del set de datos se incluyen todas las áreas protegidas (AP), excepto Quebrada de los Cuervos.
+
+```{r}
+# Carga de datos procesados
+load("data_processed/datos_procesados_v0.RData")
+```
+
+```{r echo=FALSE}
+# Mostrar las primeras filas de los datos en una tabla paginada
+paged_table(head(data))
+```
+
+```{r echo=FALSE}
+rm(list = ls())
+```
+

@@ -1,0 +1,121 @@
+# Variables climáticas
+
+## Procesamiento de datos
+
+Jennifer Gonzalez-Buve solicitó a INUMET datos de precipitaciones y temperatura para el área de estudio. Nos compartieron precipitaciones de varias localidades y las temperaturas mínimas y máximas de la estación Rocha.
+
+### Temperatura
+
+```{r}
+temperature <- read.csv(file = "data/temperatura.csv") %>% 
+  drop_na() %>% 
+  mutate(fecha = dmy(fecha))
+```
+
+```{r echo=FALSE}
+paged_table(head(temperature))
+```
+
+
+### Precipitaciones
+
+```{r}
+prec <- read_csv(file = "data/precipitaciones.csv", col_types = "cncc") %>% 
+  drop_na(mm) %>% 
+  mutate(mm = ifelse(mm!="TRAZA", mm, NA)) %>% 
+  drop_na(mm) %>% 
+  mutate(mm = as.double(mm),
+         fecha = mdy(fecha))
+```
+
+```{r echo=FALSE}
+paged_table(head(prec))
+unique(prec$estacion)
+```
+
+
+## Alternativa open-meteo
+
+Este paquete se basa en el uso de modelos meteorológicos reconocidos y ampliamente validados, como el Global Forecast System (GFS) de NOAA (Administración Nacional Oceánica y Atmosférica de EE.UU.), el modelo europeo ECMWF (Centro Europeo para las Previsiones Meteorológicas a Medio Plazo). Estos modelos son desarrollados por agencias meteorológicas de renombre y se actualizan constantemente con datos satelitales y observaciones terrestres, lo que garantiza alta fiabilidad.
+
+Open-meteo es una API gratuita y posee datos climáticos tanto históricos como en vivo. Se pueden descargar de forma diaria u cada cierta cantidad de horas.
+
+Es interesante porque ofrece datos a nivel local, es decir se pueden obtener para cada área protegida.
+
+Otro punto relevante es que ofrece el código climático 4677 para el sitio donde se este consultando. Este código es conformado por la [Organizción Mundial de Meteorología (WMO)](https://wmo.int/) y ofrece una categoría para el clima.
+
+Existen varios códigos y se pueden revisar [noaa.gov](https://www.nodc.noaa.gov/archive/arc0021/0002199/1.1/data/0-data/HTML/WMO-CODE/WMO4677.HTM). Por ejemplo, los siguientes son grupos de códigos que representan varios tipos de eventos climáticos:
+- 40-49: Niebla
+- 60-69: Lluvia
+- 80-99: Tormentas
+
+Pasemos a probar el paquete con nuestros datos.
+
+```{r}
+load("data_processed/datos_procesados_v4.RData")
+```
+
+```{r}
+fechas_con_registro <- data %>% 
+  mutate(primera_fecha = as_date(min(datetime)),
+         ultima_fecha = as_date(max(datetime))) %>%
+  select(sitio=site, latitud = lat, longitud = lon, primera_fecha, ultima_fecha) %>% 
+  distinct()
+```
+
+
+```{r}
+library(openmeteo)
+datos_clima <- tibble("sitio" = character(),
+                      "date" = as.Date(character()),
+                      "daily_weather_code" = integer())
+
+for (sitio in 1:nrow(fechas_con_registro)) {
+  nombre_sitio <- fechas_con_registro[sitio,]$sitio
+  latitud <- fechas_con_registro[sitio,]$latitud
+  longitud <- fechas_con_registro[sitio,]$longitud
+  primera_fecha <- fechas_con_registro[sitio,]$primera_fecha
+  ultima_fecha <- fechas_con_registro[sitio,]$ultima_fecha
+  
+  datos_clima_sitio <- weather_history(c(latitud, longitud),
+                    start = primera_fecha,
+                    end = ultima_fecha,
+                    daily = c("weather_code"),
+                    timezone = "America/Montevideo"
+    ) %>% 
+    mutate(sitio = nombre_sitio) %>%
+    select(sitio, everything())
+  
+  datos_clima <- datos_clima %>% 
+    add_row(datos_clima_sitio)
+}
+save(datos_clima, file="data_processed/datos_clima.RData")
+```
+
+Para todo el rango temporal y para todas las áreas del trabajo se obtuvieron 12 códigos de clima diferentes:
+
+```{r echo=FALSE}
+datos_clima %>% 
+  distinct(daily_weather_code) %>% 
+  arrange(daily_weather_code) %>% pull()
+```
+Estos significan:
+- **0**: Cielo despejado
+- **1**: Mayormente despejado
+- **2**: Parcialmente nublado
+- **3**: Nublado
+- **51**: Llovizna ligera
+- **53**: Llovizna moderada
+- **55**: Llovizna intensa
+- **61**: Lluvia ligera
+- **63**: Lluvia moderada
+- **65**: Lluvia intensa
+- **71**: Lluvia con nieve ligera
+- **73**: Lluvia con nieve moderada
+
+Estos dos últimos códigos de "nieve" podrían hacer refrencia a granizo o agua nieve.
+
+
+```{r echo=FALSE}
+rm(list = ls())
+```
