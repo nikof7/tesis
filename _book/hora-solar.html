@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Hora solar | Tesis</title>
+  <meta name="description" content="Donde se irá desarrollando la tésis." />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Hora solar | Tesis" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Donde se irá desarrollando la tésis." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Hora solar | Tesis" />
+  
+  <meta name="twitter:description" content="Donde se irá desarrollando la tésis." />
+  
+
+<meta name="author" content="Nicolás Fernández-Sauleda" />
+
+
+<meta name="date" content="2024-11-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="exploración-inicial-de-los-datos.html"/>
+<link rel="next" href="categorías-de-nicho-temporal.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Tesis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Acerca de</a></li>
+<li class="chapter" data-level="2" data-path="carga-de-datos.html"><a href="carga-de-datos.html"><i class="fa fa-check"></i><b>2</b> Carga de Datos</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="carga-de-datos.html"><a href="carga-de-datos.html#observaciones-en-cámaras-trampa"><i class="fa fa-check"></i><b>2.1</b> Observaciones en Cámaras Trampa</a></li>
+<li class="chapter" data-level="2.2" data-path="carga-de-datos.html"><a href="carga-de-datos.html#preparación-de-datos"><i class="fa fa-check"></i><b>2.2</b> Preparación de Datos</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="exploración-inicial-de-los-datos.html"><a href="exploración-inicial-de-los-datos.html"><i class="fa fa-check"></i><b>3</b> Exploración inicial de los datos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="exploración-inicial-de-los-datos.html"><a href="exploración-inicial-de-los-datos.html#cantidad-de-registros-independientes-por-especie-y-área"><i class="fa fa-check"></i><b>3.1</b> Cantidad de registros independientes por especie y área</a></li>
+<li class="chapter" data-level="3.2" data-path="exploración-inicial-de-los-datos.html"><a href="exploración-inicial-de-los-datos.html#sistemas-y-cámaras"><i class="fa fa-check"></i><b>3.2</b> Sistemas y cámaras</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="hora-solar.html"><a href="hora-solar.html"><i class="fa fa-check"></i><b>4</b> Hora solar</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="hora-solar.html"><a href="hora-solar.html#paquete-circular"><i class="fa fa-check"></i><b>4.1</b> Paquete circular</a></li>
+<li class="chapter" data-level="4.2" data-path="hora-solar.html"><a href="hora-solar.html#paquete-activity"><i class="fa fa-check"></i><b>4.2</b> Paquete activity</a></li>
+<li class="chapter" data-level="4.3" data-path="hora-solar.html"><a href="hora-solar.html#comparación-de-resultados"><i class="fa fa-check"></i><b>4.3</b> Comparación de resultados</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="hora-solar.html"><a href="hora-solar.html#conclusión"><i class="fa fa-check"></i><b>4.3.1</b> Conclusión</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="categorías-de-nicho-temporal.html"><a href="categorías-de-nicho-temporal.html"><i class="fa fa-check"></i><b>5</b> Categorías de nicho temporal</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="categorías-de-nicho-temporal.html"><a href="categorías-de-nicho-temporal.html#noche-día-y-crepúsculo"><i class="fa fa-check"></i><b>5.1</b> Noche, Día y Crepúsculo</a></li>
+<li class="chapter" data-level="5.2" data-path="categorías-de-nicho-temporal.html"><a href="categorías-de-nicho-temporal.html#diurno-y-nocturno"><i class="fa fa-check"></i><b>5.2</b> Diurno y nocturno</a></li>
+<li class="chapter" data-level="5.3" data-path="categorías-de-nicho-temporal.html"><a href="categorías-de-nicho-temporal.html#conclusión-1"><i class="fa fa-check"></i><b>5.3</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="fase-lunar.html"><a href="fase-lunar.html"><i class="fa fa-check"></i><b>6</b> Fase lunar</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="fase-lunar.html"><a href="fase-lunar.html#preparación-de-datos-1"><i class="fa fa-check"></i><b>6.1</b> Preparación de datos</a></li>
+<li class="chapter" data-level="6.2" data-path="fase-lunar.html"><a href="fase-lunar.html#iluminación-de-la-luna"><i class="fa fa-check"></i><b>6.2</b> Iluminación de la Luna</a></li>
+<li class="chapter" data-level="6.3" data-path="fase-lunar.html"><a href="fase-lunar.html#overlap-utilizando-fase-lunar"><i class="fa fa-check"></i><b>6.3</b> Overlap utilizando fase lunar</a></li>
+<li class="chapter" data-level="6.4" data-path="fase-lunar.html"><a href="fase-lunar.html#kernels-de-superposición-para-pares-de-especies"><i class="fa fa-check"></i><b>6.4</b> Kernels de Superposición para Pares de Especies</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tasa-de-registro-vacunos-y-perros-domésticos.html"><a href="tasa-de-registro-vacunos-y-perros-domésticos.html"><i class="fa fa-check"></i><b>7</b> Tasa de registro vacunos y perros domésticos</a>
+<ul>
+<li class="chapter" data-level="7.0.1" data-path="tasa-de-registro-vacunos-y-perros-domésticos.html"><a href="tasa-de-registro-vacunos-y-perros-domésticos.html#nivel-sistema"><i class="fa fa-check"></i><b>7.0.1</b> Nivel sistema</a></li>
+<li class="chapter" data-level="7.0.2" data-path="tasa-de-registro-vacunos-y-perros-domésticos.html"><a href="tasa-de-registro-vacunos-y-perros-domésticos.html#nivel-camara"><i class="fa fa-check"></i><b>7.0.2</b> Nivel camara</a></li>
+<li class="chapter" data-level="7.0.3" data-path="tasa-de-registro-vacunos-y-perros-domésticos.html"><a href="tasa-de-registro-vacunos-y-perros-domésticos.html#tabla-única"><i class="fa fa-check"></i><b>7.0.3</b> Tabla única</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="coberturas.html"><a href="coberturas.html"><i class="fa fa-check"></i><b>8</b> Coberturas</a>
+<ul>
+<li class="chapter" data-level="8.0.1" data-path="coberturas.html"><a href="coberturas.html#clases-de-cobertura-simples"><i class="fa fa-check"></i><b>8.0.1</b> Clases de Cobertura Simples</a></li>
+<li class="chapter" data-level="8.0.2" data-path="coberturas.html"><a href="coberturas.html#clases-de-cobertura-agregadas"><i class="fa fa-check"></i><b>8.0.2</b> Clases de Cobertura Agregadas</a></li>
+<li class="chapter" data-level="8.0.3" data-path="coberturas.html"><a href="coberturas.html#procesamiento-de-datos"><i class="fa fa-check"></i><b>8.0.3</b> Procesamiento de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="variables-climáticas.html"><a href="variables-climáticas.html"><i class="fa fa-check"></i><b>9</b> Variables climáticas</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="variables-climáticas.html"><a href="variables-climáticas.html#procesamiento-de-datos-1"><i class="fa fa-check"></i><b>9.1</b> Procesamiento de datos</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="variables-climáticas.html"><a href="variables-climáticas.html#temperatura"><i class="fa fa-check"></i><b>9.1.1</b> Temperatura</a></li>
+<li class="chapter" data-level="9.1.2" data-path="variables-climáticas.html"><a href="variables-climáticas.html#precipitaciones"><i class="fa fa-check"></i><b>9.1.2</b> Precipitaciones</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="variables-climáticas.html"><a href="variables-climáticas.html#alternativa-open-meteo"><i class="fa fa-check"></i><b>9.2</b> Alternativa open-meteo</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="kernels-de-actividad.html"><a href="kernels-de-actividad.html"><i class="fa fa-check"></i><b>10</b> Kernels de actividad</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="kernels-de-actividad.html"><a href="kernels-de-actividad.html#exploración-de-estresores-a-nivel-de-cámara-y-sistema"><i class="fa fa-check"></i><b>10.1</b> Exploración de estresores a nivel de cámara y sistema</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="kernels-de-actividad.html"><a href="kernels-de-actividad.html#conclusión-2"><i class="fa fa-check"></i><b>10.1.1</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="kernels-de-actividad.html"><a href="kernels-de-actividad.html#densidades-de-kernel"><i class="fa fa-check"></i><b>10.2</b> Densidades de kernel</a></li>
+<li class="chapter" data-level="10.3" data-path="kernels-de-actividad.html"><a href="kernels-de-actividad.html#diseño-y-generación-de-gráficos"><i class="fa fa-check"></i><b>10.3</b> Diseño y generación de gráficos</a></li>
+<li class="chapter" data-level="10.4" data-path="kernels-de-actividad.html"><a href="kernels-de-actividad.html#calculos-de-overlap"><i class="fa fa-check"></i><b>10.4</b> Calculos de overlap</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="exploración-general-de-modelos.html"><a href="exploración-general-de-modelos.html"><i class="fa fa-check"></i><b>11</b> Exploración general de modelos</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="exploración-general-de-modelos.html"><a href="exploración-general-de-modelos.html#modelo-lineal-simple"><i class="fa fa-check"></i><b>11.1</b> Modelo lineal simple</a></li>
+<li class="chapter" data-level="11.2" data-path="exploración-general-de-modelos.html"><a href="exploración-general-de-modelos.html#incluir-interacciones"><i class="fa fa-check"></i><b>11.2</b> Incluir interacciones</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html"><i class="fa fa-check"></i><b>12</b> Modelos para Jenni</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#preparación-de-datos-2"><i class="fa fa-check"></i><b>12.1</b> Preparación de datos</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#tasa-de-registro"><i class="fa fa-check"></i><b>12.1.1</b> Tasa de registro</a></li>
+<li class="chapter" data-level="12.1.2" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#estado-de-los-datos"><i class="fa fa-check"></i><b>12.1.2</b> Estado de los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#modelo-generalidades"><i class="fa fa-check"></i><b>12.2</b> Modelo generalidades</a></li>
+<li class="chapter" data-level="12.3" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#modelo-utilizando-brms"><i class="fa fa-check"></i><b>12.3</b> Modelo utilizando brms</a></li>
+<li class="chapter" data-level="12.4" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#modelo-con-interacciones"><i class="fa fa-check"></i><b>12.4</b> Modelo con interacciones</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="anexo-1.html"><a href="anexo-1.html"><i class="fa fa-check"></i><b>13</b> Anexo 1</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/nikof7/tesis" target="blank">Nicolás Fernández-Sauleda</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tesis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hora-solar" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Hora solar<a href="hora-solar.html#hora-solar" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>En este apartado se convertiran todos los registros independientes de hora reloj a hora solar. Se explora el uso de dos paquetes para este fin, se selecciona uno y luego se comparan los datos obtenidos con otros generados por el Laboratorio.</p>
+<p>Primero, cargamos las funciones necesarias:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="hora-solar.html#cb9-1" tabindex="-1"></a><span class="co"># Herramientas</span></span>
+<span id="cb9-2"><a href="hora-solar.html#cb9-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;functions/convert_hours.R&quot;</span>)</span></code></pre></div>
+<div id="paquete-circular" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Paquete circular<a href="hora-solar.html#paquete-circular" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Vamos a calcular la hora solar de todos los registros utilizando la metodología de <span class="citation">Nouvellet et al. (<a href="#ref-Nouvellet2011">2011</a>)</span>, donde se utiliza el paquete <code>circular</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="hora-solar.html#cb10-1" tabindex="-1"></a><span class="fu">library</span>(suntools)</span>
+<span id="cb10-2"><a href="hora-solar.html#cb10-2" tabindex="-1"></a><span class="fu">library</span>(overlap)</span></code></pre></div>
+<p>Preparamos los datos y agregamos una columna <code>sunTime_result</code> para almacenar los valores de la hora solar.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="hora-solar.html#cb11-1" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb11-2"><a href="hora-solar.html#cb11-2" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/datos_procesados_v0.RData&quot;</span>)</span>
+<span id="cb11-3"><a href="hora-solar.html#cb11-3" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="hora-solar.html#cb11-4" tabindex="-1"></a><span class="co"># Process data</span></span>
+<span id="cb11-5"><a href="hora-solar.html#cb11-5" tabindex="-1"></a>overlap_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb11-6"><a href="hora-solar.html#cb11-6" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-7"><a href="hora-solar.html#cb11-7" tabindex="-1"></a>    <span class="at">clock_time =</span> <span class="fu">hour_to_radians</span>(datetime),</span>
+<span id="cb11-8"><a href="hora-solar.html#cb11-8" tabindex="-1"></a>    <span class="at">dates =</span> <span class="fu">as.POSIXct</span>(datetime, <span class="at">tz =</span> <span class="st">&quot;America/Montevideo&quot;</span>),</span>
+<span id="cb11-9"><a href="hora-solar.html#cb11-9" tabindex="-1"></a>    <span class="at">sun_time_result =</span> <span class="cn">NA</span></span>
+<span id="cb11-10"><a href="hora-solar.html#cb11-10" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb11-11"><a href="hora-solar.html#cb11-11" tabindex="-1"></a>  <span class="fu">select</span>(site, datetime, sp, clock_time, dates, lat, lon, sun_time_result)</span></code></pre></div>
+<p>Luego, calculamos la hora solar para cada registro y almacenamos el resultado.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="hora-solar.html#cb12-1" tabindex="-1"></a>start_time1 <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb12-2"><a href="hora-solar.html#cb12-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(overlap_data)) {</span>
+<span id="cb12-3"><a href="hora-solar.html#cb12-3" tabindex="-1"></a>  ClockTime <span class="ot">&lt;-</span> overlap_data<span class="sc">$</span>clock_time[i]</span>
+<span id="cb12-4"><a href="hora-solar.html#cb12-4" tabindex="-1"></a>  Dates <span class="ot">&lt;-</span> overlap_data<span class="sc">$</span>dates[i]</span>
+<span id="cb12-5"><a href="hora-solar.html#cb12-5" tabindex="-1"></a>  Coords <span class="ot">&lt;-</span> sp<span class="sc">::</span><span class="fu">SpatialPoints</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(overlap_data<span class="sc">$</span>lat[i], overlap_data<span class="sc">$</span>lon[i]), <span class="at">nrow=</span><span class="dv">1</span>), <span class="at">proj4string=</span>sp<span class="sc">::</span><span class="fu">CRS</span>(<span class="st">&quot;+proj=longlat +datum=WGS84&quot;</span>))</span>
+<span id="cb12-6"><a href="hora-solar.html#cb12-6" tabindex="-1"></a>  overlap_data[i, <span class="st">&quot;sun_time_result&quot;</span>] <span class="ot">&lt;-</span> <span class="fu">sunTime</span>(ClockTime, Dates, Coords)</span>
+<span id="cb12-7"><a href="hora-solar.html#cb12-7" tabindex="-1"></a>}</span>
+<span id="cb12-8"><a href="hora-solar.html#cb12-8" tabindex="-1"></a>end_time1 <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb12-9"><a href="hora-solar.html#cb12-9" tabindex="-1"></a><span class="co">#save(overlap_data, file = &quot;data_processed/overlap_data.RData&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="hora-solar.html#cb13-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/overlap_data.RData&quot;</span>)</span></code></pre></div>
+<p>Ahora se puede observar el resultado en la columna “sun_time_result”, estos valores de “tiempos solares” están en radianes, donde <span class="math inline">\(\frac{\pi}{2}\)</span> corresponde al amanecer y <span class="math inline">\(\frac{3\pi}{2}\)</span> al atardecer.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="hora-solar.html#cb14-1" tabindex="-1"></a><span class="fu">paged_table</span>(<span class="fu">head</span>(overlap_data))</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["site"],"name":[1],"type":["chr"],"align":["left"]},{"label":["datetime"],"name":[2],"type":["dttm"],"align":["right"]},{"label":["sp"],"name":[3],"type":["chr"],"align":["left"]},{"label":["clock_time"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["dates"],"name":[5],"type":["dttm"],"align":["right"]},{"label":["lat"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["lon"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["sun_time_result"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"SM","2":"2023-02-07 07:56:22","3":"Btau","4":"2.078542","5":"2023-02-07 07:56:22","6":"-33.72585","7":"-53.58035","8":"2.406637","_rn_":"1"},{"1":"SM","2":"2023-02-06 15:05:08","3":"Btau","4":"3.949389","5":"2023-02-06 15:05:08","6":"-33.72585","7":"-53.58035","8":"3.889757","_rn_":"2"},{"1":"SM","2":"2023-02-06 12:13:33","3":"Btau","4":"3.200716","5":"2023-02-06 12:13:33","6":"-33.72585","7":"-53.58035","8":"3.297611","_rn_":"3"},{"1":"SM","2":"2023-02-06 08:07:45","3":"Btau","4":"2.128211","5":"2023-02-06 08:07:45","6":"-33.72585","7":"-53.58035","8":"2.449339","_rn_":"4"},{"1":"SM","2":"2023-02-05 21:59:46","3":"Btau","4":"5.758568","5":"2023-02-05 21:59:46","6":"-33.72585","7":"-53.58035","8":"5.754307","_rn_":"5"},{"1":"SM","2":"2023-02-05 18:00:13","3":"Btau","4":"4.713334","5":"2023-02-05 18:00:13","6":"-33.72585","7":"-53.58035","8":"4.488375","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="paquete-activity" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Paquete activity<a href="hora-solar.html#paquete-activity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El paquete activity ofrece una alternativa mucho más rápida para calcular la hora solar.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="hora-solar.html#cb15-1" tabindex="-1"></a><span class="fu">library</span>(activity)</span></code></pre></div>
+<p>Solamente aplicando la función <code>solartime</code> ya se obtiene la hora solar de cada punto en radianes.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="hora-solar.html#cb16-1" tabindex="-1"></a>start_time2 <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb16-2"><a href="hora-solar.html#cb16-2" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">solartime</span>(data<span class="sc">$</span>datetime,</span>
+<span id="cb16-3"><a href="hora-solar.html#cb16-3" tabindex="-1"></a>          data<span class="sc">$</span>lat,</span>
+<span id="cb16-4"><a href="hora-solar.html#cb16-4" tabindex="-1"></a>          data<span class="sc">$</span>lon,</span>
+<span id="cb16-5"><a href="hora-solar.html#cb16-5" tabindex="-1"></a>          <span class="at">tz=</span><span class="sc">-</span><span class="dv">3</span>,</span>
+<span id="cb16-6"><a href="hora-solar.html#cb16-6" tabindex="-1"></a>          <span class="at">format =</span> <span class="st">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span>
+<span id="cb16-7"><a href="hora-solar.html#cb16-7" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="hora-solar.html#cb16-8" tabindex="-1"></a>data<span class="sc">$</span>solar <span class="ot">&lt;-</span> tmp<span class="sc">$</span>solar</span>
+<span id="cb16-9"><a href="hora-solar.html#cb16-9" tabindex="-1"></a>data<span class="sc">$</span>clock <span class="ot">&lt;-</span> tmp<span class="sc">$</span>clock</span>
+<span id="cb16-10"><a href="hora-solar.html#cb16-10" tabindex="-1"></a>end_time2 <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="hora-solar.html#cb17-1" tabindex="-1"></a><span class="fu">save</span>(data, <span class="at">file =</span> <span class="st">&quot;data_processed/datos_procesados_v1.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="hora-solar.html#cb18-1" tabindex="-1"></a><span class="fu">paged_table</span>(<span class="fu">head</span>(data))</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["site"],"name":[1],"type":["chr"],"align":["left"]},{"label":["camera"],"name":[2],"type":["chr"],"align":["left"]},{"label":["lat"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["lon"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["datetime"],"name":[5],"type":["dttm"],"align":["right"]},{"label":["sp"],"name":[6],"type":["chr"],"align":["left"]},{"label":["solar"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["clock"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"SM","2":"SM06_3","3":"-33.72585","4":"-53.58035","5":"2023-02-07 07:56:22","6":"Btau","7":"2.135101","8":"2.078542","_rn_":"1"},{"1":"SM","2":"SM06_2","3":"-33.72585","4":"-53.58035","5":"2023-02-06 15:05:08","6":"Btau","7":"3.810810","8":"3.949389","_rn_":"2"},{"1":"SM","2":"SM01_1","3":"-33.72585","4":"-53.58035","5":"2023-02-06 12:13:33","6":"Btau","7":"3.141334","8":"3.200716","_rn_":"3"},{"1":"SM","2":"SM01_1","3":"-33.72585","4":"-53.58035","5":"2023-02-06 08:07:45","6":"Btau","7":"2.182284","8":"2.128211","_rn_":"4"},{"1":"SM","2":"SM01_1","3":"-33.72585","4":"-53.58035","5":"2023-02-05 21:59:46","6":"Btau","7":"5.578795","8":"5.758568","_rn_":"5"},{"1":"SM","2":"SM01_1","3":"-33.72585","4":"-53.58035","5":"2023-02-05 18:00:13","6":"Btau","7":"4.491674","8":"4.713334","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="comparación-de-resultados" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Comparación de resultados<a href="hora-solar.html#comparación-de-resultados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Vamos a comprar los resultados de ambos paquetes y cruzarlo con los datos que calculo Jenni. Aquí solo se comparan los datos de una especie (Ctho) en un área protegida (CP), solamente con el fin de poder visualizar mejor los resultados.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="hora-solar.html#cb19-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/comparando_suntimes/jenni_datos.RData&quot;</span>)</span>
+<span id="cb19-2"><a href="hora-solar.html#cb19-2" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/comparando_suntimes/activity_datos.RData&quot;</span>)</span>
+<span id="cb19-3"><a href="hora-solar.html#cb19-3" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/comparando_suntimes/overlap_datos.RData&quot;</span>)</span>
+<span id="cb19-4"><a href="hora-solar.html#cb19-4" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="hora-solar.html#cb19-5" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(jen, act) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-6"><a href="hora-solar.html#cb19-6" tabindex="-1"></a>  <span class="fu">left_join</span>(over) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-7"><a href="hora-solar.html#cb19-7" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">solar_overlap =</span> overlap_solar)</span>
+<span id="cb19-8"><a href="hora-solar.html#cb19-8" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="hora-solar.html#cb19-9" tabindex="-1"></a>df<span class="sc">$</span>ids <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>(<span class="fu">nrow</span>(df)<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb19-10"><a href="hora-solar.html#cb19-10" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="hora-solar.html#cb19-11" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb19-12"><a href="hora-solar.html#cb19-12" tabindex="-1"></a>  <span class="fu">select</span>(ids, <span class="fu">starts_with</span>(<span class="st">&quot;solar&quot;</span>))</span>
+<span id="cb19-13"><a href="hora-solar.html#cb19-13" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="hora-solar.html#cb19-14" tabindex="-1"></a>df_long <span class="ot">&lt;-</span> <span class="fu">melt</span>(df, <span class="at">id.vars =</span> <span class="st">&quot;ids&quot;</span>, <span class="at">measure.vars =</span> <span class="fu">c</span>(<span class="st">&quot;solar_jenni&quot;</span>, <span class="st">&quot;solar_activity&quot;</span>, <span class="st">&quot;solar_overlap&quot;</span>))</span>
+<span id="cb19-15"><a href="hora-solar.html#cb19-15" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="hora-solar.html#cb19-16" tabindex="-1"></a><span class="fu">ggplot</span>(df_long, <span class="fu">aes</span>(<span class="at">x =</span> ids, <span class="at">y =</span> value, <span class="at">color =</span> variable, <span class="at">group =</span> variable)) <span class="sc">+</span></span>
+<span id="cb19-17"><a href="hora-solar.html#cb19-17" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb19-18"><a href="hora-solar.html#cb19-18" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Comparación de Métodos&quot;</span>,</span>
+<span id="cb19-19"><a href="hora-solar.html#cb19-19" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;ID de registro&quot;</span>,</span>
+<span id="cb19-20"><a href="hora-solar.html#cb19-20" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Valor Solar&quot;</span>,</span>
+<span id="cb19-21"><a href="hora-solar.html#cb19-21" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;Método&quot;</span>) <span class="sc">+</span></span>
+<span id="cb19-22"><a href="hora-solar.html#cb19-22" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb19-23"><a href="hora-solar.html#cb19-23" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;steelblue&quot;</span>, <span class="st">&quot;firebrick&quot;</span>, <span class="st">&quot;orange2&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb19-24"><a href="hora-solar.html#cb19-24" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
+<p>También se puede ver la diferencia entre las horas reloj y solar.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="hora-solar.html#cb20-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/datos_procesados_v1.RData&quot;</span>)</span>
+<span id="cb20-2"><a href="hora-solar.html#cb20-2" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data</span>
+<span id="cb20-3"><a href="hora-solar.html#cb20-3" tabindex="-1"></a>tmp<span class="sc">$</span>clock <span class="ot">&lt;-</span> tmp<span class="sc">$</span>clock <span class="sc">*</span> <span class="dv">12</span><span class="sc">/</span>pi</span>
+<span id="cb20-4"><a href="hora-solar.html#cb20-4" tabindex="-1"></a>tmp<span class="sc">$</span>solar <span class="ot">&lt;-</span> tmp<span class="sc">$</span>solar <span class="sc">*</span> <span class="dv">12</span><span class="sc">/</span>pi</span>
+<span id="cb20-5"><a href="hora-solar.html#cb20-5" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="hora-solar.html#cb20-6" tabindex="-1"></a><span class="fu">ggplot</span>(tmp, <span class="fu">aes</span>(solar, clock)) <span class="sc">+</span></span>
+<span id="cb20-7"><a href="hora-solar.html#cb20-7" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb20-8"><a href="hora-solar.html#cb20-8" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">18</span>), <span class="at">color =</span> <span class="st">&quot;#0C14474D&quot;</span>) <span class="sc">+</span></span>
+<span id="cb20-9"><a href="hora-solar.html#cb20-9" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">18</span>), <span class="at">color =</span> <span class="st">&quot;#0C14474D&quot;</span>) <span class="sc">+</span></span>
+<span id="cb20-10"><a href="hora-solar.html#cb20-10" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb20-11"><a href="hora-solar.html#cb20-11" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;solar&quot;</span>,</span>
+<span id="cb20-12"><a href="hora-solar.html#cb20-12" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">12</span>, <span class="dv">18</span>, <span class="dv">24</span>),</span>
+<span id="cb20-13"><a href="hora-solar.html#cb20-13" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;6&quot;</span>, <span class="st">&quot;12&quot;</span>, <span class="st">&quot;18&quot;</span>, <span class="st">&quot;24&quot;</span>)</span>
+<span id="cb20-14"><a href="hora-solar.html#cb20-14" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-15"><a href="hora-solar.html#cb20-15" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb20-16"><a href="hora-solar.html#cb20-16" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;clock&quot;</span>,</span>
+<span id="cb20-17"><a href="hora-solar.html#cb20-17" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">12</span>, <span class="dv">18</span>, <span class="dv">24</span>),</span>
+<span id="cb20-18"><a href="hora-solar.html#cb20-18" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;6&quot;</span>, <span class="st">&quot;12&quot;</span>, <span class="st">&quot;18&quot;</span>, <span class="st">&quot;24&quot;</span>)</span>
+<span id="cb20-19"><a href="hora-solar.html#cb20-19" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
+<p>Se observa una diagonal marcada que representa la relación directa entre la hora solar y la hora del reloj civil. Además, se nota una forma de “rombo” en el gráfico, la cual puede surgir debido a la variación en la duración del día y la noche a lo largo del año. También hay algunos puntos aislados al inicio y al final de los ejes. Estos puntos representan registros tomados cerca de las 12 o cerca de las 24 horas (convertido a radianes).</p>
+<div id="conclusión" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Conclusión<a href="hora-solar.html#conclusión" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se utilizará el paquete <code>activity</code>. El método del paquete <code>overlap</code> es muy lento, lo mismo sucede con la metodología que se utiliza en el lab (con el nombre “jenni”), pero a este último se le añade una serie de pasos que lo hacen aún más lento y complejo.</p>
+
+</div>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Nouvellet2011" class="csl-entry">
+Nouvellet, P., G. S. A. Rasmussen, D. W. Macdonald, and F. Courchamp. 2011. <span>“Noisy Clocks and Silent Sunrises: Measurement Methods of Daily Activity Pattern.”</span> Edited by Anne Braae. <em>Journal of Zoology</em> 286 (3): 179–84. <a href="https://doi.org/10.1111/j.1469-7998.2011.00864.x">https://doi.org/10.1111/j.1469-7998.2011.00864.x</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="exploración-inicial-de-los-datos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="categorías-de-nicho-temporal.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/chapters/hora-solar.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

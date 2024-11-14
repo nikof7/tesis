@@ -1,0 +1,98 @@
+# Exploración inicial de los datos
+
+
+```{r}
+load("data_processed/datos_procesados_v0.RData")
+```
+
+Existe una n_registros_independientesidad de `r data %>% filter(sp %in% c("Lgym", "Ctho", "Lwie", "Lgeo", "Dsep", "Dnov", "Aaxi", "Mgou")) %>% nrow()` registros independientes de las especies de interés (sin contar ganado ni perros domésticos), en la siguiente grafica se puede observar la cantidad de registros por especie y se añade una linea vertical en n=50.
+
+## Cantidad de registros independientes por especie y área
+
+```{r echo=FALSE}
+temp_var <- data %>% 
+  filter(sp %in% c("Lgym", "Ctho", "Lwie", "Lgeo", "Dsep", "Dnov", "Aaxi", "Mgou")) %>% 
+  select(sp) %>% 
+  group_by(sp) %>% 
+  summarise("n_registros_independientes" = n()) %>% 
+  arrange(-n_registros_independientes) %>% 
+  select(sp, n_registros_independientes)
+ 
+ggplot() + geom_col(data = temp_var, aes(x = reorder(sp, n_registros_independientes), y = n_registros_independientes), position = "dodge", fill = "#2B7C85") + 
+  coord_flip() +
+  labs(y = "Cantidad de registros independientes",
+       x = "Especies") +
+  geom_hline(yintercept = 50, color = "#0C1446") + theme_gray()
+
+rm(temp_var)
+``` 
+
+Por área de estudio:
+
+```{r echo=FALSE}
+temp_var <- data %>% 
+  filter(sp %in% c("Lgym", "Ctho", "Lwie", "Lgeo", "Dsep", "Dnov", "Aaxi", "Mgou")) %>% 
+  group_by(site) %>% 
+  summarise(n_registros_independientes = n()) %>% 
+  arrange(desc(n_registros_independientes))
+```
+
+
+```{r echo=FALSE}
+ggplot(temp_var, aes(x = reorder(site, n_registros_independientes), y = n_registros_independientes)) + 
+  geom_col(position = "dodge", fill = "#2B7C85") + 
+  labs(y = "Cantidad de registros independientes",
+       x = "Sitios") +
+  scale_y_continuous(breaks = round(seq(0, max(temp_var$n_registros_independientes), by = 250))) +
+  coord_flip()
+paged_table(temp_var)
+rm(temp_var)
+```
+
+## Sistemas y cámaras
+
+Cantidad de sistemas con registro:
+
+```{r}
+data %>% 
+  mutate(sistema = substr(camera, 1, 4)) %>% 
+  select(sistema) %>% 
+  n_distinct()
+```
+
+Por área de estudio:
+
+```{r}
+data %>% 
+  group_by(site) %>% 
+  mutate(sistema = substr(camera, 1, 4)) %>% 
+  summarise(n_sistemas = n_distinct(sistema)) %>% 
+  arrange(-n_sistemas) %>% 
+  paged_table()
+```
+
+
+
+Cantidad de cámaras con registro:
+
+```{r}
+data %>% 
+  select(camera) %>% 
+  n_distinct() 
+```
+
+Por área de estudio:
+
+```{r}
+data %>% 
+  group_by(site) %>% 
+  summarise(n_camaras = n_distinct(camera)) %>% 
+  arrange(-n_camaras) %>% 
+  paged_table()
+```
+
+
+
+```{r echo=FALSE}
+rm(list = ls())
+```

@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Variables | Tesis</title>
+  <meta name="description" content="Donde se irá desarrollando la tésis." />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Variables | Tesis" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Donde se irá desarrollando la tésis." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Variables | Tesis" />
+  
+  <meta name="twitter:description" content="Donde se irá desarrollando la tésis." />
+  
+
+<meta name="author" content="Nicolás Fernández-Sauleda" />
+
+
+<meta name="date" content="2024-11-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="fase-lunar.html"/>
+<link rel="next" href="variables-climáticas.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Tesis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Acerca de</a></li>
+<li class="chapter" data-level="2" data-path="carga-de-datos.html"><a href="carga-de-datos.html"><i class="fa fa-check"></i><b>2</b> Carga de Datos</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="carga-de-datos.html"><a href="carga-de-datos.html#observaciones-en-cámaras-trampa"><i class="fa fa-check"></i><b>2.1</b> Observaciones en Cámaras Trampa</a></li>
+<li class="chapter" data-level="2.2" data-path="carga-de-datos.html"><a href="carga-de-datos.html#preparación-de-datos"><i class="fa fa-check"></i><b>2.2</b> Preparación de Datos</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="exploración-inicial-de-los-datos.html"><a href="exploración-inicial-de-los-datos.html"><i class="fa fa-check"></i><b>3</b> Exploración inicial de los datos</a></li>
+<li class="chapter" data-level="4" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html"><i class="fa fa-check"></i><b>4</b> Convertir a hora solar</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html#paquete-circular"><i class="fa fa-check"></i><b>4.1</b> Paquete circular</a></li>
+<li class="chapter" data-level="4.2" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html#paquete-activity"><i class="fa fa-check"></i><b>4.2</b> Paquete activity</a></li>
+<li class="chapter" data-level="4.3" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html#conclusión"><i class="fa fa-check"></i><b>4.3</b> Conclusión</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="exploración-de-hora-solar.html"><a href="exploración-de-hora-solar.html"><i class="fa fa-check"></i><b>5</b> Exploración de hora solar</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="exploración-de-hora-solar.html"><a href="exploración-de-hora-solar.html#probando-categorías"><i class="fa fa-check"></i><b>5.1</b> Probando categorías</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="exploración-de-hora-solar.html"><a href="exploración-de-hora-solar.html#noche-día-y-crepúsculo"><i class="fa fa-check"></i><b>5.1.1</b> Noche, Día y Crepúsculo</a></li>
+<li class="chapter" data-level="5.1.2" data-path="exploración-de-hora-solar.html"><a href="exploración-de-hora-solar.html#diurno-y-nocturno"><i class="fa fa-check"></i><b>5.1.2</b> Diurno y nocturno</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="fase-lunar.html"><a href="fase-lunar.html"><i class="fa fa-check"></i><b>6</b> Fase lunar</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="fase-lunar.html"><a href="fase-lunar.html#preparación-de-datos-1"><i class="fa fa-check"></i><b>6.1</b> Preparación de datos</a></li>
+<li class="chapter" data-level="6.2" data-path="fase-lunar.html"><a href="fase-lunar.html#iluminación-de-la-luna"><i class="fa fa-check"></i><b>6.2</b> Iluminación de la Luna</a></li>
+<li class="chapter" data-level="6.3" data-path="fase-lunar.html"><a href="fase-lunar.html#overlap-utilizando-fase-lunar"><i class="fa fa-check"></i><b>6.3</b> Overlap utilizando fase lunar</a></li>
+<li class="chapter" data-level="6.4" data-path="fase-lunar.html"><a href="fase-lunar.html#kernels-de-superposición-para-pares-de-especies"><i class="fa fa-check"></i><b>6.4</b> Kernels de Superposición para Pares de Especies</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="variables.html"><a href="variables.html"><i class="fa fa-check"></i><b>7</b> Variables</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="variables.html"><a href="variables.html#tasa-de-registro"><i class="fa fa-check"></i><b>7.1</b> Tasa de registro</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="variables.html"><a href="variables.html#nivel-sistema"><i class="fa fa-check"></i><b>7.1.1</b> Nivel sistema</a></li>
+<li class="chapter" data-level="7.1.2" data-path="variables.html"><a href="variables.html#nivel-camara"><i class="fa fa-check"></i><b>7.1.2</b> Nivel camara</a></li>
+<li class="chapter" data-level="7.1.3" data-path="variables.html"><a href="variables.html#tabla-única"><i class="fa fa-check"></i><b>7.1.3</b> Tabla única</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="variables.html"><a href="variables.html#coberturas"><i class="fa fa-check"></i><b>7.2</b> Coberturas</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="variables.html"><a href="variables.html#clases-de-cobertura-simples"><i class="fa fa-check"></i><b>7.2.1</b> Clases de Cobertura Simples</a></li>
+<li class="chapter" data-level="7.2.2" data-path="variables.html"><a href="variables.html#clases-de-cobertura-agregadas"><i class="fa fa-check"></i><b>7.2.2</b> Clases de Cobertura Agregadas</a></li>
+<li class="chapter" data-level="7.2.3" data-path="variables.html"><a href="variables.html#procesamiento-de-datos"><i class="fa fa-check"></i><b>7.2.3</b> Procesamiento de datos</a></li>
+<li class="chapter" data-level="7.2.4" data-path="variables.html"><a href="variables.html#exploración-de-datos"><i class="fa fa-check"></i><b>7.2.4</b> Exploración de datos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="variables-climáticas.html"><a href="variables-climáticas.html"><i class="fa fa-check"></i><b>8</b> Variables climáticas</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="variables-climáticas.html"><a href="variables-climáticas.html#procesamiento-de-datos-1"><i class="fa fa-check"></i><b>8.1</b> Procesamiento de datos</a></li>
+<li class="chapter" data-level="8.2" data-path="variables-climáticas.html"><a href="variables-climáticas.html#temperatura"><i class="fa fa-check"></i><b>8.2</b> Temperatura</a></li>
+<li class="chapter" data-level="8.3" data-path="variables-climáticas.html"><a href="variables-climáticas.html#precipitaciones"><i class="fa fa-check"></i><b>8.3</b> Precipitaciones</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="kernels-de-actividad.html"><a href="kernels-de-actividad.html"><i class="fa fa-check"></i><b>9</b> Kernels de actividad</a></li>
+<li class="chapter" data-level="10" data-path="exploración-general-de-modelos.html"><a href="exploración-general-de-modelos.html"><i class="fa fa-check"></i><b>10</b> Exploración general de modelos</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="exploración-general-de-modelos.html"><a href="exploración-general-de-modelos.html#modelo-lineal-simple"><i class="fa fa-check"></i><b>10.1</b> Modelo lineal simple</a></li>
+<li class="chapter" data-level="10.2" data-path="exploración-general-de-modelos.html"><a href="exploración-general-de-modelos.html#incluir-interacciones"><i class="fa fa-check"></i><b>10.2</b> Incluir interacciones</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html"><i class="fa fa-check"></i><b>11</b> Modelos para Jenni</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#preparación-de-datos-2"><i class="fa fa-check"></i><b>11.1</b> Preparación de datos</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#tasa-de-registro-1"><i class="fa fa-check"></i><b>11.1.1</b> Tasa de registro</a></li>
+<li class="chapter" data-level="11.1.2" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#estado-de-los-datos"><i class="fa fa-check"></i><b>11.1.2</b> Estado de los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#modelo-generalidades"><i class="fa fa-check"></i><b>11.2</b> Modelo generalidades</a></li>
+<li class="chapter" data-level="11.3" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#modelo-utilizando-brms"><i class="fa fa-check"></i><b>11.3</b> Modelo utilizando brms</a></li>
+<li class="chapter" data-level="11.4" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#modelo-con-interacciones"><i class="fa fa-check"></i><b>11.4</b> Modelo con interacciones</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a>
+<ul>
+<li class="chapter" data-level="11.5" data-path="references.html"><a href="references.html#paquete-brms"><i class="fa fa-check"></i><b>11.5</b> Paquete <code>brms</code></a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/nikof7/tesis" target="blank">Nicolás Fernández-Sauleda</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tesis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="variables" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Variables<a href="variables.html#variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="tasa-de-registro" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Tasa de registro<a href="variables.html#tasa-de-registro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Se quiere obtener la tasa de registro (TR) del ganado vacuno y de los perros domésticos para dos tipos de resolución; a nivel de cámara y a nivel de sistema.</p>
+<p>La TR para cualquier especie se calcula con la siguiente expresión.</p>
+<p><span class="math display">\[\textrm{TR} = \frac{\textrm{Total registros independientes}}{\textrm{Esfuerzo de muestreo}}\]</span></p>
+<p>En el caso del cálculo a nivel de sistema tanto el esfuerzo como el total de registros es la sumatorio de las tres cámaras. Cuando se calcula a nivel de cámara se utilizan el total de registros y esfuerzo para la misma.</p>
+<p>Pasemos al calculo de este parámetro, primero se cargan los registros de las camaras trampa.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="variables.html#cb39-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/datos_procesados_v2.RData&quot;</span>)</span></code></pre></div>
+<p>Luego se filtran solo los registros de <em>B. taurus</em>, <em>C. familiaris</em> se crea una columna llamada sistema (system) y se seleccionan las columnas de interés.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="variables.html#cb40-1" tabindex="-1"></a>tr_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb40-2"><a href="variables.html#cb40-2" tabindex="-1"></a>  <span class="fu">filter</span>(sp <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Btau&quot;</span>, <span class="st">&quot;Cfam&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-3"><a href="variables.html#cb40-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">system =</span> <span class="fu">str_sub</span>(camera, <span class="dv">1</span>, <span class="dv">4</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-4"><a href="variables.html#cb40-4" tabindex="-1"></a>  <span class="fu">select</span>(system, camera, sp)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="variables.html#cb41-1" tabindex="-1"></a><span class="fu">paged_table</span>(<span class="fu">head</span>(tr_data))</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["system"],"name":[1],"type":["chr"],"align":["left"]},{"label":["camera"],"name":[2],"type":["chr"],"align":["left"]},{"label":["sp"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"SM06","2":"SM06_3","3":"Btau","_rn_":"1"},{"1":"SM06","2":"SM06_2","3":"Btau","_rn_":"2"},{"1":"SM01","2":"SM01_1","3":"Btau","_rn_":"3"},{"1":"SM01","2":"SM01_1","3":"Btau","_rn_":"4"},{"1":"SM01","2":"SM01_1","3":"Btau","_rn_":"5"},{"1":"SM01","2":"SM01_1","3":"Btau","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div id="nivel-sistema" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Nivel sistema<a href="variables.html#nivel-sistema" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En primer lugar se busca el esfuerzo para cada sistema.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="variables.html#cb42-1" tabindex="-1"></a>system_effort <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="at">file =</span> <span class="st">&quot;data_processed/camera_data.RData&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-2"><a href="variables.html#cb42-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">system =</span> <span class="fu">str_sub</span>(camera, <span class="dv">1</span>, <span class="dv">4</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb42-3"><a href="variables.html#cb42-3" tabindex="-1"></a>  <span class="fu">select</span>(system, camera, effort) <span class="sc">%&gt;%</span></span>
+<span id="cb42-4"><a href="variables.html#cb42-4" tabindex="-1"></a>  <span class="fu">group_by</span>(system) <span class="sc">%&gt;%</span></span>
+<span id="cb42-5"><a href="variables.html#cb42-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">effort =</span> <span class="fu">sum</span>(effort))</span></code></pre></div>
+<p>Esfuerzo de todos los sitemas.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+<p>Luego se contabiliza la cantidad de registros independientes de cada especie en los sistemas.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="variables.html#cb43-1" tabindex="-1"></a>tr_system <span class="ot">&lt;-</span> tr_data <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a href="variables.html#cb43-2" tabindex="-1"></a>  <span class="fu">select</span>(system, sp) <span class="sc">%&gt;%</span></span>
+<span id="cb43-3"><a href="variables.html#cb43-3" tabindex="-1"></a>  <span class="fu">group_by</span>(system, sp) <span class="sc">%&gt;%</span></span>
+<span id="cb43-4"><a href="variables.html#cb43-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb43-5"><a href="variables.html#cb43-5" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
+<p>Y se realiza el cálculo.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="variables.html#cb44-1" tabindex="-1"></a>tr_system <span class="ot">&lt;-</span> tr_system <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="variables.html#cb44-2" tabindex="-1"></a>  <span class="fu">left_join</span>(system_effort, <span class="at">by =</span> <span class="fu">join_by</span>(system)) <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="variables.html#cb44-3" tabindex="-1"></a>  <span class="fu">group_by</span>(system, sp) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-4"><a href="variables.html#cb44-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">tr_system =</span> count<span class="sc">/</span>effort)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["system"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sp"],"name":[2],"type":["chr"],"align":["left"]},{"label":["tr_system"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"CP01","2":"Btau","3":"0.09523810"},{"1":"CP02","2":"Btau","3":"0.02673797"},{"1":"CP03","2":"Btau","3":"0.04232804"},{"1":"CP05","2":"Btau","3":"0.11111111"},{"1":"CP05","2":"Cfam","3":"0.01058201"},{"1":"CP06","2":"Btau","3":"0.88888889"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="nivel-camara" class="section level3 hasAnchor" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> Nivel camara<a href="variables.html#nivel-camara" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En primer lugar se carga el esfuerzo para cada camara.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="variables.html#cb45-1" tabindex="-1"></a>camera_effort <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="at">file =</span> <span class="st">&quot;data_processed/camera_data.RData&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-2"><a href="variables.html#cb45-2" tabindex="-1"></a>  <span class="fu">select</span>(camera, effort)</span></code></pre></div>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-395c3d2513dc30b9c7ec" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-395c3d2513dc30b9c7ec">{"x":{"data":[{"orientation":"v","width":[0.89999999999999991,0.90000000000000013,0.90000000000000036],"base":[0,0,0],"x":[1,2,3],"y":[63,63,63],"text":["camera: CP01_1<br />effort: 63<br />system: CP01<br />site: CP","camera: CP01_2<br />effort: 63<br />system: CP01<br />site: CP","camera: CP01_3<br />effort: 63<br />system: CP01<br />site: CP"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"name":"(CP01,CP)","legendgroup":"(CP01,CP)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000036,0.90000000000000036,0.90000000000000036],"base":[0,0,0],"x":[4,5,6],"y":[63,62,62],"text":["camera: CP02_1<br />effort: 63<br />system: CP02<br />site: CP","camera: CP02_2<br />effort: 62<br />system: CP02<br />site: CP","camera: CP02_3<br />effort: 62<br />system: CP02<br />site: CP"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(244,122,93,1)","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"name":"(CP02,CP)","legendgroup":"(CP02,CP)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000036,0.89999999999999947,0.89999999999999858],"base":[0,0,0],"x":[7,8,9],"y":[63,63,63],"text":["camera: CP03_1<br />effort: 63<br />system: CP03<br />site: CP","camera: CP03_2<br />effort: 63<br />system: CP03<br />site: CP","camera: CP03_3<br />effort: 63<br />system: CP03<br />site: CP"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(240,127,75,1)","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"name":"(CP03,CP)","legendgroup":"(CP03,CP)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999999858,0.89999999999999858,0.89999999999999858],"base":[0,0,0],"x":[10,11,12],"y":[63,63,63],"text":["camera: CP05_1<br />effort: 63<br />system: CP05<br />site: CP","camera: CP05_2<br />effort: 63<br />system: CP05<br />site: CP","camera: CP05_3<br />effort: 63<br />system: CP05<br />site: CP"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(235,131,52,1)","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"name":"(CP05,CP)","legendgroup":"(CP05,CP)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999999858,0.89999999999999858,0.89999999999999858],"base":[0,0,0],"x":[13,14,15],"y":[63,63,63],"text":["camera: CP06_1<br />effort: 63<br />system: CP06<br />site: CP","camera: CP06_2<br />effort: 63<br />system: CP06<br />site: CP","camera: CP06_3<br />effort: 63<br />system: CP06<br />site: CP"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(229,135,9,1)","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"name":"(CP06,CP)","legendgroup":"(CP06,CP)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999999858,0.89999999999999858,0.89999999999999858],"base":[0,0,0],"x":[16,17,18],"y":[63,63,63],"text":["camera: CP07_1<br />effort: 63<br />system: CP07<br />site: CP","camera: CP07_2<br />effort: 63<br />system: CP07<br />site: CP","camera: CP07_3<br />effort: 63<br />system: CP07<br />site: CP"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(223,139,0,1)","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"name":"(CP07,CP)","legendgroup":"(CP07,CP)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999999858,0.89999999999999858,0.89999999999999858],"base":[0,0,0],"x":[19,20,21],"y":[62,62,62],"text":["camera: CP09_1<br />effort: 62<br />system: CP09<br />site: CP","camera: CP09_2<br />effort: 62<br />system: CP09<br />site: CP","camera: CP09_3<br />effort: 62<br />system: CP09<br />site: CP"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(217,143,0,1)","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"name":"(CP09,CP)","legendgroup":"(CP09,CP)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.89999999999999858,"base":0,"x":[22],"y":[63],"text":"camera: CP10_1<br />effort: 63<br />system: CP10<br />site: CP","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(210,147,0,1)","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"name":"(CP10,CP)","legendgroup":"(CP10,CP)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.89999999999999858,"base":0,"x":[23],"y":[61],"text":"camera: CP11_1<br />effort: 61<br />system: CP11<br />site: CP","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(203,151,0,1)","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"name":"(CP11,CP)","legendgroup":"(CP11,CP)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999999858,0.89999999999999858,0.89999999999999858],"base":[0,0,0],"x":[24,25,26],"y":[63,63,53],"text":["camera: CP12_1<br />effort: 63<br />system: CP12<br />site: CP","camera: CP12_2<br />effort: 63<br />system: CP12<br />site: CP","camera: CP12_3<br />effort: 53<br />system: CP12<br />site: CP"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(195,154,0,1)","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"name":"(CP12,CP)","legendgroup":"(CP12,CP)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999999858,0.89999999999999858],"base":[0,0],"x":[27,28],"y":[60,60],"text":["camera: CP13_2<br />effort: 60<br />system: CP13<br />site: CP","camera: CP13_3<br />effort: 60<br />system: CP13<br />site: CP"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(186,158,0,1)","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"name":"(CP13,CP)","legendgroup":"(CP13,CP)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999999858,0.89999999999999858],"base":[0,0],"x":[29,30],"y":[61,61],"text":["camera: CV01_1<br />effort: 61<br />system: CV01<br />site: CV","camera: CV01_2<br />effort: 61<br />system: CV01<br />site: CV"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(177,161,0,1)","line":{"width":1.8897637795275593,"color":"rgba(196,154,0,1)"}},"name":"(CV01,CV)","legendgroup":"(CV01,CV)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.89999999999999858,"base":0,"x":[31],"y":[61],"text":"camera: CV02_1<br />effort: 61<br />system: CV02<br />site: CV","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(167,164,0,1)","line":{"width":1.8897637795275593,"color":"rgba(196,154,0,1)"}},"name":"(CV02,CV)","legendgroup":"(CV02,CV)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000213,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[32,33,34],"y":[61,61,61],"text":["camera: CV03_1<br />effort: 61<br />system: CV03<br />site: CV","camera: CV03_2<br />effort: 61<br />system: CV03<br />site: CV","camera: CV03_3<br />effort: 61<br />system: CV03<br />site: CV"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(156,167,0,1)","line":{"width":1.8897637795275593,"color":"rgba(196,154,0,1)"}},"name":"(CV03,CV)","legendgroup":"(CV03,CV)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568],"base":[0,0],"x":[35,36],"y":[61,61],"text":["camera: CV04_2<br />effort: 61<br />system: CV04<br />site: CV","camera: CV04_3<br />effort: 61<br />system: CV04<br />site: CV"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(144,170,0,1)","line":{"width":1.8897637795275593,"color":"rgba(196,154,0,1)"}},"name":"(CV04,CV)","legendgroup":"(CV04,CV)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[37,38,39],"y":[61,61,61],"text":["camera: CV05_1<br />effort: 61<br />system: CV05<br />site: CV","camera: CV05_2<br />effort: 61<br />system: CV05<br />site: CV","camera: CV05_3<br />effort: 61<br />system: CV05<br />site: CV"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(131,173,0,1)","line":{"width":1.8897637795275593,"color":"rgba(196,154,0,1)"}},"name":"(CV05,CV)","legendgroup":"(CV05,CV)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[40,41,42],"y":[61,61,61],"text":["camera: CV06_1<br />effort: 61<br />system: CV06<br />site: CV","camera: CV06_2<br />effort: 61<br />system: CV06<br />site: CV","camera: CV06_3<br />effort: 61<br />system: CV06<br />site: CV"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(116,176,0,1)","line":{"width":1.8897637795275593,"color":"rgba(196,154,0,1)"}},"name":"(CV06,CV)","legendgroup":"(CV06,CV)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[43,44,45],"y":[61,61,61],"text":["camera: CV07_1<br />effort: 61<br />system: CV07<br />site: CV","camera: CV07_2<br />effort: 61<br />system: CV07<br />site: CV","camera: CV07_3<br />effort: 61<br />system: CV07<br />site: CV"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(98,178,0,1)","line":{"width":1.8897637795275593,"color":"rgba(196,154,0,1)"}},"name":"(CV07,CV)","legendgroup":"(CV07,CV)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[46,47,48],"y":[64,64,64],"text":["camera: LG00_1<br />effort: 64<br />system: LG00<br />site: LG","camera: LG00_2<br />effort: 64<br />system: LG00<br />site: LG","camera: LG00_3<br />effort: 64<br />system: LG00<br />site: LG"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(76,180,0,1)","line":{"width":1.8897637795275593,"color":"rgba(83,180,0,1)"}},"name":"(LG00,LG)","legendgroup":"(LG00,LG)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[49,50,51],"y":[64,64,64],"text":["camera: LG01_1<br />effort: 64<br />system: LG01<br />site: LG","camera: LG01_2<br />effort: 64<br />system: LG01<br />site: LG","camera: LG01_3<br />effort: 64<br />system: LG01<br />site: LG"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(41,182,0,1)","line":{"width":1.8897637795275593,"color":"rgba(83,180,0,1)"}},"name":"(LG01,LG)","legendgroup":"(LG01,LG)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[52,53,54],"y":[56,56,4],"text":["camera: LG02_1<br />effort: 56<br />system: LG02<br />site: LG","camera: LG02_2<br />effort: 56<br />system: LG02<br />site: LG","camera: LG02_3<br />effort:  4<br />system: LG02<br />site: LG"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,184,37,1)","line":{"width":1.8897637795275593,"color":"rgba(83,180,0,1)"}},"name":"(LG02,LG)","legendgroup":"(LG02,LG)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[55,56,57],"y":[56,56,56],"text":["camera: LG03_1<br />effort: 56<br />system: LG03<br />site: LG","camera: LG03_2<br />effort: 56<br />system: LG03<br />site: LG","camera: LG03_3<br />effort: 56<br />system: LG03<br />site: LG"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,186,64,1)","line":{"width":1.8897637795275593,"color":"rgba(83,180,0,1)"}},"name":"(LG03,LG)","legendgroup":"(LG03,LG)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568],"base":[0,0],"x":[58,59],"y":[56,56],"text":["camera: LG04_1<br />effort: 56<br />system: LG04<br />site: LG","camera: LG04_3<br />effort: 56<br />system: LG04<br />site: LG"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,188,83,1)","line":{"width":1.8897637795275593,"color":"rgba(83,180,0,1)"}},"name":"(LG04,LG)","legendgroup":"(LG04,LG)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[60,61,62],"y":[35,14,35],"text":["camera: LG06_1<br />effort: 35<br />system: LG06<br />site: LG","camera: LG06_2<br />effort: 14<br />system: LG06<br />site: LG","camera: LG06_3<br />effort: 35<br />system: LG06<br />site: LG"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,189,100,1)","line":{"width":1.8897637795275593,"color":"rgba(83,180,0,1)"}},"name":"(LG06,LG)","legendgroup":"(LG06,LG)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[63,64,65],"y":[35,35,35],"text":["camera: LG07_1<br />effort: 35<br />system: LG07<br />site: LG","camera: LG07_2<br />effort: 35<br />system: LG07<br />site: LG","camera: LG07_3<br />effort: 35<br />system: LG07<br />site: LG"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,190,114,1)","line":{"width":1.8897637795275593,"color":"rgba(83,180,0,1)"}},"name":"(LG07,LG)","legendgroup":"(LG07,LG)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[66,67,68],"y":[35,35,9],"text":["camera: LG08_1<br />effort: 35<br />system: LG08<br />site: LG","camera: LG08_2<br />effort: 35<br />system: LG08<br />site: LG","camera: LG08_3<br />effort:  9<br />system: LG08<br />site: LG"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,191,128,1)","line":{"width":1.8897637795275593,"color":"rgba(83,180,0,1)"}},"name":"(LG08,LG)","legendgroup":"(LG08,LG)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568],"base":[0,0],"x":[69,70],"y":[35,35],"text":["camera: LG09_2<br />effort: 35<br />system: LG09<br />site: LG","camera: LG09_3<br />effort: 35<br />system: LG09<br />site: LG"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,192,141,1)","line":{"width":1.8897637795275593,"color":"rgba(83,180,0,1)"}},"name":"(LG09,LG)","legendgroup":"(LG09,LG)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[71,72,73],"y":[35,35,35],"text":["camera: LG10_1<br />effort: 35<br />system: LG10<br />site: LG","camera: LG10_2<br />effort: 35<br />system: LG10<br />site: LG","camera: LG10_3<br />effort: 35<br />system: LG10<br />site: LG"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,192,153,1)","line":{"width":1.8897637795275593,"color":"rgba(83,180,0,1)"}},"name":"(LG10,LG)","legendgroup":"(LG10,LG)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568],"base":[0,0],"x":[74,75],"y":[34,34],"text":["camera: LG11_1<br />effort: 34<br />system: LG11<br />site: LG","camera: LG11_3<br />effort: 34<br />system: LG11<br />site: LG"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,193,165,1)","line":{"width":1.8897637795275593,"color":"rgba(83,180,0,1)"}},"name":"(LG11,LG)","legendgroup":"(LG11,LG)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[76,77,78],"y":[35,35,35],"text":["camera: LG12_1<br />effort: 35<br />system: LG12<br />site: LG","camera: LG12_2<br />effort: 35<br />system: LG12<br />site: LG","camera: LG12_3<br />effort: 35<br />system: LG12<br />site: LG"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,192,176,1)","line":{"width":1.8897637795275593,"color":"rgba(83,180,0,1)"}},"name":"(LG12,LG)","legendgroup":"(LG12,LG)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[79,80,81],"y":[36,36,36],"text":["camera: LR01_1<br />effort: 36<br />system: LR01<br />site: LR","camera: LR01_2<br />effort: 36<br />system: LR01<br />site: LR","camera: LR01_3<br />effort: 36<br />system: LR01<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,192,186,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR01,LR)","legendgroup":"(LR01,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568],"base":[0,0],"x":[82,83],"y":[36,36],"text":["camera: LR02_1<br />effort: 36<br />system: LR02<br />site: LR","camera: LR02_2<br />effort: 36<br />system: LR02<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR02,LR)","legendgroup":"(LR02,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[84,85,86],"y":[8,35,7],"text":["camera: LR03_1<br />effort:  8<br />system: LR03<br />site: LR","camera: LR03_2<br />effort: 35<br />system: LR03<br />site: LR","camera: LR03_3<br />effort:  7<br />system: LR03<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,190,206,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR03,LR)","legendgroup":"(LR03,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568],"base":[0,0],"x":[87,88],"y":[34,15],"text":["camera: LR04_2<br />effort: 34<br />system: LR04<br />site: LR","camera: LR04_3<br />effort: 15<br />system: LR04<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,188,215,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR04,LR)","legendgroup":"(LR04,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[89,90,91],"y":[22,34,14],"text":["camera: LR05_1<br />effort: 22<br />system: LR05<br />site: LR","camera: LR05_2<br />effort: 34<br />system: LR05<br />site: LR","camera: LR05_3<br />effort: 14<br />system: LR05<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,186,224,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR05,LR)","legendgroup":"(LR05,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568],"base":[0,0],"x":[92,93],"y":[34,34],"text":["camera: LR06_1<br />effort: 34<br />system: LR06<br />site: LR","camera: LR06_2<br />effort: 34<br />system: LR06<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,183,232,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR06,LR)","legendgroup":"(LR06,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568],"base":[0,0],"x":[94,95],"y":[19,33],"text":["camera: LR07_1<br />effort: 19<br />system: LR07<br />site: LR","camera: LR07_2<br />effort: 33<br />system: LR07<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,180,239,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR07,LR)","legendgroup":"(LR07,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[96,97,98],"y":[34,34,34],"text":["camera: LR08_1<br />effort: 34<br />system: LR08<br />site: LR","camera: LR08_2<br />effort: 34<br />system: LR08<br />site: LR","camera: LR08_3<br />effort: 34<br />system: LR08<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,177,245,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR08,LR)","legendgroup":"(LR08,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[99,100,101],"y":[33,33,33],"text":["camera: LR09_1<br />effort: 33<br />system: LR09<br />site: LR","camera: LR09_2<br />effort: 33<br />system: LR09<br />site: LR","camera: LR09_3<br />effort: 33<br />system: LR09<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,173,251,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR09,LR)","legendgroup":"(LR09,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568],"base":[0,0],"x":[102,103],"y":[33,33],"text":["camera: LR10_2<br />effort: 33<br />system: LR10<br />site: LR","camera: LR10_3<br />effort: 33<br />system: LR10<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(0,168,255,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR10,LR)","legendgroup":"(LR10,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[104,105,106],"y":[44,44,44],"text":["camera: LR11_1<br />effort: 44<br />system: LR11<br />site: LR","camera: LR11_2<br />effort: 44<br />system: LR11<br />site: LR","camera: LR11_3<br />effort: 44<br />system: LR11<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(30,163,255,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR11,LR)","legendgroup":"(LR11,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[107,108,109],"y":[44,44,43],"text":["camera: LR12_1<br />effort: 44<br />system: LR12<br />site: LR","camera: LR12_2<br />effort: 44<br />system: LR12<br />site: LR","camera: LR12_3<br />effort: 43<br />system: LR12<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(86,158,255,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR12,LR)","legendgroup":"(LR12,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[110,111,112],"y":[43,43,43],"text":["camera: LR13_1<br />effort: 43<br />system: LR13<br />site: LR","camera: LR13_2<br />effort: 43<br />system: LR13<br />site: LR","camera: LR13_3<br />effort: 43<br />system: LR13<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(116,152,255,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR13,LR)","legendgroup":"(LR13,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.90000000000000568,"base":0,"x":[113],"y":[43],"text":"camera: LR14_1<br />effort: 43<br />system: LR14<br />site: LR","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(140,146,255,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR14,LR)","legendgroup":"(LR14,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568],"base":[0,0],"x":[114,115],"y":[43,42],"text":["camera: LR15_1<br />effort: 43<br />system: LR15<br />site: LR","camera: LR15_2<br />effort: 42<br />system: LR15<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(160,140,255,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR15,LR)","legendgroup":"(LR15,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[116,117,118],"y":[41,41,41],"text":["camera: LR16_1<br />effort: 41<br />system: LR16<br />site: LR","camera: LR16_2<br />effort: 41<br />system: LR16<br />site: LR","camera: LR16_3<br />effort: 41<br />system: LR16<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(177,133,255,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR16,LR)","legendgroup":"(LR16,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[119,120,121],"y":[41,41,39],"text":["camera: LR17_1<br />effort: 41<br />system: LR17<br />site: LR","camera: LR17_2<br />effort: 41<br />system: LR17<br />site: LR","camera: LR17_3<br />effort: 39<br />system: LR17<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(192,127,255,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR17,LR)","legendgroup":"(LR17,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[122,123,124],"y":[39,39,39],"text":["camera: LR18_1<br />effort: 39<br />system: LR18<br />site: LR","camera: LR18_2<br />effort: 39<br />system: LR18<br />site: LR","camera: LR18_3<br />effort: 39<br />system: LR18<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(205,121,255,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR18,LR)","legendgroup":"(LR18,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.90000000000000568,0.90000000000000568,0.90000000000000568],"base":[0,0,0],"x":[125,126,127],"y":[39,39,39],"text":["camera: LR19_1<br />effort: 39<br />system: LR19<br />site: LR","camera: LR19_2<br />effort: 39<br />system: LR19<br />site: LR","camera: LR19_3<br />effort: 39<br />system: LR19<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(216,115,252,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR19,LR)","legendgroup":"(LR19,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999999147,0.89999999999997726,0.89999999999997726],"base":[0,0,0],"x":[128,129,130],"y":[39,39,39],"text":["camera: LR20_1<br />effort: 39<br />system: LR20<br />site: LR","camera: LR20_2<br />effort: 39<br />system: LR20<br />site: LR","camera: LR20_3<br />effort: 39<br />system: LR20<br />site: LR"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(226,110,247,1)","line":{"width":1.8897637795275593,"color":"rgba(0,192,148,1)"}},"name":"(LR20,LR)","legendgroup":"(LR20,LR)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999997726,0.89999999999997726,0.89999999999997726],"base":[0,0,0],"x":[131,132,133],"y":[63,63,63],"text":["camera: PT00_1<br />effort: 63<br />system: PT00<br />site: PT","camera: PT00_2<br />effort: 63<br />system: PT00<br />site: PT","camera: PT00_3<br />effort: 63<br />system: PT00<br />site: PT"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(234,106,240,1)","line":{"width":1.8897637795275593,"color":"rgba(0,182,235,1)"}},"name":"(PT00,PT)","legendgroup":"(PT00,PT)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999997726,0.89999999999997726,0.89999999999997726],"base":[0,0,0],"x":[134,135,136],"y":[63,60,48],"text":["camera: PT01_1<br />effort: 63<br />system: PT01<br />site: PT","camera: PT01_2<br />effort: 60<br />system: PT01<br />site: PT","camera: PT01_3<br />effort: 48<br />system: PT01<br />site: PT"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(241,102,233,1)","line":{"width":1.8897637795275593,"color":"rgba(0,182,235,1)"}},"name":"(PT01,PT)","legendgroup":"(PT01,PT)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999997726,0.89999999999997726,0.89999999999997726],"base":[0,0,0],"x":[137,138,139],"y":[63,63,63],"text":["camera: PT02_1<br />effort: 63<br />system: PT02<br />site: PT","camera: PT02_2<br />effort: 63<br />system: PT02<br />site: PT","camera: PT02_3<br />effort: 63<br />system: PT02<br />site: PT"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(247,99,225,1)","line":{"width":1.8897637795275593,"color":"rgba(0,182,235,1)"}},"name":"(PT02,PT)","legendgroup":"(PT02,PT)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999997726,0.89999999999997726,0.89999999999997726],"base":[0,0,0],"x":[140,141,142],"y":[43,57,36],"text":["camera: SG01_1<br />effort: 43<br />system: SG01<br />site: SG","camera: SG01_2<br />effort: 57<br />system: SG01<br />site: SG","camera: SG01_3<br />effort: 36<br />system: SG01<br />site: SG"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(251,97,216,1)","line":{"width":1.8897637795275593,"color":"rgba(165,138,255,1)"}},"name":"(SG01,SG)","legendgroup":"(SG01,SG)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999997726,0.89999999999997726,0.89999999999997726],"base":[0,0,0],"x":[143,144,145],"y":[57,57,57],"text":["camera: SG03_1<br />effort: 57<br />system: SG03<br />site: SG","camera: SG03_2<br />effort: 57<br />system: SG03<br />site: SG","camera: SG03_3<br />effort: 57<br />system: SG03<br />site: SG"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(254,97,206,1)","line":{"width":1.8897637795275593,"color":"rgba(165,138,255,1)"}},"name":"(SG03,SG)","legendgroup":"(SG03,SG)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999997726,0.89999999999997726,0.89999999999997726],"base":[0,0,0],"x":[146,147,148],"y":[54,54,45],"text":["camera: SG04_1<br />effort: 54<br />system: SG04<br />site: SG","camera: SG04_2<br />effort: 54<br />system: SG04<br />site: SG","camera: SG04_3<br />effort: 45<br />system: SG04<br />site: SG"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(255,97,196,1)","line":{"width":1.8897637795275593,"color":"rgba(165,138,255,1)"}},"name":"(SG04,SG)","legendgroup":"(SG04,SG)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999997726,0.89999999999997726],"base":[0,0],"x":[149,150],"y":[43,43],"text":["camera: SG07_1<br />effort: 43<br />system: SG07<br />site: SG","camera: SG07_3<br />effort: 43<br />system: SG07<br />site: SG"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(255,98,186,1)","line":{"width":1.8897637795275593,"color":"rgba(165,138,255,1)"}},"name":"(SG07,SG)","legendgroup":"(SG07,SG)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999997726,0.89999999999997726,0.89999999999997726],"base":[0,0,0],"x":[151,152,153],"y":[56,56,56],"text":["camera: SM01_1<br />effort: 56<br />system: SM01<br />site: SM","camera: SM01_2<br />effort: 56<br />system: SM01<br />site: SM","camera: SM01_3<br />effort: 56<br />system: SM01<br />site: SM"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(255,101,174,1)","line":{"width":1.8897637795275593,"color":"rgba(251,97,215,1)"}},"name":"(SM01,SM)","legendgroup":"(SM01,SM)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999997726,0.89999999999997726,0.89999999999997726],"base":[0,0,0],"x":[154,155,156],"y":[26,23,22],"text":["camera: SM03_1<br />effort: 26<br />system: SM03<br />site: SM","camera: SM03_2<br />effort: 23<br />system: SM03<br />site: SM","camera: SM03_3<br />effort: 22<br />system: SM03<br />site: SM"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(255,103,163,1)","line":{"width":1.8897637795275593,"color":"rgba(251,97,215,1)"}},"name":"(SM03,SM)","legendgroup":"(SM03,SM)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999997726,0.89999999999997726],"base":[0,0],"x":[157,158],"y":[57,57],"text":["camera: SM04_1<br />effort: 57<br />system: SM04<br />site: SM","camera: SM04_2<br />effort: 57<br />system: SM04<br />site: SM"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(255,107,150,1)","line":{"width":1.8897637795275593,"color":"rgba(251,97,215,1)"}},"name":"(SM04,SM)","legendgroup":"(SM04,SM)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999997726,0.89999999999997726,0.89999999999997726],"base":[0,0,0],"x":[159,160,161],"y":[57,24,57],"text":["camera: SM05_1<br />effort: 57<br />system: SM05<br />site: SM","camera: SM05_2<br />effort: 24<br />system: SM05<br />site: SM","camera: SM05_3<br />effort: 57<br />system: SM05<br />site: SM"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(254,110,137,1)","line":{"width":1.8897637795275593,"color":"rgba(251,97,215,1)"}},"name":"(SM05,SM)","legendgroup":"(SM05,SM)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[0.89999999999997726,0.89999999999997726,0.89999999999997726],"base":[0,0,0],"x":[162,163,164],"y":[36,57,57],"text":["camera: SM06_1<br />effort: 36<br />system: SM06<br />site: SM","camera: SM06_2<br />effort: 57<br />system: SM06<br />site: SM","camera: SM06_3<br />effort: 57<br />system: SM06<br />site: SM"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(251,114,124,1)","line":{"width":1.8897637795275593,"color":"rgba(251,97,215,1)"}},"name":"(SM06,SM)","legendgroup":"(SM06,SM)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":38.980489829804903,"r":7.3059360730593621,"b":50.012453300124527,"l":30.08717310087173},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":10.62681610626816},"title":{"text":"Gráfica interactiva","font":{"color":"rgba(0,0,0,1)","family":"","size":12.752179327521796},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,164.59999999999999],"tickmode":"array","ticktext":["CP01_1","CP01_2","CP01_3","CP02_1","CP02_2","CP02_3","CP03_1","CP03_2","CP03_3","CP05_1","CP05_2","CP05_3","CP06_1","CP06_2","CP06_3","CP07_1","CP07_2","CP07_3","CP09_1","CP09_2","CP09_3","CP10_1","CP11_1","CP12_1","CP12_2","CP12_3","CP13_2","CP13_3","CV01_1","CV01_2","CV02_1","CV03_1","CV03_2","CV03_3","CV04_2","CV04_3","CV05_1","CV05_2","CV05_3","CV06_1","CV06_2","CV06_3","CV07_1","CV07_2","CV07_3","LG00_1","LG00_2","LG00_3","LG01_1","LG01_2","LG01_3","LG02_1","LG02_2","LG02_3","LG03_1","LG03_2","LG03_3","LG04_1","LG04_3","LG06_1","LG06_2","LG06_3","LG07_1","LG07_2","LG07_3","LG08_1","LG08_2","LG08_3","LG09_2","LG09_3","LG10_1","LG10_2","LG10_3","LG11_1","LG11_3","LG12_1","LG12_2","LG12_3","LR01_1","LR01_2","LR01_3","LR02_1","LR02_2","LR03_1","LR03_2","LR03_3","LR04_2","LR04_3","LR05_1","LR05_2","LR05_3","LR06_1","LR06_2","LR07_1","LR07_2","LR08_1","LR08_2","LR08_3","LR09_1","LR09_2","LR09_3","LR10_2","LR10_3","LR11_1","LR11_2","LR11_3","LR12_1","LR12_2","LR12_3","LR13_1","LR13_2","LR13_3","LR14_1","LR15_1","LR15_2","LR16_1","LR16_2","LR16_3","LR17_1","LR17_2","LR17_3","LR18_1","LR18_2","LR18_3","LR19_1","LR19_2","LR19_3","LR20_1","LR20_2","LR20_3","PT00_1","PT00_2","PT00_3","PT01_1","PT01_2","PT01_3","PT02_1","PT02_2","PT02_3","SG01_1","SG01_2","SG01_3","SG03_1","SG03_2","SG03_3","SG04_1","SG04_2","SG04_3","SG07_1","SG07_3","SM01_1","SM01_2","SM01_3","SM03_1","SM03_2","SM03_3","SM04_1","SM04_2","SM05_1","SM05_2","SM05_3","SM06_1","SM06_2","SM06_3"],"tickvals":[1,2,3,3.9999999999999996,5,6,7,8,9,10,10.999999999999998,12.000000000000002,13,14,15,16,17,18,19,20,21,22,23,24,24.999999999999996,26,27.000000000000004,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44.000000000000007,45,46,47,48,49,50,50.999999999999993,52,53,54,55.000000000000007,56,57,57.999999999999993,59,60,61,62.000000000000007,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85.000000000000014,86,87,88.000000000000014,89,90,90.999999999999986,92,93,94,95,96,97,98,99.000000000000014,100,101,101.99999999999999,103,104,104.99999999999999,106,107,108,109,110.00000000000001,111,112,113.00000000000001,114,115,115.99999999999999,117,118,119,120,121,122,123,124.00000000000001,125,126,126.99999999999999,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164],"categoryorder":"array","categoryarray":["CP01_1","CP01_2","CP01_3","CP02_1","CP02_2","CP02_3","CP03_1","CP03_2","CP03_3","CP05_1","CP05_2","CP05_3","CP06_1","CP06_2","CP06_3","CP07_1","CP07_2","CP07_3","CP09_1","CP09_2","CP09_3","CP10_1","CP11_1","CP12_1","CP12_2","CP12_3","CP13_2","CP13_3","CV01_1","CV01_2","CV02_1","CV03_1","CV03_2","CV03_3","CV04_2","CV04_3","CV05_1","CV05_2","CV05_3","CV06_1","CV06_2","CV06_3","CV07_1","CV07_2","CV07_3","LG00_1","LG00_2","LG00_3","LG01_1","LG01_2","LG01_3","LG02_1","LG02_2","LG02_3","LG03_1","LG03_2","LG03_3","LG04_1","LG04_3","LG06_1","LG06_2","LG06_3","LG07_1","LG07_2","LG07_3","LG08_1","LG08_2","LG08_3","LG09_2","LG09_3","LG10_1","LG10_2","LG10_3","LG11_1","LG11_3","LG12_1","LG12_2","LG12_3","LR01_1","LR01_2","LR01_3","LR02_1","LR02_2","LR03_1","LR03_2","LR03_3","LR04_2","LR04_3","LR05_1","LR05_2","LR05_3","LR06_1","LR06_2","LR07_1","LR07_2","LR08_1","LR08_2","LR08_3","LR09_1","LR09_2","LR09_3","LR10_2","LR10_3","LR11_1","LR11_2","LR11_3","LR12_1","LR12_2","LR12_3","LR13_1","LR13_2","LR13_3","LR14_1","LR15_1","LR15_2","LR16_1","LR16_2","LR16_3","LR17_1","LR17_2","LR17_3","LR18_1","LR18_2","LR18_3","LR19_1","LR19_2","LR19_3","LR20_1","LR20_2","LR20_3","PT00_1","PT00_2","PT00_3","PT01_1","PT01_2","PT01_3","PT02_1","PT02_2","PT02_3","SG01_1","SG01_2","SG01_3","SG03_1","SG03_2","SG03_3","SG04_1","SG04_2","SG04_3","SG07_1","SG07_3","SM01_1","SM01_2","SM01_3","SM03_1","SM03_2","SM03_3","SM04_1","SM04_2","SM05_1","SM05_2","SM05_3","SM06_1","SM06_2","SM06_3"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":8.5014528850145279},"tickangle":-90,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"camera","font":{"color":"rgba(0,0,0,1)","family":"","size":10.62681610626816}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-3.2000000000000002,67.200000000000003],"tickmode":"array","ticktext":["0","20","40","60"],"tickvals":[0,20,40,60],"categoryorder":"array","categoryarray":["0","20","40","60"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":8.5014528850145297},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"effort","font":{"color":"rgba(0,0,0,1)","family":"","size":10.62681610626816}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":8.5014528850145279}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"2f2817f41839":{"x":{},"y":{},"fill":{},"colour":{},"type":"bar"}},"cur_data":"2f2817f41839","visdat":{"2f2817f41839":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>Se cuenta la cantidad de regitros independientes en cada cámara para las especies de interés.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="variables.html#cb46-1" tabindex="-1"></a>tr_camera <span class="ot">&lt;-</span> tr_data <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a href="variables.html#cb46-2" tabindex="-1"></a>  <span class="fu">select</span>(camera, sp) <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a href="variables.html#cb46-3" tabindex="-1"></a>  <span class="fu">group_by</span>(camera, sp) <span class="sc">%&gt;%</span></span>
+<span id="cb46-4"><a href="variables.html#cb46-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>())</span></code></pre></div>
+<p>Se realiza el calculo de la tasa de registro.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="variables.html#cb47-1" tabindex="-1"></a>tr_camera <span class="ot">&lt;-</span> tr_camera <span class="sc">%&gt;%</span></span>
+<span id="cb47-2"><a href="variables.html#cb47-2" tabindex="-1"></a>  <span class="fu">left_join</span>(camera_effort, <span class="at">by =</span> <span class="fu">join_by</span>(camera)) <span class="sc">%&gt;%</span></span>
+<span id="cb47-3"><a href="variables.html#cb47-3" tabindex="-1"></a>  <span class="fu">group_by</span>(camera, sp) <span class="sc">%&gt;%</span> </span>
+<span id="cb47-4"><a href="variables.html#cb47-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">tr_camera =</span> count<span class="sc">/</span>effort) <span class="sc">%&gt;%</span> </span>
+<span id="cb47-5"><a href="variables.html#cb47-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">system =</span> <span class="fu">substr</span>(camera, <span class="dv">1</span>, <span class="dv">4</span>))</span></code></pre></div>
+</div>
+<div id="tabla-única" class="section level3 hasAnchor" number="7.1.3">
+<h3><span class="header-section-number">7.1.3</span> Tabla única<a href="variables.html#tabla-única" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se unen los datos en una tabla única para mejor organización, en ella existen los valores de la tasa de registro tanto a nivel de sistema como de camara.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="variables.html#cb48-1" tabindex="-1"></a>tr_results <span class="ot">&lt;-</span> tr_camera <span class="sc">%&gt;%</span> </span>
+<span id="cb48-2"><a href="variables.html#cb48-2" tabindex="-1"></a>  <span class="fu">left_join</span>(tr_system, <span class="fu">join_by</span>(system, sp)) <span class="sc">%&gt;%</span> </span>
+<span id="cb48-3"><a href="variables.html#cb48-3" tabindex="-1"></a>  <span class="fu">select</span>(system, camera, sp, tr_system, tr_camera)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["system"],"name":[1],"type":["chr"],"align":["left"]},{"label":["camera"],"name":[2],"type":["chr"],"align":["left"]},{"label":["sp"],"name":[3],"type":["chr"],"align":["left"]},{"label":["tr_system"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["tr_camera"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"CP01","2":"CP01_1","3":"Btau","4":"0.09523810","5":"0.01587302"},{"1":"CP01","2":"CP01_2","3":"Btau","4":"0.09523810","5":"0.14285714"},{"1":"CP01","2":"CP01_3","3":"Btau","4":"0.09523810","5":"0.12698413"},{"1":"CP02","2":"CP02_3","3":"Btau","4":"0.02673797","5":"0.08064516"},{"1":"CP03","2":"CP03_1","3":"Btau","4":"0.04232804","5":"0.01587302"},{"1":"CP03","2":"CP03_2","3":"Btau","4":"0.04232804","5":"0.04761905"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Y por último se añaden estos datos a la planilla general. Para esto hay que modificar la tabla un poco, me refiero:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="variables.html#cb49-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/datos_procesados_v2.RData&quot;</span>)</span>
+<span id="cb49-2"><a href="variables.html#cb49-2" tabindex="-1"></a><span class="co"># Obtener todas las cámaras con registro de cualquier especie.</span></span>
+<span id="cb49-3"><a href="variables.html#cb49-3" tabindex="-1"></a>all_cameras <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb49-4"><a href="variables.html#cb49-4" tabindex="-1"></a>  <span class="fu">select</span>(camera) <span class="sc">%&gt;%</span> </span>
+<span id="cb49-5"><a href="variables.html#cb49-5" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
+<span id="cb49-6"><a href="variables.html#cb49-6" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="variables.html#cb49-7" tabindex="-1"></a><span class="co"># Modificar resultados de TR y hacerlos &quot;anchos&quot;</span></span>
+<span id="cb49-8"><a href="variables.html#cb49-8" tabindex="-1"></a>tr <span class="ot">&lt;-</span> tr_results <span class="sc">%&gt;%</span> </span>
+<span id="cb49-9"><a href="variables.html#cb49-9" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sp, <span class="at">values_from =</span> <span class="fu">c</span>(tr_system, tr_camera), <span class="at">names_sep =</span> <span class="st">&quot;_&quot;</span>)</span>
+<span id="cb49-10"><a href="variables.html#cb49-10" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="variables.html#cb49-11" tabindex="-1"></a><span class="co"># Verificar qué camaras son las que faltan en el cálculo de la tr, ya que no poseen registros ni de Btau ni de Cfam</span></span>
+<span id="cb49-12"><a href="variables.html#cb49-12" tabindex="-1"></a>missing_cameras <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(all_cameras, tr<span class="sc">$</span>camera)</span>
+<span id="cb49-13"><a href="variables.html#cb49-13" tabindex="-1"></a></span>
+<span id="cb49-14"><a href="variables.html#cb49-14" tabindex="-1"></a><span class="co"># Creamos un tibble con estos datos faltantes</span></span>
+<span id="cb49-15"><a href="variables.html#cb49-15" tabindex="-1"></a>missing_tibble <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb49-16"><a href="variables.html#cb49-16" tabindex="-1"></a>  <span class="at">system =</span> <span class="fu">substr</span>(missing_cameras, <span class="dv">1</span>, <span class="dv">4</span>), </span>
+<span id="cb49-17"><a href="variables.html#cb49-17" tabindex="-1"></a>  <span class="at">camera =</span> missing_cameras,</span>
+<span id="cb49-18"><a href="variables.html#cb49-18" tabindex="-1"></a>  <span class="at">tr_system_Btau =</span> <span class="dv">0</span>,</span>
+<span id="cb49-19"><a href="variables.html#cb49-19" tabindex="-1"></a>  <span class="at">tr_system_Cfam =</span> <span class="dv">0</span>,</span>
+<span id="cb49-20"><a href="variables.html#cb49-20" tabindex="-1"></a>  <span class="at">tr_camera_Btau =</span> <span class="dv">0</span>,</span>
+<span id="cb49-21"><a href="variables.html#cb49-21" tabindex="-1"></a>  <span class="at">tr_camera_Cfam =</span> <span class="dv">0</span></span>
+<span id="cb49-22"><a href="variables.html#cb49-22" tabindex="-1"></a>)</span>
+<span id="cb49-23"><a href="variables.html#cb49-23" tabindex="-1"></a></span>
+<span id="cb49-24"><a href="variables.html#cb49-24" tabindex="-1"></a><span class="co"># Y los unimos en un mismo set de datos</span></span>
+<span id="cb49-25"><a href="variables.html#cb49-25" tabindex="-1"></a>tr <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(tr, missing_tibble)</span>
+<span id="cb49-26"><a href="variables.html#cb49-26" tabindex="-1"></a></span>
+<span id="cb49-27"><a href="variables.html#cb49-27" tabindex="-1"></a><span class="co"># Reemplzamos todos los NA por 0.</span></span>
+<span id="cb49-28"><a href="variables.html#cb49-28" tabindex="-1"></a>tr[<span class="fu">is.na</span>(tr)] <span class="ot">&lt;-</span> <span class="dv">0</span></span></code></pre></div>
+<p>Ahora sí, se pueden cargar los datos de tasa de registro a la planilla general.</p>
+<p>Y se obtiene:</p>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["site"],"name":[1],"type":["chr"],"align":["left"]},{"label":["system"],"name":[2],"type":["chr"],"align":["left"]},{"label":["camera"],"name":[3],"type":["chr"],"align":["left"]},{"label":["sp"],"name":[4],"type":["chr"],"align":["left"]},{"label":["datetime"],"name":[5],"type":["dttm"],"align":["right"]},{"label":["lat"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["lon"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["solar"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["clock"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["nocturnal"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["moon_ilumination"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["tr_btau_sys"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["tr_cfam_sys"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["tr_btau_cam"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["tr_cfam_cam"],"name":[15],"type":["dbl"],"align":["right"]}],"data":[{"1":"SM","2":"SM06","3":"SM06_3","4":"Btau","5":"2023-02-07 07:56:22","6":"-33.72585","7":"-53.58035","8":"2.135101","9":"2.078542","10":"0","11":"0.9849170","12":"0.4800000","13":"0","14":"0.4736842","15":"0","_rn_":"1"},{"1":"SM","2":"SM06","3":"SM06_2","4":"Btau","5":"2023-02-06 15:05:08","6":"-33.72585","7":"-53.58035","8":"3.810810","9":"3.949389","10":"0","11":"0.9976228","12":"0.4800000","13":"0","14":"0.7368421","15":"0","_rn_":"2"},{"1":"SM","2":"SM01","3":"SM01_1","4":"Btau","5":"2023-02-06 12:13:33","6":"-33.72585","7":"-53.58035","8":"3.141334","9":"3.200716","10":"0","11":"0.9976228","12":"0.2738095","13":"0","14":"0.4464286","15":"0","_rn_":"3"},{"1":"SM","2":"SM01","3":"SM01_1","4":"Btau","5":"2023-02-06 08:07:45","6":"-33.72585","7":"-53.58035","8":"2.182284","9":"2.128211","10":"0","11":"0.9976228","12":"0.2738095","13":"0","14":"0.4464286","15":"0","_rn_":"4"},{"1":"SM","2":"SM01","3":"SM01_1","4":"Btau","5":"2023-02-05 21:59:46","6":"-33.72585","7":"-53.58035","8":"5.578795","9":"5.758568","10":"1","11":"0.9929086","12":"0.2738095","13":"0","14":"0.4464286","15":"0","_rn_":"5"},{"1":"SM","2":"SM01","3":"SM01_1","4":"Btau","5":"2023-02-05 18:00:13","6":"-33.72585","7":"-53.58035","8":"4.491674","9":"4.713334","10":"0","11":"0.9929086","12":"0.2738095","13":"0","14":"0.4464286","15":"0","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+</div>
+</div>
+<div id="coberturas" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Coberturas<a href="variables.html#coberturas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En este capítulo se detallará el procesamiento de los datos de coberturas de hábitat, así como la variable de la diversidad de hábitat mediante el índice de Shannon (Hsist).</p>
+<p>Las clases de coberturas se pueden dividir en dos tipos:</p>
+<div id="clases-de-cobertura-simples" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Clases de Cobertura Simples<a href="variables.html#clases-de-cobertura-simples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se refieren a categorías específicas de uso del suelo y vegetación.</p>
+<table>
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Clase</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PLNT</td>
+<td>Plantaciones forestales (incluye mayormente plantaciones <em>sensu stricto</em>, en menor medida cortinas forestales, raramente sombra ornamental y frutales)</td>
+</tr>
+<tr class="even">
+<td>FRST</td>
+<td>Monte Nativo (en muchos casos incluye montes nativos con presencia de exóticas, así como parches de monte de <em>Acacia</em>)</td>
+</tr>
+<tr class="odd">
+<td>SHRB</td>
+<td>Matorrales y Pajonales (incluye arbustales, áreas arboladas abiertas de nativas o exóticas con dosel discontinuo, pajonales, caraguatales y juncales altos)</td>
+</tr>
+<tr class="even">
+<td>OPEN</td>
+<td>Áreas Abiertas (praderas, pasturas sembradas, cultivos, dunas, playas, arenales, suelo o roca desnudo, caminos)</td>
+</tr>
+<tr class="odd">
+<td>VWTR</td>
+<td>Vegetación inundada o en cuerpos de agua</td>
+</tr>
+<tr class="even">
+<td>OWTR</td>
+<td>Cuerpos de agua abiertos</td>
+</tr>
+<tr class="odd">
+<td>URBN</td>
+<td>Áreas urbanas construidas (no se utiliza esta información, en cambio, se prefiere el uso del conteo de techos)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="clases-de-cobertura-agregadas" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Clases de Cobertura Agregadas<a href="variables.html#clases-de-cobertura-agregadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Estas combinan categorías simples para representar de manera más generalizada los diferentes tipos de cobertura de hábitat.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Clase</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>WTLD</td>
+<td>Humedales (VWTR + OWTR)</td>
+</tr>
+<tr class="even">
+<td>CLSD</td>
+<td>Vegetación cerrada (PLNT + FRST + SHRB)</td>
+</tr>
+<tr class="odd">
+<td>WOOD</td>
+<td>Áreas Arboladas, de dosel continuo/denso (FRST + PLNT)</td>
+</tr>
+</tbody>
+</table>
+<p>Por otro lado, el índice de Shannon (<em>Hsist</em>) se utiliza para medir la diversidad de hábitat. Este índice se estima a partir de las clases de cobertura simple, proporcionando una medida cuantitativa de la heterogeneidad del paisaje. Un valor alto del índice de Shannon indica una mayor diversidad de hábitat.</p>
+</div>
+<div id="procesamiento-de-datos" class="section level3 hasAnchor" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> Procesamiento de datos<a href="variables.html#procesamiento-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Primero, se cargan las planillas proporcionadas por Ariel Farías, comenzando con los datos a nivel de sistema.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="variables.html#cb50-1" tabindex="-1"></a>variables_system_df <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">&quot;data_processed/variables_system_df.RData&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb50-2"><a href="variables.html#cb50-2" tabindex="-1"></a>  <span class="fu">rename_with</span>(<span class="sc">~</span> <span class="fu">paste0</span>(.,<span class="st">&quot;_sys&quot;</span>), <span class="sc">-</span>system) <span class="co"># Le agergo la terminación sys al nombre de todas las colummas.</span></span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["system"],"name":[1],"type":["chr"],"align":["left"]},{"label":["wtld_sys"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["clsd_sys"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["wood_sys"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["plnt_sys"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["frst_sys"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["shrb_sys"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["open_sys"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["vwtr_sys"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["owtr_sys"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["urbn_sys"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["hindex_sys"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["n_tech_sys"],"name":[13],"type":["dbl"],"align":["right"]}],"data":[{"1":"CP01","2":"0.01961930","3":"0.6092140","4":"0.52293000","5":"0.439628791","6":"0.083301212","7":"0.08628405","8":"0.37116666","9":"0.01961930","10":"0","11":"0","12":"1.2247240","13":"3"},{"1":"CP02","2":"0.02205446","3":"0.6749864","4":"0.54509228","5":"0.216734173","6":"0.328358104","7":"0.12989416","8":"0.30295910","9":"0.02205446","10":"0","11":"0","12":"1.4081013","13":"0"},{"1":"CP03","2":"0.01568835","3":"0.9316061","4":"0.81301208","5":"0.548640510","6":"0.264371572","7":"0.11859397","8":"0.05270560","9":"0.01568835","10":"0","11":"0","12":"1.1542204","13":"0"},{"1":"CP05","2":"0.06964377","3":"0.7629413","4":"0.54346050","5":"0.492753702","6":"0.050706802","7":"0.21948075","8":"0.16741497","9":"0.06964377","10":"0","11":"0","12":"1.3175507","13":"0"},{"1":"CP06","2":"0.27726818","3":"0.1904705","4":"0.05445247","5":"0.002597619","6":"0.051854852","7":"0.13601807","8":"0.53226128","9":"0.27726818","10":"0","11":"0","12":"1.1315964","13":"1"},{"1":"CP07","2":"0.10568753","3":"0.8787180","4":"0.81311229","5":"0.810908053","6":"0.002204241","7":"0.06560570","8":"0.01559447","9":"0.10568753","10":"0","11":"0","12":"0.6645613","13":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Y lo mismo para los datos a nivel de cámaras.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="variables.html#cb51-1" tabindex="-1"></a>variables_camera_df <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">&quot;data_processed/variables_camera_df.RData&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-2"><a href="variables.html#cb51-2" tabindex="-1"></a>  <span class="fu">rename_with</span>(<span class="sc">~</span> <span class="fu">paste0</span>(.,<span class="st">&quot;_cam&quot;</span>), <span class="sc">-</span>site) <span class="sc">%&gt;%</span> <span class="co"># Le agergo la terminación sys al nombre de todas las colummas.</span></span>
+<span id="cb51-3"><a href="variables.html#cb51-3" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">camera =</span> site) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-4"><a href="variables.html#cb51-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">system =</span> <span class="fu">substr</span>(camera, <span class="dv">1</span>, <span class="dv">4</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-5"><a href="variables.html#cb51-5" tabindex="-1"></a>  <span class="fu">select</span>(system, <span class="fu">everything</span>())</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["system"],"name":[1],"type":["chr"],"align":["left"]},{"label":["camera"],"name":[2],"type":["chr"],"align":["left"]},{"label":["wtld_cam"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["clsd_cam"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["wood_cam"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["plnt_cam"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["frst_cam"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["shrb_cam"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["open_cam"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["vwtr_cam"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["owtr_cam"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["urbn_cam"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["hindex_cam"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["n_tech_cam"],"name":[14],"type":["dbl"],"align":["right"]}],"data":[{"1":"CP01","2":"CP01_1","3":"0.10059406","4":"0.3897292","5":"0.17680491","6":"0.11534744","7":"0.06145747","8":"0.21292432","9":"0.509676707","10":"0.10059406","11":"0","12":"0","13":"1.3244553","14":"1"},{"1":"CP01","2":"CP01_2","3":"0.01791036","4":"0.9723554","5":"0.88639909","6":"0.74476063","7":"0.14163847","8":"0.08595634","9":"0.009734208","10":"0.01791036","11":"0","12":"0","13":"0.8243662","14":"0"},{"1":"CP01","2":"CP01_3","3":"0.02098289","4":"0.4262029","5":"0.07836002","6":"0.07836002","7":"0.00000000","8":"0.34784293","9":"0.552814159","10":"0.02098289","11":"0","12":"0","13":"0.9756131","14":"0"},{"1":"CP02","2":"CP02_1","3":"0.00000000","4":"0.9981960","5":"0.89184384","6":"0.61299855","7":"0.27884529","8":"0.10635213","9":"0.001804029","10":"0.00000000","11":"0","12":"0","13":"0.9058423","14":"0"},{"1":"CP02","2":"CP02_2","3":"0.01836420","4":"0.3791123","5":"0.22790955","6":"0.00000000","7":"0.22790955","8":"0.15120279","9":"0.602523458","10":"0.01836420","11":"0","12":"0","13":"1.0013402","14":"0"},{"1":"CP02","2":"CP02_3","3":"0.00000000","4":"0.7467916","5":"0.62370855","6":"0.33500393","7":"0.28870461","8":"0.12308305","9":"0.253208401","10":"0.00000000","11":"0","12":"0","13":"1.3306758","14":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Lo siguiente es unir ambas planillas en una sola, de esta forma la generación de kernels de actividad será más fácil.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="variables.html#cb52-1" tabindex="-1"></a>variables_df <span class="ot">&lt;-</span> variables_camera_df <span class="sc">%&gt;%</span> </span>
+<span id="cb52-2"><a href="variables.html#cb52-2" tabindex="-1"></a>  <span class="fu">left_join</span>(variables_system_df, <span class="at">by =</span> <span class="fu">join_by</span>(system))</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["system"],"name":[1],"type":["chr"],"align":["left"]},{"label":["camera"],"name":[2],"type":["chr"],"align":["left"]},{"label":["wtld_cam"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["clsd_cam"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["wood_cam"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["plnt_cam"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["frst_cam"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["shrb_cam"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["open_cam"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["vwtr_cam"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["owtr_cam"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["urbn_cam"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["hindex_cam"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["n_tech_cam"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["wtld_sys"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["clsd_sys"],"name":[16],"type":["dbl"],"align":["right"]},{"label":["wood_sys"],"name":[17],"type":["dbl"],"align":["right"]},{"label":["plnt_sys"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["frst_sys"],"name":[19],"type":["dbl"],"align":["right"]},{"label":["shrb_sys"],"name":[20],"type":["dbl"],"align":["right"]},{"label":["open_sys"],"name":[21],"type":["dbl"],"align":["right"]},{"label":["vwtr_sys"],"name":[22],"type":["dbl"],"align":["right"]},{"label":["owtr_sys"],"name":[23],"type":["dbl"],"align":["right"]},{"label":["urbn_sys"],"name":[24],"type":["dbl"],"align":["right"]},{"label":["hindex_sys"],"name":[25],"type":["dbl"],"align":["right"]},{"label":["n_tech_sys"],"name":[26],"type":["dbl"],"align":["right"]}],"data":[{"1":"CP01","2":"CP01_1","3":"0.10059406","4":"0.3897292","5":"0.17680491","6":"0.11534744","7":"0.06145747","8":"0.21292432","9":"0.509676707","10":"0.10059406","11":"0","12":"0","13":"1.3244553","14":"1","15":"0.01961930","16":"0.6092140","17":"0.5229300","18":"0.4396288","19":"0.08330121","20":"0.08628405","21":"0.3711667","22":"0.01961930","23":"0","24":"0","25":"1.224724","26":"3"},{"1":"CP01","2":"CP01_2","3":"0.01791036","4":"0.9723554","5":"0.88639909","6":"0.74476063","7":"0.14163847","8":"0.08595634","9":"0.009734208","10":"0.01791036","11":"0","12":"0","13":"0.8243662","14":"0","15":"0.01961930","16":"0.6092140","17":"0.5229300","18":"0.4396288","19":"0.08330121","20":"0.08628405","21":"0.3711667","22":"0.01961930","23":"0","24":"0","25":"1.224724","26":"3"},{"1":"CP01","2":"CP01_3","3":"0.02098289","4":"0.4262029","5":"0.07836002","6":"0.07836002","7":"0.00000000","8":"0.34784293","9":"0.552814159","10":"0.02098289","11":"0","12":"0","13":"0.9756131","14":"0","15":"0.01961930","16":"0.6092140","17":"0.5229300","18":"0.4396288","19":"0.08330121","20":"0.08628405","21":"0.3711667","22":"0.01961930","23":"0","24":"0","25":"1.224724","26":"3"},{"1":"CP02","2":"CP02_1","3":"0.00000000","4":"0.9981960","5":"0.89184384","6":"0.61299855","7":"0.27884529","8":"0.10635213","9":"0.001804029","10":"0.00000000","11":"0","12":"0","13":"0.9058423","14":"0","15":"0.02205446","16":"0.6749864","17":"0.5450923","18":"0.2167342","19":"0.32835810","20":"0.12989416","21":"0.3029591","22":"0.02205446","23":"0","24":"0","25":"1.408101","26":"0"},{"1":"CP02","2":"CP02_2","3":"0.01836420","4":"0.3791123","5":"0.22790955","6":"0.00000000","7":"0.22790955","8":"0.15120279","9":"0.602523458","10":"0.01836420","11":"0","12":"0","13":"1.0013402","14":"0","15":"0.02205446","16":"0.6749864","17":"0.5450923","18":"0.2167342","19":"0.32835810","20":"0.12989416","21":"0.3029591","22":"0.02205446","23":"0","24":"0","25":"1.408101","26":"0"},{"1":"CP02","2":"CP02_3","3":"0.00000000","4":"0.7467916","5":"0.62370855","6":"0.33500393","7":"0.28870461","8":"0.12308305","9":"0.253208401","10":"0.00000000","11":"0","12":"0","13":"1.3306758","14":"0","15":"0.02205446","16":"0.6749864","17":"0.5450923","18":"0.2167342","19":"0.32835810","20":"0.12989416","21":"0.3029591","22":"0.02205446","23":"0","24":"0","25":"1.408101","26":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Por último queda añadir estos datos a la planilla con todos los datos. Para recordar, la planilla general luce así:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="variables.html#cb53-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/datos_procesados_v3.RData&quot;</span>)</span>
+<span id="cb53-2"><a href="variables.html#cb53-2" tabindex="-1"></a><span class="fu">paged_table</span>(<span class="fu">head</span>(data))</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["site"],"name":[1],"type":["chr"],"align":["left"]},{"label":["system"],"name":[2],"type":["chr"],"align":["left"]},{"label":["camera"],"name":[3],"type":["chr"],"align":["left"]},{"label":["sp"],"name":[4],"type":["chr"],"align":["left"]},{"label":["datetime"],"name":[5],"type":["dttm"],"align":["right"]},{"label":["lat"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["lon"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["solar"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["clock"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["nocturnal"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["moon_ilumination"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["tr_btau_sys"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["tr_cfam_sys"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["tr_btau_cam"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["tr_cfam_cam"],"name":[15],"type":["dbl"],"align":["right"]}],"data":[{"1":"SM","2":"SM06","3":"SM06_3","4":"Btau","5":"2023-02-07 07:56:22","6":"-33.72585","7":"-53.58035","8":"2.135101","9":"2.078542","10":"0","11":"0.9849170","12":"0.4800000","13":"0","14":"0.4736842","15":"0","_rn_":"1"},{"1":"SM","2":"SM06","3":"SM06_2","4":"Btau","5":"2023-02-06 15:05:08","6":"-33.72585","7":"-53.58035","8":"3.810810","9":"3.949389","10":"0","11":"0.9976228","12":"0.4800000","13":"0","14":"0.7368421","15":"0","_rn_":"2"},{"1":"SM","2":"SM01","3":"SM01_1","4":"Btau","5":"2023-02-06 12:13:33","6":"-33.72585","7":"-53.58035","8":"3.141334","9":"3.200716","10":"0","11":"0.9976228","12":"0.2738095","13":"0","14":"0.4464286","15":"0","_rn_":"3"},{"1":"SM","2":"SM01","3":"SM01_1","4":"Btau","5":"2023-02-06 08:07:45","6":"-33.72585","7":"-53.58035","8":"2.182284","9":"2.128211","10":"0","11":"0.9976228","12":"0.2738095","13":"0","14":"0.4464286","15":"0","_rn_":"4"},{"1":"SM","2":"SM01","3":"SM01_1","4":"Btau","5":"2023-02-05 21:59:46","6":"-33.72585","7":"-53.58035","8":"5.578795","9":"5.758568","10":"1","11":"0.9929086","12":"0.2738095","13":"0","14":"0.4464286","15":"0","_rn_":"5"},{"1":"SM","2":"SM01","3":"SM01_1","4":"Btau","5":"2023-02-05 18:00:13","6":"-33.72585","7":"-53.58035","8":"4.491674","9":"4.713334","10":"0","11":"0.9929086","12":"0.2738095","13":"0","14":"0.4464286","15":"0","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Y pasemos a unirlos..</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="variables.html#cb54-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb54-2"><a href="variables.html#cb54-2" tabindex="-1"></a>  <span class="fu">left_join</span>(variables_df, <span class="at">by =</span> <span class="fu">join_by</span>(system, camera))</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="variables.html#cb55-1" tabindex="-1"></a><span class="fu">save</span>(data, <span class="at">file=</span><span class="st">&quot;data_processed/datos_procesados_v4.RData&quot;</span>)</span></code></pre></div>
+</div>
+<div id="exploración-de-datos" class="section level3 hasAnchor" number="7.2.4">
+<h3><span class="header-section-number">7.2.4</span> Exploración de datos<a href="variables.html#exploración-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Exploremos el índice de Shannon, el cual en este caso mide la diversidad de hábitats.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="variables.html#cb56-1" tabindex="-1"></a>hindex_cameras <span class="ot">&lt;-</span> variables_df <span class="sc">%&gt;%</span> </span>
+<span id="cb56-2"><a href="variables.html#cb56-2" tabindex="-1"></a>  <span class="fu">select</span>(camera, hindex_cam)</span>
+<span id="cb56-3"><a href="variables.html#cb56-3" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="variables.html#cb56-4" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/datos_procesados_v4.RData&quot;</span>)</span>
+<span id="cb56-5"><a href="variables.html#cb56-5" tabindex="-1"></a></span>
+<span id="cb56-6"><a href="variables.html#cb56-6" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb56-7"><a href="variables.html#cb56-7" tabindex="-1"></a>  <span class="fu">select</span>(camera, sp) <span class="sc">%&gt;%</span> </span>
+<span id="cb56-8"><a href="variables.html#cb56-8" tabindex="-1"></a>  <span class="fu">group_by</span>(camera, sp) <span class="sc">%&gt;%</span> </span>
+<span id="cb56-9"><a href="variables.html#cb56-9" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">registros =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb56-10"><a href="variables.html#cb56-10" tabindex="-1"></a>  <span class="fu">left_join</span>(hindex_cameras, <span class="at">by =</span> <span class="fu">join_by</span>(camera))</span>
+<span id="cb56-11"><a href="variables.html#cb56-11" tabindex="-1"></a></span>
+<span id="cb56-12"><a href="variables.html#cb56-12" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>tmp, <span class="fu">aes</span>(<span class="at">x =</span> hindex_cam, <span class="at">y =</span> registros)) <span class="sc">+</span></span>
+<span id="cb56-13"><a href="variables.html#cb56-13" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb56-14"><a href="variables.html#cb56-14" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Registros por cámara&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<p>Lo mismo a nivel de sistema:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="variables.html#cb57-1" tabindex="-1"></a>hindex_sistemas <span class="ot">&lt;-</span> variables_df <span class="sc">%&gt;%</span> </span>
+<span id="cb57-2"><a href="variables.html#cb57-2" tabindex="-1"></a>  <span class="fu">select</span>(system, hindex_sys)</span>
+<span id="cb57-3"><a href="variables.html#cb57-3" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="variables.html#cb57-4" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/datos_procesados_v4.RData&quot;</span>)</span>
+<span id="cb57-5"><a href="variables.html#cb57-5" tabindex="-1"></a></span>
+<span id="cb57-6"><a href="variables.html#cb57-6" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb57-7"><a href="variables.html#cb57-7" tabindex="-1"></a>  <span class="fu">select</span>(system, sp) <span class="sc">%&gt;%</span> </span>
+<span id="cb57-8"><a href="variables.html#cb57-8" tabindex="-1"></a>  <span class="fu">group_by</span>(system, sp) <span class="sc">%&gt;%</span> </span>
+<span id="cb57-9"><a href="variables.html#cb57-9" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">registros =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb57-10"><a href="variables.html#cb57-10" tabindex="-1"></a>  <span class="fu">left_join</span>(hindex_sistemas, <span class="at">by =</span> <span class="fu">join_by</span>(system))</span>
+<span id="cb57-11"><a href="variables.html#cb57-11" tabindex="-1"></a></span>
+<span id="cb57-12"><a href="variables.html#cb57-12" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>tmp, <span class="fu">aes</span>(<span class="at">x =</span> hindex_sys, <span class="at">y =</span> registros)) <span class="sc">+</span></span>
+<span id="cb57-13"><a href="variables.html#cb57-13" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb57-14"><a href="variables.html#cb57-14" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;registros por sistema&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="fase-lunar.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="variables-climáticas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-variables-tr.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

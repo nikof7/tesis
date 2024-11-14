@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Variables | Tesis</title>
+  <meta name="description" content="Donde se irá desarrollando la tésis." />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Variables | Tesis" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Donde se irá desarrollando la tésis." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Variables | Tesis" />
+  
+  <meta name="twitter:description" content="Donde se irá desarrollando la tésis." />
+  
+
+<meta name="author" content="Nicolás Fernández-Sauleda" />
+
+
+<meta name="date" content="2024-11-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="variables.html"/>
+<link rel="next" href="variables-climáticas.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Tesis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Acerca de</a></li>
+<li class="chapter" data-level="2" data-path="carga-de-datos.html"><a href="carga-de-datos.html"><i class="fa fa-check"></i><b>2</b> Carga de Datos</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="carga-de-datos.html"><a href="carga-de-datos.html#observaciones-en-cámaras-trampa"><i class="fa fa-check"></i><b>2.1</b> Observaciones en Cámaras Trampa</a></li>
+<li class="chapter" data-level="2.2" data-path="carga-de-datos.html"><a href="carga-de-datos.html#preparación-de-datos"><i class="fa fa-check"></i><b>2.2</b> Preparación de Datos</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="exploración-inicial-de-los-datos.html"><a href="exploración-inicial-de-los-datos.html"><i class="fa fa-check"></i><b>3</b> Exploración inicial de los datos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="exploración-inicial-de-los-datos.html"><a href="exploración-inicial-de-los-datos.html#cantidad-de-registros-independientes-por-especie-y-área"><i class="fa fa-check"></i><b>3.1</b> Cantidad de registros independientes por especie y área</a></li>
+<li class="chapter" data-level="3.2" data-path="exploración-inicial-de-los-datos.html"><a href="exploración-inicial-de-los-datos.html#sistemas-y-cámaras"><i class="fa fa-check"></i><b>3.2</b> Sistemas y cámaras</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html"><i class="fa fa-check"></i><b>4</b> Convertir a hora solar</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html#paquete-circular"><i class="fa fa-check"></i><b>4.1</b> Paquete circular</a></li>
+<li class="chapter" data-level="4.2" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html#paquete-activity"><i class="fa fa-check"></i><b>4.2</b> Paquete activity</a></li>
+<li class="chapter" data-level="4.3" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html#conclusión"><i class="fa fa-check"></i><b>4.3</b> Conclusión</a></li>
+<li class="chapter" data-level="4.4" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html#probando-categorías"><i class="fa fa-check"></i><b>4.4</b> Probando categorías</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html#noche-día-y-crepúsculo"><i class="fa fa-check"></i><b>4.4.1</b> Noche, Día y Crepúsculo</a></li>
+<li class="chapter" data-level="4.4.2" data-path="convertir-a-hora-solar.html"><a href="convertir-a-hora-solar.html#diurno-y-nocturno"><i class="fa fa-check"></i><b>4.4.2</b> Diurno y nocturno</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="fase-lunar.html"><a href="fase-lunar.html"><i class="fa fa-check"></i><b>5</b> Fase lunar</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="fase-lunar.html"><a href="fase-lunar.html#preparación-de-datos-1"><i class="fa fa-check"></i><b>5.1</b> Preparación de datos</a></li>
+<li class="chapter" data-level="5.2" data-path="fase-lunar.html"><a href="fase-lunar.html#iluminación-de-la-luna"><i class="fa fa-check"></i><b>5.2</b> Iluminación de la Luna</a></li>
+<li class="chapter" data-level="5.3" data-path="fase-lunar.html"><a href="fase-lunar.html#overlap-utilizando-fase-lunar"><i class="fa fa-check"></i><b>5.3</b> Overlap utilizando fase lunar</a></li>
+<li class="chapter" data-level="5.4" data-path="fase-lunar.html"><a href="fase-lunar.html#kernels-de-superposición-para-pares-de-especies"><i class="fa fa-check"></i><b>5.4</b> Kernels de Superposición para Pares de Especies</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="variables.html"><a href="variables.html"><i class="fa fa-check"></i><b>6</b> Variables</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="variables.html"><a href="variables.html#tasa-de-registro"><i class="fa fa-check"></i><b>6.1</b> Tasa de registro</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="variables.html"><a href="variables.html#nivel-sistema"><i class="fa fa-check"></i><b>6.1.1</b> Nivel sistema</a></li>
+<li class="chapter" data-level="6.1.2" data-path="variables.html"><a href="variables.html#nivel-camara"><i class="fa fa-check"></i><b>6.1.2</b> Nivel camara</a></li>
+<li class="chapter" data-level="6.1.3" data-path="variables.html"><a href="variables.html#tabla-única"><i class="fa fa-check"></i><b>6.1.3</b> Tabla única</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="variables-1.html"><a href="variables-1.html"><i class="fa fa-check"></i><b>7</b> Variables</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="variables-1.html"><a href="variables-1.html#coberturas"><i class="fa fa-check"></i><b>7.1</b> Coberturas</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="variables-1.html"><a href="variables-1.html#clases-de-cobertura-simples"><i class="fa fa-check"></i><b>7.1.1</b> Clases de Cobertura Simples</a></li>
+<li class="chapter" data-level="7.1.2" data-path="variables-1.html"><a href="variables-1.html#clases-de-cobertura-agregadas"><i class="fa fa-check"></i><b>7.1.2</b> Clases de Cobertura Agregadas</a></li>
+<li class="chapter" data-level="7.1.3" data-path="variables-1.html"><a href="variables-1.html#procesamiento-de-datos"><i class="fa fa-check"></i><b>7.1.3</b> Procesamiento de datos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="variables-climáticas.html"><a href="variables-climáticas.html"><i class="fa fa-check"></i><b>8</b> Variables climáticas</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="variables-climáticas.html"><a href="variables-climáticas.html#procesamiento-de-datos-1"><i class="fa fa-check"></i><b>8.1</b> Procesamiento de datos</a></li>
+<li class="chapter" data-level="8.2" data-path="variables-climáticas.html"><a href="variables-climáticas.html#temperatura"><i class="fa fa-check"></i><b>8.2</b> Temperatura</a></li>
+<li class="chapter" data-level="8.3" data-path="variables-climáticas.html"><a href="variables-climáticas.html#precipitaciones"><i class="fa fa-check"></i><b>8.3</b> Precipitaciones</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="kernels-de-actividad.html"><a href="kernels-de-actividad.html"><i class="fa fa-check"></i><b>9</b> Kernels de actividad</a></li>
+<li class="chapter" data-level="10" data-path="exploración-general-de-modelos.html"><a href="exploración-general-de-modelos.html"><i class="fa fa-check"></i><b>10</b> Exploración general de modelos</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="exploración-general-de-modelos.html"><a href="exploración-general-de-modelos.html#modelo-lineal-simple"><i class="fa fa-check"></i><b>10.1</b> Modelo lineal simple</a></li>
+<li class="chapter" data-level="10.2" data-path="exploración-general-de-modelos.html"><a href="exploración-general-de-modelos.html#incluir-interacciones"><i class="fa fa-check"></i><b>10.2</b> Incluir interacciones</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html"><i class="fa fa-check"></i><b>11</b> Modelos para Jenni</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#preparación-de-datos-2"><i class="fa fa-check"></i><b>11.1</b> Preparación de datos</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#tasa-de-registro-1"><i class="fa fa-check"></i><b>11.1.1</b> Tasa de registro</a></li>
+<li class="chapter" data-level="11.1.2" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#estado-de-los-datos"><i class="fa fa-check"></i><b>11.1.2</b> Estado de los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#modelo-generalidades"><i class="fa fa-check"></i><b>11.2</b> Modelo generalidades</a></li>
+<li class="chapter" data-level="11.3" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#modelo-utilizando-brms"><i class="fa fa-check"></i><b>11.3</b> Modelo utilizando brms</a></li>
+<li class="chapter" data-level="11.4" data-path="modelos-para-jenni.html"><a href="modelos-para-jenni.html#modelo-con-interacciones"><i class="fa fa-check"></i><b>11.4</b> Modelo con interacciones</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a>
+<ul>
+<li class="chapter" data-level="11.5" data-path="references.html"><a href="references.html#paquete-brms"><i class="fa fa-check"></i><b>11.5</b> Paquete <code>brms</code></a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/nikof7/tesis" target="blank">Nicolás Fernández-Sauleda</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tesis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="variables-1" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Variables<a href="variables-1.html#variables-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="coberturas" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Coberturas<a href="variables-1.html#coberturas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En este capítulo se detallará el procesamiento de los datos de coberturas de hábitat.</p>
+<p>Las clases de coberturas se pueden dividir en dos tipos:</p>
+<div id="clases-de-cobertura-simples" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Clases de Cobertura Simples<a href="variables-1.html#clases-de-cobertura-simples" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se refieren a categorías específicas de uso del suelo y vegetación.</p>
+<table>
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Clase</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PLNT</td>
+<td>Plantaciones forestales (incluye mayormente plantaciones <em>sensu stricto</em>, en menor medida cortinas forestales, raramente sombra ornamental y frutales)</td>
+</tr>
+<tr class="even">
+<td>FRST</td>
+<td>Monte Nativo (en muchos casos incluye montes nativos con presencia de exóticas, así como parches de monte de <em>Acacia</em>)</td>
+</tr>
+<tr class="odd">
+<td>SHRB</td>
+<td>Matorrales y Pajonales (incluye arbustales, áreas arboladas abiertas de nativas o exóticas con dosel discontinuo, pajonales, caraguatales y juncales altos)</td>
+</tr>
+<tr class="even">
+<td>OPEN</td>
+<td>Áreas Abiertas (praderas, pasturas sembradas, cultivos, dunas, playas, arenales, suelo o roca desnudo, caminos)</td>
+</tr>
+<tr class="odd">
+<td>VWTR</td>
+<td>Vegetación inundada o en cuerpos de agua</td>
+</tr>
+<tr class="even">
+<td>OWTR</td>
+<td>Cuerpos de agua abiertos</td>
+</tr>
+<tr class="odd">
+<td>URBN</td>
+<td>Áreas urbanas construidas (no se utiliza esta información, en cambio, se prefiere el uso del conteo de techos)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="clases-de-cobertura-agregadas" class="section level3 hasAnchor" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> Clases de Cobertura Agregadas<a href="variables-1.html#clases-de-cobertura-agregadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Estas combinan categorías simples para representar de manera más generalizada los diferentes tipos de cobertura de hábitat.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Clase</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>WTLD</td>
+<td>Humedales (VWTR + OWTR)</td>
+</tr>
+<tr class="even">
+<td>CLSD</td>
+<td>Vegetación cerrada (PLNT + FRST + SHRB)</td>
+</tr>
+<tr class="odd">
+<td>WOOD</td>
+<td>Áreas Arboladas, de dosel continuo/denso (FRST + PLNT)</td>
+</tr>
+<tr class="even">
+<td>HSIST</td>
+<td>Índice de Shannon para diversidad de paisaje</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="procesamiento-de-datos" class="section level3 hasAnchor" number="7.1.3">
+<h3><span class="header-section-number">7.1.3</span> Procesamiento de datos<a href="variables-1.html#procesamiento-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Primero, se cargan las planillas proporcionadas por Ariel Farías, tanto a nivel de sistema como de cámara.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="variables-1.html#cb1-1" tabindex="-1"></a>variables_system_df <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">&quot;data_processed/variables_system_df.RData&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-2"><a href="variables-1.html#cb1-2" tabindex="-1"></a>  <span class="fu">rename_with</span>(<span class="sc">~</span> <span class="fu">paste0</span>(.,<span class="st">&quot;_sys&quot;</span>), <span class="sc">-</span>system) <span class="co"># Le agergo la terminación sys al nombre de todas las colummas.</span></span>
+<span id="cb1-3"><a href="variables-1.html#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="variables-1.html#cb1-4" tabindex="-1"></a>variables_camera_df <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">&quot;data_processed/variables_camera_df.RData&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-5"><a href="variables-1.html#cb1-5" tabindex="-1"></a>  <span class="fu">rename_with</span>(<span class="sc">~</span> <span class="fu">paste0</span>(.,<span class="st">&quot;_cam&quot;</span>), <span class="sc">-</span>site) <span class="sc">%&gt;%</span> <span class="co"># Le agergo la terminación sys al nombre de todas las colummas.</span></span>
+<span id="cb1-6"><a href="variables-1.html#cb1-6" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">camera =</span> site) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-7"><a href="variables-1.html#cb1-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">system =</span> <span class="fu">substr</span>(camera, <span class="dv">1</span>, <span class="dv">4</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-8"><a href="variables-1.html#cb1-8" tabindex="-1"></a>  <span class="fu">select</span>(system, <span class="fu">everything</span>())</span></code></pre></div>
+<p>Lo siguiente es unir ambas planillas en una sola, de esta forma la generación de kernels de actividad será más fácil.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="variables-1.html#cb2-1" tabindex="-1"></a>variables_df <span class="ot">&lt;-</span> variables_camera_df <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="variables-1.html#cb2-2" tabindex="-1"></a>  <span class="fu">left_join</span>(variables_system_df, <span class="at">by =</span> <span class="fu">join_by</span>(system))</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["system"],"name":[1],"type":["chr"],"align":["left"]},{"label":["camera"],"name":[2],"type":["chr"],"align":["left"]},{"label":["wtld_cam"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["clsd_cam"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["wood_cam"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["plnt_cam"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["frst_cam"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["shrb_cam"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["open_cam"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["vwtr_cam"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["owtr_cam"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["urbn_cam"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["hindex_cam"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["n_tech_cam"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["wtld_sys"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["clsd_sys"],"name":[16],"type":["dbl"],"align":["right"]},{"label":["wood_sys"],"name":[17],"type":["dbl"],"align":["right"]},{"label":["plnt_sys"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["frst_sys"],"name":[19],"type":["dbl"],"align":["right"]},{"label":["shrb_sys"],"name":[20],"type":["dbl"],"align":["right"]},{"label":["open_sys"],"name":[21],"type":["dbl"],"align":["right"]},{"label":["vwtr_sys"],"name":[22],"type":["dbl"],"align":["right"]},{"label":["owtr_sys"],"name":[23],"type":["dbl"],"align":["right"]},{"label":["urbn_sys"],"name":[24],"type":["dbl"],"align":["right"]},{"label":["hindex_sys"],"name":[25],"type":["dbl"],"align":["right"]},{"label":["n_tech_sys"],"name":[26],"type":["dbl"],"align":["right"]}],"data":[{"1":"CP01","2":"CP01_1","3":"0.10059406","4":"0.3897292","5":"0.17680491","6":"0.11534744","7":"0.06145747","8":"0.21292432","9":"0.509676707","10":"0.10059406","11":"0","12":"0","13":"1.3244553","14":"1","15":"0.01961930","16":"0.6092140","17":"0.5229300","18":"0.4396288","19":"0.08330121","20":"0.08628405","21":"0.3711667","22":"0.01961930","23":"0","24":"0","25":"1.224724","26":"3"},{"1":"CP01","2":"CP01_2","3":"0.01791036","4":"0.9723554","5":"0.88639909","6":"0.74476063","7":"0.14163847","8":"0.08595634","9":"0.009734208","10":"0.01791036","11":"0","12":"0","13":"0.8243662","14":"0","15":"0.01961930","16":"0.6092140","17":"0.5229300","18":"0.4396288","19":"0.08330121","20":"0.08628405","21":"0.3711667","22":"0.01961930","23":"0","24":"0","25":"1.224724","26":"3"},{"1":"CP01","2":"CP01_3","3":"0.02098289","4":"0.4262029","5":"0.07836002","6":"0.07836002","7":"0.00000000","8":"0.34784293","9":"0.552814159","10":"0.02098289","11":"0","12":"0","13":"0.9756131","14":"0","15":"0.01961930","16":"0.6092140","17":"0.5229300","18":"0.4396288","19":"0.08330121","20":"0.08628405","21":"0.3711667","22":"0.01961930","23":"0","24":"0","25":"1.224724","26":"3"},{"1":"CP02","2":"CP02_1","3":"0.00000000","4":"0.9981960","5":"0.89184384","6":"0.61299855","7":"0.27884529","8":"0.10635213","9":"0.001804029","10":"0.00000000","11":"0","12":"0","13":"0.9058423","14":"0","15":"0.02205446","16":"0.6749864","17":"0.5450923","18":"0.2167342","19":"0.32835810","20":"0.12989416","21":"0.3029591","22":"0.02205446","23":"0","24":"0","25":"1.408101","26":"0"},{"1":"CP02","2":"CP02_2","3":"0.01836420","4":"0.3791123","5":"0.22790955","6":"0.00000000","7":"0.22790955","8":"0.15120279","9":"0.602523458","10":"0.01836420","11":"0","12":"0","13":"1.0013402","14":"0","15":"0.02205446","16":"0.6749864","17":"0.5450923","18":"0.2167342","19":"0.32835810","20":"0.12989416","21":"0.3029591","22":"0.02205446","23":"0","24":"0","25":"1.408101","26":"0"},{"1":"CP02","2":"CP02_3","3":"0.00000000","4":"0.7467916","5":"0.62370855","6":"0.33500393","7":"0.28870461","8":"0.12308305","9":"0.253208401","10":"0.00000000","11":"0","12":"0","13":"1.3306758","14":"0","15":"0.02205446","16":"0.6749864","17":"0.5450923","18":"0.2167342","19":"0.32835810","20":"0.12989416","21":"0.3029591","22":"0.02205446","23":"0","24":"0","25":"1.408101","26":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Por último queda añadir estos datos a la planilla con todos los datos. Para recordar, la planilla general luce así:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="variables-1.html#cb3-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data_processed/datos_procesados_v3.RData&quot;</span>)</span>
+<span id="cb3-2"><a href="variables-1.html#cb3-2" tabindex="-1"></a><span class="fu">paged_table</span>(<span class="fu">head</span>(data))</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["site"],"name":[1],"type":["chr"],"align":["left"]},{"label":["system"],"name":[2],"type":["chr"],"align":["left"]},{"label":["camera"],"name":[3],"type":["chr"],"align":["left"]},{"label":["sp"],"name":[4],"type":["chr"],"align":["left"]},{"label":["datetime"],"name":[5],"type":["dttm"],"align":["right"]},{"label":["lat"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["lon"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["solar"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["clock"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["nocturnal"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["moon_ilumination"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["tr_btau_sys"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["tr_cfam_sys"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["tr_btau_cam"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["tr_cfam_cam"],"name":[15],"type":["dbl"],"align":["right"]}],"data":[{"1":"SM","2":"SM06","3":"SM06_3","4":"Btau","5":"2023-02-07 07:56:22","6":"-33.72585","7":"-53.58035","8":"2.135101","9":"2.078542","10":"0","11":"0.9849170","12":"0.4800000","13":"0","14":"0.4736842","15":"0","_rn_":"1"},{"1":"SM","2":"SM06","3":"SM06_2","4":"Btau","5":"2023-02-06 15:05:08","6":"-33.72585","7":"-53.58035","8":"3.810810","9":"3.949389","10":"0","11":"0.9976228","12":"0.4800000","13":"0","14":"0.7368421","15":"0","_rn_":"2"},{"1":"SM","2":"SM01","3":"SM01_1","4":"Btau","5":"2023-02-06 12:13:33","6":"-33.72585","7":"-53.58035","8":"3.141334","9":"3.200716","10":"0","11":"0.9976228","12":"0.2738095","13":"0","14":"0.4464286","15":"0","_rn_":"3"},{"1":"SM","2":"SM01","3":"SM01_1","4":"Btau","5":"2023-02-06 08:07:45","6":"-33.72585","7":"-53.58035","8":"2.182284","9":"2.128211","10":"0","11":"0.9976228","12":"0.2738095","13":"0","14":"0.4464286","15":"0","_rn_":"4"},{"1":"SM","2":"SM01","3":"SM01_1","4":"Btau","5":"2023-02-05 21:59:46","6":"-33.72585","7":"-53.58035","8":"5.578795","9":"5.758568","10":"1","11":"0.9929086","12":"0.2738095","13":"0","14":"0.4464286","15":"0","_rn_":"5"},{"1":"SM","2":"SM01","3":"SM01_1","4":"Btau","5":"2023-02-05 18:00:13","6":"-33.72585","7":"-53.58035","8":"4.491674","9":"4.713334","10":"0","11":"0.9929086","12":"0.2738095","13":"0","14":"0.4464286","15":"0","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Y pasemos a unirlos.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="variables-1.html#cb4-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="variables-1.html#cb4-2" tabindex="-1"></a>  <span class="fu">left_join</span>(variables_df, <span class="at">by =</span> <span class="fu">join_by</span>(system, camera))</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="variables-1.html#cb5-1" tabindex="-1"></a><span class="fu">save</span>(data, <span class="at">file=</span><span class="st">&quot;data_processed/datos_procesados_v4.RData&quot;</span>)</span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="variables-climáticas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-variables-ariel.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

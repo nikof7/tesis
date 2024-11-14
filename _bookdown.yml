@@ -1,0 +1,16 @@
+delete_merged_file: true
+rmd_files:
+  - index.Rmd
+  - chapters/intro.Rmd
+  - chapters/exploracion-inicial.Rmd
+  - chapters/hora-solar.Rmd
+  - chapters/nicho-temporal.Rmd
+  - chapters/fase-lunar.Rmd
+  - chapters/variables-tr.Rmd
+  - chapters/variables-ariel.Rmd
+  - chapters/variables-climaticas.Rmd
+  - chapters/kernels-actividad-variables.Rmd
+  - chapters/exploracion-modelos.Rmd
+  - chapters/Modelos-jenni.Rmd
+  - chapters/anexo1.Rmd
+  - chapters/references.Rmd

@@ -1,0 +1,86 @@
+# Todos los modelos
+
+```{r}
+load("data_processed/datos_procesados_v5.RData")
+dat <- data %>% 
+  mutate(
+         periodos = case_when(
+           solar >= (5*pi)/3 | solar <= pi/3 ~ "noche",
+           solar > pi/3 & solar < (2*pi)/3 | solar > (4*pi)/3  & solar < (5*pi)/3  ~ "crepusculo",
+           solar >= (2*pi)/3 & solar <= (4*pi)/3 ~ "dia",
+         ),
+         wood_compl_sys = 1 - wood_sys,
+         wood_compl_cam = 1 - wood_cam,) %>% 
+  select(system, camera, sp, periodos, moon_ilumination, starts_with("tr"), ntech_sys = n_tech_sys, ntech_cam = n_tech_cam, starts_with("wood"), starts_with("daily")) %>% 
+  filter(!sp %in% c("Btau", "Cfam"))
+rm(data)
+```
+
+## Aditivo
+
+```{r}
+library(brms)
+```
+
+```{r eval=FALSE}
+species <- dat %>% 
+  select(sp) %>% 
+  distinct() %>% 
+  pull()
+
+modelos_aditivos <- list()
+for (specie in species) {
+  
+  dat_modeling <- dat %>% 
+    filter(sp == specie)
+  
+  mod <- brm(
+    formula = bf(periodos ~ moon_ilumination +
+                   tr_btau_sys +
+                   tr_cfam_sys +
+                   tr_btau_cam +
+                   tr_cfam_cam +
+                   ntech_sys +
+                   ntech_cam +
+                   wood_cam +
+                   wood_sys +
+                   wood_compl_sys +
+                   wood_compl_cam +
+                   daily_weather_code +
+                   daily_precipitation_sum +
+                   daily_temperature_2m_max +
+                   daily_temperature_2m_min +
+                   daily_windspeed_10m_max +
+                   (1 | system/camera)),  # Efectos mixtos anidados
+    data = dat_modeling,
+    family = categorical(refcat = "noche"),  # familia multinomial con el nivel de referencia 'noche'
+    chains = 4,
+    iter = 15000,
+    warmup = 3000,
+    control = list(adapt_delta = 0.95),
+    cores = 6,
+    threads = 12,
+    seed = 1234
+  )
+  
+  modelos_aditivos[[specie]] <- mod
+  save(modelos_aditivos, file=paste0("models/", specie, "_modelos_aditivos.RData"))
+}
+```
+
+```{r}
+summary(modelos_aditivos$Ctho)
+```
+
+
+```{r}
+dat %>%
+  group_by(sp, periodos) %>% 
+  summarize(n())
+```
+
+
+```{r}
+plot(conditional_effects(modelos_aditivos$Dnov, categorical=TRUE), ask=FALSE)
+```
+

@@ -1,0 +1,52 @@
+# Exploración general de GLMM
+
+```{r}
+load("data_processed/datos_procesados_v5.RData")
+dat <- data %>% 
+  mutate(
+         periodos = case_when(
+           solar >= (5*pi)/3 | solar <= pi/3 ~ "noche",
+           solar > pi/3 & solar < (2*pi)/3 | solar > (4*pi)/3  & solar < (5*pi)/3  ~ "crepusculo",
+           solar >= (2*pi)/3 & solar <= (4*pi)/3 ~ "dia",
+         ),
+         wood_compl_sys = 1 - wood_sys,
+         wood_compl_cam = 1 - wood_cam,) %>% 
+  select(system, camera, sp, periodos, moon_ilumination, starts_with("tr"), ntech_sys = n_tech_sys, ntech_cam = n_tech_cam, starts_with("wood"), starts_with("daily"))
+rm(data)
+```
+
+
+```{r}
+dat <- dat %>% 
+  filter(sp == "Lgym")
+```
+
+```{r}
+modelo_aditivo <- brm(
+  formula = bf(periodos ~ moon_ilumination + # Iluminacion de luna
+                 tr_btau_sys + tr_btau_cam + # Tasa de registro de ganado
+                 tr_cfam_sys + tr_cfam_cam + # Tasa de registro de perros
+                 ntech_sys + ntech_cam + # Cantidad de techos
+                 wood_sys + wood_cam + # Proporción de bosque
+                 wood_compl_sys + wood_compl_cam + # Proporción de área abierta (complemento del bosque)
+                 daily_weather_code + # Código de clima
+                 daily_precipitation_sum + # Precipitaciones
+                 daily_temperature_2m_max + daily_temperature_2m_min + # Temperaturas
+                 (1 | system/camera)),  # Efectos mixtos anidados
+  data = dat,
+  family = categorical(refcat = "noche"),  # familia multinomial con el nivel de referencia 'nocturno'
+  chains = 2,              # número de cadenas
+  iter = 500,             # número de iteraciones
+  warmup = 250,           # número de iteraciones de calentamiento
+  control = list(adapt_delta = 0.95), # control para mejorar la convergencia
+  cores = 6,
+  threads = 12
+)
+save(modelo_aditivo, file="models/modelo_aditivo.RData")
+```
+
+
+```{r}
+load("models/modelo_aditivo.RData")
+summary(modelo_aditivo)
+```

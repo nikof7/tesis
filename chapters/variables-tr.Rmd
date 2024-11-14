@@ -1,0 +1,190 @@
+# Tasa de registro vacunos y perros domésticos
+
+Se quiere obtener la tasa de registro (TR) del ganado vacuno y de los perros domésticos para dos tipos de resolución; a nivel de cámara y a nivel de sistema.
+
+La TR para cualquier especie se calcula con la siguiente expresión.
+
+$$\textrm{TR} = \frac{\textrm{Total registros independientes}}{\textrm{Esfuerzo de muestreo}}$$
+
+En el caso del cálculo a nivel de sistema tanto el esfuerzo como el total de registros es la sumatorio de las tres cámaras. Cuando se calcula a nivel de cámara se utilizan el total de registros y esfuerzo para la misma.
+
+Pasemos al calculo de este parámetro, primero se cargan los registros de las camaras trampa.
+
+```{r}
+load("data_processed/datos_procesados_v2.RData")
+```
+
+Luego se filtran solo los registros de _B. taurus_, _C. familiaris_ se crea una columna llamada sistema (system) y se seleccionan las columnas de interés.
+
+```{r}
+tr_data <- data %>%
+  filter(sp %in% c("Btau", "Cfam")) %>% 
+  mutate(system = str_sub(camera, 1, 4)) %>% 
+  select(system, camera, sp)
+```
+
+```{r}
+paged_table(head(tr_data))
+```
+
+### Nivel sistema
+
+En primer lugar se busca el esfuerzo para cada sistema.
+
+```{r}
+system_effort <- read_rds(file = "data_processed/camera_data.RData") %>% 
+  mutate(system = str_sub(camera, 1, 4)) %>%
+  select(system, camera, effort) %>%
+  group_by(system) %>%
+  summarise(effort = sum(effort))
+```
+
+Esfuerzo de todos los sitemas.
+
+```{r echo=FALSE}
+tmp <- system_effort %>% 
+  mutate(site = str_sub(system, 1, 2))
+
+ggplot(data = tmp, aes(x = system, y=effort, fill = site)) +
+  geom_col() + theme(text = element_text(size = 8), axis.text.x=element_text(angle = 90, hjust = 0))
+```
+
+Luego se contabiliza la cantidad de registros independientes de cada especie en los sistemas.
+
+```{r message=FALSE}
+tr_system <- tr_data %>%
+  select(system, sp) %>%
+  group_by(system, sp) %>%
+  summarise(count = n()) %>%
+  ungroup()
+```
+
+Y se realiza el cálculo.
+
+```{r message=FALSE}
+tr_system <- tr_system %>%
+  left_join(system_effort, by = join_by(system)) %>%
+  group_by(system, sp) %>% 
+  summarise(tr_system = count/effort)
+```
+
+```{r echo=FALSE}
+paged_table(head(tr_system))
+```
+
+### Nivel camara
+
+En primer lugar se carga el esfuerzo para cada camara.
+
+```{r}
+camera_effort <- read_rds(file = "data_processed/camera_data.RData") %>%
+  select(camera, effort)
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(plotly)
+tmp <- camera_effort %>% 
+  mutate(site = str_sub(camera, 1, 2),
+         system = str_sub(camera, 1, 4))
+
+p <- ggplot(data = tmp, aes(x = camera, y = effort, fill = system, color = site)) +
+  geom_col() +
+  theme(text = element_text(size = 8), axis.text.x = element_text(angle = 90, hjust = 0)) +
+  theme(legend.position = "none") +
+  ggtitle("Gráfica interactiva")
+
+# Convertir a Plotly
+p_plotly <- ggplotly(p)
+p_plotly
+```
+
+Se cuenta la cantidad de regitros independientes en cada cámara para las especies de interés.
+
+```{r message=FALSE}
+tr_camera <- tr_data %>%
+  select(camera, sp) %>%
+  group_by(camera, sp) %>%
+  summarise(count = n())
+```
+
+Se realiza el calculo de la tasa de registro.
+
+```{r message=FALSE}
+tr_camera <- tr_camera %>%
+  left_join(camera_effort, by = join_by(camera)) %>%
+  group_by(camera, sp) %>% 
+  summarise(tr_camera = count/effort) %>% 
+  mutate(system = substr(camera, 1, 4))
+```
+
+### Tabla única
+
+Se unen los datos en una tabla única para mejor organización, en ella existen los valores de la tasa de registro tanto a nivel de sistema como de camara.
+
+```{r}
+tr_results <- tr_camera %>% 
+  left_join(tr_system, join_by(system, sp)) %>% 
+  select(system, camera, sp, tr_system, tr_camera)
+```
+
+```{r echo=FALSE}
+paged_table(head(tr_results))
+```
+
+Y por último se añaden estos datos a la planilla general. Para esto hay que modificar la tabla un poco, me refiero:
+
+```{r}
+load("data_processed/datos_procesados_v2.RData")
+# Obtener todas las cámaras con registro de cualquier especie.
+all_cameras <- data %>% 
+  select(camera) %>% 
+  pull()
+
+# Modificar resultados de TR y hacerlos "anchos"
+tr <- tr_results %>% 
+  pivot_wider(names_from = sp, values_from = c(tr_system, tr_camera), names_sep = "_")
+
+# Verificar qué camaras son las que faltan en el cálculo de la tr, ya que no poseen registros ni de Btau ni de Cfam
+missing_cameras <- setdiff(all_cameras, tr$camera)
+
+# Creamos un tibble con estos datos faltantes
+missing_tibble <- tibble::tibble(
+  system = substr(missing_cameras, 1, 4), 
+  camera = missing_cameras,
+  tr_system_Btau = 0,
+  tr_system_Cfam = 0,
+  tr_camera_Btau = 0,
+  tr_camera_Cfam = 0
+)
+
+# Y los unimos en un mismo set de datos
+tr <- bind_rows(tr, missing_tibble)
+
+# Reemplzamos todos los NA por 0.
+tr[is.na(tr)] <- 0
+```
+
+Ahora sí, se pueden cargar los datos de tasa de registro a la planilla general.
+
+```{r echo=FALSE, eval=FALSE}
+load("data_processed/datos_procesados_v2.RData") # Se carga planilla general
+
+data <- data %>%
+  mutate(system = substr(camera, 1, 4)) %>% 
+  left_join(tr, join_by(system, camera)) %>% 
+  select(site, system, camera, sp, datetime, everything()) %>% 
+  rename(tr_btau_sys = tr_system_Btau,
+         tr_btau_cam = tr_camera_Btau,
+         tr_cfam_sys = tr_system_Cfam,
+         tr_cfam_cam = tr_camera_Cfam)
+
+save(data, file="data_processed/datos_procesados_v3.RData")
+```
+
+Y se obtiene:
+
+```{r echo=FALSE}
+load("data_processed/datos_procesados_v3.RData")
+paged_table(head(data))
+rm(list = ls())
+```

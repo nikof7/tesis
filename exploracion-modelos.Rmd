@@ -1,0 +1,59 @@
+# Exploración general de GLMM
+
+Cargamos los datos de interés (prueba solo con datos de Lgym, iluminación de luna y proporción de bosque a nivel de sistema:
+
+```{r}
+load("data_processed/datos_procesados_v5.RData")
+dat <- data %>% 
+  mutate(
+         periodos = case_when(
+           solar >= (5*pi)/3 | solar <= pi/3 ~ "noche",
+           solar > pi/3 & solar < (2*pi)/3 | solar > (4*pi)/3  & solar < (5*pi)/3  ~ "crepusculo",
+           solar >= (2*pi)/3 & solar <= (4*pi)/3 ~ "dia",
+         ),
+         wood_compl_sys = 1 - wood_sys,
+         wood_compl_cam = 1 - wood_cam,) %>% 
+  select(system, camera, sp, periodos, moon_ilumination, starts_with("tr"), ntech_sys = n_tech_sys, ntech_cam = n_tech_cam, starts_with("wood"), starts_with("daily")) %>% 
+  filter(sp == "Lgym")
+rm(data)
+```
+
+```{r eval=FALSE}
+mod <- brm(
+  formula = bf(periodos ~ moon_ilumination + # Iluminacion de luna
+                 wood_sys + # Precipitaciones
+                 moon_ilumination*wood_sys +
+                 (1 | system/camera)),  # Efectos mixtos anidados
+  data = dat,
+  family = categorical(refcat = "noche"),  # familia multinomial con el nivel de referencia 'nocturno'
+  chains = 2,              # número de cadenas
+  iter = 500,             # número de iteraciones
+  warmup = 250,           # número de iteraciones de calentamiento
+  control = list(adapt_delta = 0.95), # control para mejorar la convergencia
+  cores = 6,
+  threads = 12
+)
+save(mod, file="models/prueba.RData")
+```
+
+
+
+```{r}
+load("models/prueba.RData")
+summary(mod)
+```
+
+El siguiente imprime todos los graficos
+
+```{r warning=FALSE}
+plot(conditional_effects(mod, categorical=TRUE), ask=FALSE)
+```
+
+Si queremos solo la interacción entre dos variables, podemos hacer lo siguiente:
+
+```{r warning=FALSE}
+conditions <- data.frame(wood_sys = c(0.25, 0.75))  # Valores de interés en el rango de wood_sys
+plot(conditional_effects(mod, categorical = TRUE, effects = "moon_ilumination", conditions = conditions))
+```
+
+

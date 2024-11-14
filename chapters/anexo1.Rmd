@@ -1,0 +1,9 @@
+# Anexo 1
+
+Kernels de densidad para todas las especies y estresores.
+
+```{r}
+load("exports/plots.Rdata")
+plots
+```
+
